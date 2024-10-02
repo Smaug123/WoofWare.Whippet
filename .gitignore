@@ -1,0 +1,14 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea/
+*.sln.DotSettings.user
+.DS_Store
+result
+.analyzerpackages/
+analysis.sarif
+.direnv/
+.venv/
+.vs/

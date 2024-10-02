@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="TestSurface.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ApiSurface" Version="4.1.5" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
+        <PackageReference Include="NUnit" Version="4.2.2"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+      <PackageReference Include="FsUnit" Version="6.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
+    </ItemGroup>
+
+</Project>

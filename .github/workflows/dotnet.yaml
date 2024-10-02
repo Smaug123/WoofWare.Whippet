@@ -1,0 +1,187 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  NUGET_XMLDOC_MODE: ''
+  DOTNET_MULTILEVEL_LOOKUP: 0
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        config:
+          - Release
+          - Debug
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # so that NerdBank.GitVersioning has access to history
+    - name: Install Nix
+      uses: cachix/install-nix-action@v29
+      with:
+        extra_nix_config: |
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+    - name: Restore dependencies
+      run: nix develop --command dotnet restore
+    - name: Build
+      run: nix develop --command dotnet build --no-restore --configuration ${{matrix.config}}
+    - name: Test
+      run: nix develop --command dotnet test --no-build --verbosity normal --configuration ${{matrix.config}}
+
+  analyzers:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # so that NerdBank.GitVersioning has access to history
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Prepare analyzers
+        run: nix develop --command dotnet restore analyzers/analyzers.fsproj
+      - name: Build project
+        run: nix develop --command dotnet build ./WoofWare.Whippet/WoofWare.Whippet.fsproj
+      - name: Run analyzers
+        run: nix run .#fsharp-analyzers -- --project ./WoofWare.Whippet/WoofWare.Whippet.fsproj --analyzers-path ./.analyzerpackages/g-research.fsharp.analyzers/*/ --verbosity detailed --report ./analysis.sarif --treat-as-error GRA-STRING-001 GRA-STRING-002 GRA-STRING-003 GRA-UNIONCASE-001 GRA-INTERPOLATED-001 GRA-TYPE-ANNOTATE-001 GRA-VIRTUALCALL-001 GRA-IMMUTABLECOLLECTIONEQUALITY-001 GRA-JSONOPTS-001 GRA-LOGARGFUNCFULLAPP-001 GRA-DISPBEFOREASYNC-001 --exclude-analyzers PartialAppAnalyzer
+
+  build-nix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: nix build
+      - name: Reproducibility check
+        run: nix build --rebuild
+
+  check-dotnet-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Run Fantomas
+        run: nix run .#fantomas -- --check .
+
+  check-nix-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Run Alejandra
+        run: nix develop --command alejandra --check .
+
+  linkcheck:
+    name: Check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Run link checker
+        run: nix develop --command markdown-link-check README.md CONTRIBUTING.md
+
+  flake-check:
+    name: Check flake
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Flake check
+        run: nix flake check
+
+  nuget-pack:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # so that NerdBank.GitVersioning has access to history
+    - name: Install Nix
+      uses: cachix/install-nix-action@v29
+      with:
+        extra_nix_config: |
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+    - name: Restore dependencies
+      run: nix develop --command dotnet restore
+    - name: Build
+      run: nix develop --command dotnet build --no-restore --configuration Release
+    - name: Pack
+      run: nix develop --command dotnet pack --configuration Release
+    - name: Upload NuGet artifact (runner)
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-package-runner
+        path: WoofWare.Whippet/bin/Release/WoofWare.Whippet.*.nupkg
+    - name: Upload NuGet artifact (core)
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-package-core
+        path: WoofWare.Whippet.Core/bin/Release/WoofWare.Whippet.Core.*.nupkg
+
+  expected-pack:
+    needs: [nuget-pack]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download NuGet artifact (runner)
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-runner
+          path: packed-runner
+      - name: Check NuGet contents
+        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
+        run: if [[ $(find packed-runner -maxdepth 1 -name 'WoofWare.Whippet.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+      - name: Download NuGet artifact (core)
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-core
+          path: packed-core
+      - name: Check NuGet contents
+        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
+        run: if [[ $(find packed-core -maxdepth 1 -name 'WoofWare.Whippet.Core.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+
+  all-required-checks-complete:
+    needs: [check-dotnet-format, check-nix-format, build, build-nix, linkcheck, flake-check, nuget-pack, expected-pack, analyzers]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: G-Research/common-actions/check-required-lite@2b7dc49cb14f3344fbe6019c14a31165e258c059
+        with:
+          needs-context: ${{ toJSON(needs) }}
