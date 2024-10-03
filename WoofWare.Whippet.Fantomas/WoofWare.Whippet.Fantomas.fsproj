@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Primitives.fs" />
+    <Compile Include="SynAttributes.fs" />
+    <Compile Include="SynConst.fs" />
+    <Compile Include="SynArgInfo.fs" />
+    <Compile Include="SynValInfo.fs" />
+    <Compile Include="PreXmlDoc.fs" />
+    <Compile Include="Ident.fs" />
+    <Compile Include="SynSimplePat.fs" />
+    <Compile Include="SynSimplePats.fs" />
+    <Compile Include="SynIdent.fs" />
+    <Compile Include="SynLongIdent.fs" />
+    <Compile Include="SynExprLetOrUseTrivia.fs" />
+    <Compile Include="SynArgPats.fs" />
+    <Compile Include="SynPat.fs" />
+    <Compile Include="SynBinding.fs" />
+    <Compile Include="SynType.fs" />
+    <Compile Include="SynMatchClause.fs" />
+    <Compile Include="CompExpr.fs" />
+    <Compile Include="SynExpr.fs" />
+    <Compile Include="SynField.fs" />
+    <Compile Include="SynUnionCase.fs" />
+    <Compile Include="SynTypeDefnRepr.fs" />
+    <Compile Include="SynTypeDefn.fs" />
+    <Compile Include="SynComponentInfo.fs" />
+    <Compile Include="SynMemberDefn.fs" />
+    <Compile Include="SynAttribute.fs" />
+    <Compile Include="SynModuleDecl.fs" />
+    <Compile Include="SynModuleOrNamespace.fs" />
+    <Compile Include="Ast.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="6.0.1"/>
+    <!-- To match Myriad, right now, but once this is published we'll bump to latest -->
+    <PackageReference Include="Fantomas.FCS" Version="6.1.1"/>
+    <PackageReference Include="Fantomas.Core" Version="6.1.1"/>
+  </ItemGroup>
+
+</Project>

@@ -16,7 +16,7 @@ module TestSurface =
     [<Test>]
     // https://github.com/nunit/nunit3-vs-adapter/issues/876
     let CheckVersionAgainstRemote () =
-        MonotonicVersion.validate assembly "WoofWare.Myriad.Core"
+        MonotonicVersion.validate assembly "WoofWare.Whippet.Core"
     *)
 
     [<Test ; Explicit>]
