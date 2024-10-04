@@ -3,6 +3,7 @@ namespace WoofWare.Whippet.Fantomas
 open Fantomas.FCS.Syntax
 open Fantomas.FCS.Text.Range
 
+/// Methods for manipulating SynArgPats, a type which represents the arguments to a pattern.
 [<RequireQualifiedAccess>]
 module SynArgPats =
     /// Create a SynArgPats which represents the tuple of the given case names.

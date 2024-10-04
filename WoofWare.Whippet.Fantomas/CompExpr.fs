@@ -2,10 +2,16 @@ namespace WoofWare.Whippet.Fantomas
 
 open Fantomas.FCS.Syntax
 
+/// A little DSL for defining the contents of a computation expression.
+/// Pass these to `SynExpr.createCompExpr`.
 type CompExprBinding =
+    /// `let! {varName} = {rhs}`
     | LetBang of varName : string * rhs : SynExpr
+    /// `let {varName} = {rhs}`
     | Let of varName : string * rhs : SynExpr
+    /// `use {varName} = {rhs}`
     | Use of varName : string * rhs : SynExpr
+    /// `do {body}`
     | Do of body : SynExpr
 
 (*

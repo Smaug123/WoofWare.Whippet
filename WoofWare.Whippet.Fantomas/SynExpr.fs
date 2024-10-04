@@ -4,16 +4,27 @@ open Fantomas.FCS.Syntax
 open Fantomas.FCS.SyntaxTrivia
 open Fantomas.FCS.Text.Range
 
+/// Extension methods to hold `SynExpr.CreateConst`.
 [<AutoOpen>]
 module SynExprExtensions =
     type SynExpr with
+        /// Create the constant expression which is the given string.
+        /// For example, create the F# expression `"hi"` by calling `SynExpr.CreateConst "hi"`.
         static member CreateConst (s : string) : SynExpr =
             SynExpr.Const (SynConst.Create s, range0)
 
+        /// Create the constant unit expression.
         static member CreateConst () : SynExpr = SynExpr.Const (SynConst.Unit, range0)
 
+        /// Create the constant expression which is the given bool.
+        /// For example, create the F# expression `false` by calling `SynExpr.CreateConst false`.
         static member CreateConst (b : bool) : SynExpr = SynExpr.Const (SynConst.Bool b, range0)
 
+        /// Create the constant expression which is the given char.
+        /// For example, create the F# expression `'c'` by calling `SynExpr.CreateConst 'c'`.
+        ///
+        /// There appears to be a bug in Fantomas in at least one version, causing incorrect formatting when this is
+        /// done naively; so this function instead gives you `(char {appropriate-integer})`.
         static member CreateConst (c : char) : SynExpr =
             // apparent Fantomas bug: `IndexOf '?'` gets formatted as `IndexOf ?` which is clearly wrong
             SynExpr.App (
@@ -25,9 +36,12 @@ module SynExprExtensions =
             )
             |> fun e -> SynExpr.Paren (e, range0, Some range0, range0)
 
+        /// Create the constant expression which is the given int.
+        /// For example, create the F# expression `3` by calling `SynExpr.CreateConst 3`.
         static member CreateConst (i : int32) : SynExpr =
             SynExpr.Const (SynConst.Int32 i, range0)
 
+/// Methods for manipulating `SynExpr`, which represents an F# expression.
 [<RequireQualifiedAccess>]
 module SynExpr =
 
@@ -41,12 +55,18 @@ module SynExpr =
     let inline private createAppInfix (f : SynExpr) (x : SynExpr) =
         SynExpr.App (ExprAtomicFlag.NonAtomic, true, f, x, range0)
 
+    /// An expression which is just "this name".
+    /// For example, `Foo.Blah`.
     let inline createLongIdent'' (ident : SynLongIdent) : SynExpr =
         SynExpr.LongIdent (false, ident, None, range0)
 
+    /// An expression which is just "this name".
+    /// For example, `Foo.Blah`.
     let inline createLongIdent' (ident : Ident list) : SynExpr =
         createLongIdent'' (SynLongIdent.create ident)
 
+    /// An expression which is just "this name".
+    /// For example, `Foo.Blah`.
     let inline createLongIdent (ident : string list) : SynExpr =
         createLongIdent' (ident |> List.map Ident.create)
 
@@ -113,11 +133,13 @@ module SynExpr =
     let times (a : SynExpr) (b : SynExpr) =
         createAppInfix (createLongIdent'' SynLongIdent.times) a |> applyTo b
 
+    /// Strip all outer parentheses from the expression: `((e))` -> `e`.
     let rec stripOptionalParen (expr : SynExpr) : SynExpr =
         match expr with
         | SynExpr.Paren (expr, _, _, _) -> stripOptionalParen expr
         | expr -> expr
 
+    /// {obj}.{field}
     let dotGet (field : string) (obj : SynExpr) : SynExpr =
         SynExpr.DotGet (
             obj,
@@ -133,6 +155,7 @@ module SynExpr =
     let callMethod (meth : string) (obj : SynExpr) : SynExpr =
         callMethodArg meth (SynExpr.CreateConst ()) obj
 
+    /// `{operand}<{types}>`
     let typeApp (types : SynType list) (operand : SynExpr) =
         SynExpr.TypeApp (operand, range0, types, List.replicate (types.Length - 1) range0, Some range0, range0, range0)
 
@@ -146,9 +169,13 @@ module SynExpr =
     let callGenericMethod' (meth : string) (ty : string) (obj : SynExpr) : SynExpr =
         callGenericMethod (SynLongIdent.createS meth) [ SynType.createLongIdent' [ ty ] ] obj
 
+    /// {obj}.[{property}]
     let inline index (property : SynExpr) (obj : SynExpr) : SynExpr =
         SynExpr.DotIndexedGet (obj, property, range0, range0)
 
+    /// `{arr}.[{start} .. {end}]`
+    ///
+    /// You can set either the start or end to None to omit them from the range.
     let inline arrayIndexRange (start : SynExpr option) (endRange : SynExpr option) (arr : SynExpr) : SynExpr =
         SynExpr.DotIndexedGet (
             arr,
@@ -157,6 +184,7 @@ module SynExpr =
             range0
         )
 
+    /// Wraps the expression in parentheses: `({e})`
     let inline paren (e : SynExpr) : SynExpr =
         SynExpr.Paren (e, range0, Some range0, range0)
 
@@ -177,6 +205,7 @@ module SynExpr =
         )
         |> paren
 
+    /// `(fun () -> {body})`
     let createThunk (body : SynExpr) : SynExpr =
         SynExpr.Lambda (
             false,
@@ -191,13 +220,17 @@ module SynExpr =
         )
         |> paren
 
+    /// Just the plain expression `s`, referring to a variable.
     let inline createIdent (s : string) : SynExpr = SynExpr.Ident (Ident (s, range0))
 
+    /// Just the plain expression `x`, referring to a variable.
     let inline createIdent' (i : Ident) : SynExpr = SynExpr.Ident i
 
+    /// `{arg1}, {arg2}, ...`
     let tupleNoParen (args : SynExpr list) : SynExpr =
         SynExpr.Tuple (false, args, List.replicate (args.Length - 1) range0, range0)
 
+    /// `({arg1}, {arg2}, ...)`
     let inline tuple (args : SynExpr list) = args |> tupleNoParen |> paren
 
     /// {body} |> fun a -> Async.StartAsTask (a, ?cancellationToken=ct)
@@ -215,6 +248,7 @@ module SynExpr =
 
         pipeThroughFunction lambda body
 
+    /// `for {pat} in {enumExpr} do {body}`
     let inline createForEach (pat : SynPat) (enumExpr : SynExpr) (body : SynExpr) : SynExpr =
         SynExpr.ForEach (
             DebugPointAtFor.No,
@@ -227,11 +261,14 @@ module SynExpr =
             range0
         )
 
+    /// `let {binding1 = binding1}; let {binding2 = binding2}; {body}
     let inline createLet (bindings : SynBinding list) (body : SynExpr) : SynExpr =
         SynExpr.LetOrUse (false, false, bindings, body, range0, SynExprLetOrUseTrivia.empty)
 
+    /// `do {body}`
     let inline createDo (body : SynExpr) : SynExpr = SynExpr.Do (body, range0)
 
+    /// `match {matchOn} with {cases}`
     let inline createMatch (matchOn : SynExpr) (cases : SynMatchClause list) : SynExpr =
         SynExpr.Match (
             DebugPointAtBinding.Yes range0,
@@ -244,25 +281,35 @@ module SynExpr =
             }
         )
 
+    /// `{expr} : {ty}`
     let typeAnnotate (ty : SynType) (expr : SynExpr) : SynExpr = SynExpr.Typed (expr, ty, range0)
 
+    /// `new {ty} ({args})`
     let inline createNew (ty : SynType) (args : SynExpr) : SynExpr =
         SynExpr.New (false, ty, paren args, range0)
 
+    /// `while {cond} do {body}`
     let inline createWhile (cond : SynExpr) (body : SynExpr) : SynExpr =
         SynExpr.While (DebugPointAtWhile.Yes range0, cond, body, range0)
 
+    /// `null`
     let inline createNull () : SynExpr = SynExpr.Null range0
 
+    /// `reraise ()`
     let reraise : SynExpr = createIdent "reraise" |> applyTo (SynExpr.CreateConst ())
 
+    /// Semantically this is:
+    /// {elt1} ; {elt2} ; ...
+    /// except we probably end up formatting without the semicolons.
     let sequential (exprs : SynExpr list) : SynExpr =
         exprs
         |> List.reduce (fun a b -> SynExpr.Sequential (DebugPointAtSequential.SuppressNeither, false, a, b, range0))
 
+    /// [ {elt1} ; {elt2} ; ... ]
     let listLiteral (elts : SynExpr list) : SynExpr =
         SynExpr.ArrayOrListComputed (false, sequential elts, range0)
 
+    /// [| {elt1} ; {elt2} ; ... |]
     let arrayLiteral (elts : SynExpr list) : SynExpr =
         SynExpr.ArrayOrListComputed (true, sequential elts, range0)
 
@@ -317,6 +364,7 @@ module SynExpr =
         | DateTime -> ident |> callMethodArg "ToString" (SynExpr.CreateConst "yyyy-MM-ddTHH:mm:ss")
         | _ -> callMethod "ToString" ident
 
+    /// {e} :> {ty}
     let upcast' (ty : SynType) (e : SynExpr) = SynExpr.Upcast (e, ty, range0)
 
     /// {ident} - {rhs}
@@ -359,7 +407,9 @@ module SynExpr =
             (tupleNoParen [ x ; y ])
         |> paren
 
+    /// `{lhs} <- {rhs}`
     let assign (lhs : SynLongIdent) (rhs : SynExpr) : SynExpr = SynExpr.LongIdentSet (lhs, rhs, range0)
 
+    /// `{lhs}.[{index}] <- {rhs}`
     let assignIndex (lhs : SynExpr) (index : SynExpr) (rhs : SynExpr) : SynExpr =
         SynExpr.DotIndexedSet (lhs, index, rhs, range0, range0, range0)

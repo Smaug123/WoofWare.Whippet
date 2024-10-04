@@ -5,10 +5,12 @@ open Fantomas.FCS.SyntaxTrivia
 open Fantomas.FCS.Xml
 open Fantomas.FCS.Text.Range
 
+/// Methods for manipulating SynModuleOrNamespace, which defines a module or namespace definition.
 [<RequireQualifiedAccess>]
 module SynModuleOrNamespace =
 
-    let createNamespace (name : LongIdent) (decls : SynModuleDecl list) =
+    /// Create a namespace with the given name and with the given declarations inside it.
+    let createNamespace (name : LongIdent) (decls : SynModuleDecl list) : SynModuleOrNamespace =
         SynModuleOrNamespace.SynModuleOrNamespace (
             name,
             false,

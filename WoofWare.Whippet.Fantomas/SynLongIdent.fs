@@ -84,20 +84,24 @@ module SynLongIdent =
     /// Use `createS'` if you have multiple components.
     let inline createS (s : string) : SynLongIdent = createI (Ident (s, range0))
 
+    /// Build a SynLongIdent from its components.
     let inline createS' (s : string list) : SynLongIdent =
         create (s |> List.map (fun i -> Ident (i, range0)))
 
+    /// Determine whether this ident is the identifier of the `unit` type.
     let isUnit (ident : SynLongIdent) : bool =
         match ident.LongIdent with
         | [ i ] when System.String.Equals (i.idText, "unit", System.StringComparison.OrdinalIgnoreCase) -> true
         | _ -> false
 
+    /// Determine whether this ident is the identifier of the `list` (F# list) type.
     let isList (ident : SynLongIdent) : bool =
         match ident.LongIdent with
         | [ i ] when System.String.Equals (i.idText, "list", System.StringComparison.OrdinalIgnoreCase) -> true
         // TODO: consider FSharpList or whatever it is
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the array type.
     let isArray (ident : SynLongIdent) : bool =
         match ident.LongIdent with
         | [ i ] when
@@ -107,35 +111,42 @@ module SynLongIdent =
             true
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the F# option type.
     let isOption (ident : SynLongIdent) : bool =
         match ident.LongIdent with
         | [ i ] when System.String.Equals (i.idText, "option", System.StringComparison.OrdinalIgnoreCase) -> true
         // TODO: consider Microsoft.FSharp.Option or whatever it is
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the F# Choice type.
     let isChoice (ident : SynLongIdent) : bool =
         match ident.LongIdent with
         | [ i ] when System.String.Equals (i.idText, "Choice", System.StringComparison.Ordinal) -> true
         // TODO: consider Microsoft.FSharp.Choice or whatever it is
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the System.Nullable type.
     let isNullable (ident : SynLongIdent) : bool =
         match ident.LongIdent |> List.map _.idText with
         | [ "System" ; "Nullable" ]
         | [ "Nullable" ] -> true
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the RestEase.Response type.
     let isResponse (ident : SynLongIdent) : bool =
         match ident.LongIdent |> List.map _.idText with
         | [ "Response" ]
         | [ "RestEase" ; "Response" ] -> true
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the F# Map type.
     let isMap (ident : SynLongIdent) : bool =
         match ident.LongIdent |> List.map _.idText with
         | [ "Map" ] -> true
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the System.Collections.Generic.IReadOnlyDictionary type.
+    /// This is purely syntactic: it will not say that e.g. the Dictionary type is an IReadOnlyDictionary.
     let isReadOnlyDictionary (ident : SynLongIdent) : bool =
         match ident.LongIdent |> List.map _.idText with
         | [ "IReadOnlyDictionary" ]
@@ -144,6 +155,7 @@ module SynLongIdent =
         | [ "System" ; "Collections" ; "Generic" ; "IReadOnlyDictionary" ] -> true
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the System.Collections.Generic.Dictionary type.
     let isDictionary (ident : SynLongIdent) : bool =
         match ident.LongIdent |> List.map _.idText with
         | [ "Dictionary" ]
@@ -152,6 +164,8 @@ module SynLongIdent =
         | [ "System" ; "Collections" ; "Generic" ; "Dictionary" ] -> true
         | _ -> false
 
+    /// Determine whether this ident is an identifier of the System.Collections.Generic.IDictionary type.
+    /// This is purely syntactic: it will not say that e.g. the Dictionary type is an IDictionary.
     let isIDictionary (ident : SynLongIdent) : bool =
         match ident.LongIdent |> List.map _.idText with
         | [ "IDictionary" ]

@@ -6,4 +6,5 @@ open Fantomas.FCS.Syntax
 /// in a `let` binding).
 [<RequireQualifiedAccess>]
 module SynArgInfo =
+    /// No arguments.
     let empty = SynArgInfo.SynArgInfo ([], false, None)

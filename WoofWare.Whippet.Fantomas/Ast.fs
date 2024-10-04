@@ -17,12 +17,11 @@ module Ast =
 
     /// Concatenate the input modules/namespaces and render them as a single F# source file.
     ///
-    /// This can return `null`, if the input was empty.
-    /// Not using FSharpOption here to keep the API as uniform as possible.
+    /// This can return `None`, if the input was empty.
     /// This is sync-over-async internally, which is naughty.
-    let render (contents : SynModuleOrNamespace list) : string =
+    let render (contents : SynModuleOrNamespace list) : string option =
         if contents.IsEmpty then
-            null
+            None
         else
 
         let parseTree =
@@ -45,4 +44,4 @@ module Ast =
 
         let cfg = FormatConfig.Default
 
-        CodeFormatter.FormatASTAsync (parseTree, cfg) |> Async.RunSynchronously
+        CodeFormatter.FormatASTAsync (parseTree, cfg) |> Async.RunSynchronously |> Some

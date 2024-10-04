@@ -4,36 +4,38 @@ open System
 open Fantomas.FCS.Syntax
 open Fantomas.FCS.Text.Range
 
+/// Patterns to let you match on a `SynType` to discover whether it's one of a well-known variety.
 [<AutoOpen>]
 module SynTypePatterns =
+    /// An `option` type. You get access to the type argument of `option`.
     let (|OptionType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ innerType ], _, _, _, _) when SynLongIdent.isOption ident ->
             Some innerType
         | _ -> None
 
+    /// A `Choice` type. You get access to the type arguments; for example, a two-case `Choice<int, string>` would match
+    /// `ChoiceType [PrimitiveType "System.Int32" ; PrimitiveType "System.String"]`.
     let (|ChoiceType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, inner, _, _, _, _) when SynLongIdent.isChoice ident -> Some inner
         | _ -> None
 
+    /// A `System.Nullable` type. You get access to its type argument.
     let (|NullableType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ innerType ], _, _, _, _) when SynLongIdent.isNullable ident ->
             Some innerType
         | _ -> None
 
-    let (|UnitType|_|) (fieldType : SynType) : unit option =
-        match fieldType with
-        | SynType.LongIdent ident when SynLongIdent.isUnit ident -> Some ()
-        | _ -> None
-
+    /// An F# list type. You get access to its type argument.
     let (|ListType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ innerType ], _, _, _, _) when SynLongIdent.isList ident ->
             Some innerType
         | _ -> None
 
+    /// An array type. You get access to its type argument.
     let (|ArrayType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ innerType ], _, _, _, _) when SynLongIdent.isArray ident ->
@@ -41,24 +43,30 @@ module SynTypePatterns =
         | SynType.Array (1, innerType, _) -> Some innerType
         | _ -> None
 
+    /// The `RestEase.Response` type.
     let (|RestEaseResponseType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ innerType ], _, _, _, _) when SynLongIdent.isResponse ident ->
             Some innerType
         | _ -> None
 
+    /// A System.Collections.Generic.Dictionary<_,_> type. You get access to its key and value argument types.
     let (|DictionaryType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ key ; value ], _, _, _, _) when SynLongIdent.isDictionary ident ->
             Some (key, value)
         | _ -> None
 
+    /// A System.Collections.Generic.IDictionary<_,_> type. You get access to its key and value argument types.
+    /// Note that this is purely syntactic: a plain `Dictionary<_, _>` won't match this.
     let (|IDictionaryType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ key ; value ], _, _, _, _) when SynLongIdent.isIDictionary ident ->
             Some (key, value)
         | _ -> None
 
+    /// A System.Collections.Generic.IReadOnlyDictionary<_,_> type. You get access to its key and value argument types.
+    /// Note that this is purely syntactic: a plain `Dictionary<_, _>` won't match this.
     let (|IReadOnlyDictionaryType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ key ; value ], _, _, _, _) when
@@ -67,12 +75,14 @@ module SynTypePatterns =
             Some (key, value)
         | _ -> None
 
+    /// An F# Map<_, _> type. You get access to its key and value argument types.
     let (|MapType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.App (SynType.LongIdent ident, _, [ key ; value ], _, _, _, _) when SynLongIdent.isMap ident ->
             Some (key, value)
         | _ -> None
 
+    /// A System.Numerics.BigInteger type (which can be denoted `bigint`).
     let (|BigInt|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -93,6 +103,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `string` type.
     let (|String|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -104,6 +115,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `byte` type.
     let (|Byte|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -112,6 +124,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.Guid` type.
     let (|Guid|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -121,6 +134,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.Net.Http.HttpResponseMessage` type.
     let (|HttpResponseMessage|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -132,6 +146,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.Net.Http.HttpContent` type.
     let (|HttpContent|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -143,6 +158,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.IO.Stream` type.
     let (|Stream|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -153,6 +169,8 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// A numeric primitive type, like `byte` or `float` but not `char`.
+    /// You get access to the fully-qualified type name, like `System.Int32`.
     let (|NumberType|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent ident ->
@@ -169,7 +187,8 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
-    /// Returns the name of the measure, and the outer type.
+    /// A type with a unit of measure. Returns the name of the measure, and the outer type to which the measure was
+    /// applied.
     let (|Measure|_|) (fieldType : SynType) : (Ident * LongIdent) option =
         match fieldType with
         | SynType.App (NumberType outer,
@@ -181,6 +200,7 @@ module SynTypePatterns =
                        _) -> Some (ident, outer)
         | _ -> None
 
+    /// The `System.Text.Json.Nodes.JsonNode` type.
     let (|JsonNode|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -193,7 +213,8 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
-    let (|Unit|_|) (fieldType : SynType) : unit option =
+    /// The `unit` type.
+    let (|UnitType|_|) (fieldType : SynType) : unit option =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
             match ident |> List.map (fun i -> i.idText.ToLowerInvariant ()) with
@@ -204,6 +225,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.DateOnly` type.
     let (|DateOnly|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -213,6 +235,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.DateTime` type.
     let (|DateTime|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -222,6 +245,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.DateTimeOffset` type.
     let (|DateTimeOffset|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -231,6 +255,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.Uri` type.
     let (|Uri|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -240,6 +265,9 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.Threading.Tasks.Task<_>` type. You get access to the generic argument.
+    /// Due to a design error which I haven't yet fixed, this throws on the non-generic Task; please raise an issue
+    /// if you run into this.
     let (|Task|_|) (fieldType : SynType) : SynType option =
         match fieldType with
         | SynType.App (SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)), _, args, _, _, _, _) ->
@@ -254,6 +282,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.IO.DirectoryInfo` type.
     let (|DirectoryInfo|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -264,6 +293,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.IO.FieldInfo` type.
     let (|FileInfo|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -274,6 +304,7 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+    /// The `System.TimeSpan` type.
     let (|TimeSpan|_|) (fieldType : SynType) =
         match fieldType with
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) ->
@@ -283,30 +314,43 @@ module SynTypePatterns =
             | _ -> None
         | _ -> None
 
+/// Methods for manipulating SynType, which represents a type as might appear e.g. in a type annotation.
 [<RequireQualifiedAccess>]
 module SynType =
 
+    /// Strip all outer parentheses from this SynType.
+    ///
+    /// Most functions by default will not strip parentheses. Note, for example, that `let foo : (int) = 3` is fine.
+    /// Use `stripOptionalParen` to turn that `(int)` into `int`, so that e.g. you can match on it using the patterns
+    /// in `SynTypePatterns`.
     let rec stripOptionalParen (ty : SynType) : SynType =
         match ty with
         | SynType.Paren (ty, _) -> stripOptionalParen ty
         | ty -> ty
 
+    /// Wrap this type in parentheses.
     let inline paren (ty : SynType) : SynType = SynType.Paren (ty, range0)
 
+    /// Define a SynType by just a name.
     let inline createLongIdent (ident : LongIdent) : SynType =
         SynType.LongIdent (SynLongIdent.create ident)
 
+    /// Define a SynType by just a name.
     let inline createLongIdent' (ident : string list) : SynType =
         SynType.LongIdent (SynLongIdent.createS' ident)
 
+    /// Define a SynType by just a name. Use `createLongIdent'` if you want more components in this name,
+    /// so e.g. don't pass `System.Collections.Generic.Dictionary` to `named`.
     let inline named (name : string) = createLongIdent' [ name ]
 
+    /// {name}<{args}>
     let inline app' (name : SynType) (args : SynType list) : SynType =
         if args.IsEmpty then
             failwith "Type cannot be applied to no arguments"
 
         SynType.App (name, Some range0, args, List.replicate (args.Length - 1) range0, Some range0, false, range0)
 
+    /// {name}<{args}>
     let inline app (name : string) (args : SynType list) : SynType = app' (named name) args
 
     /// Returns None if the input list was empty.
@@ -320,12 +364,15 @@ module SynType =
             |> fun segs -> SynType.Tuple (false, segs, range0)
             |> Some
 
+    /// `{arg} {name}`, e.g. `int option`.
     let inline appPostfix (name : string) (arg : SynType) : SynType =
         SynType.App (named name, None, [ arg ], [], None, true, range0)
 
+    /// `{arg} {name1.name2.name3}`, e.g. `int System.Nullable`.
     let inline appPostfix' (name : string list) (arg : SynType) : SynType =
         SynType.App (createLongIdent' name, None, [ arg ], [], None, true, range0)
 
+    /// The type `{domain} -> {range}`.
     let inline funFromDomain (domain : SynType) (range : SynType) : SynType =
         SynType.Fun (
             domain,
@@ -336,6 +383,8 @@ module SynType =
             }
         )
 
+    /// In an abstract type definition like `type Foo = abstract Blah : x : int -> string`,
+    /// this represents one single `x : int` part.
     let inline signatureParamOfType
         (attrs : SynAttribute list)
         (ty : SynType)
@@ -357,22 +406,37 @@ module SynType =
             range0
         )
 
+    /// Create a type which refers to a generic type parameter. For example, `'a` (assuming there's already
+    /// some language construct causing the generic `'a` to be in scope).
     let inline var (ty : SynTypar) : SynType = SynType.Var (ty, range0)
 
+    /// The `unit` type.
     let unit : SynType = named "unit"
+
+    /// The `obj` type.
     let obj : SynType = named "obj"
+
+    /// The `bool` type.
     let bool : SynType = named "bool"
+
+    /// The `int` type.
     let int : SynType = named "int"
+
+    /// The type `{elt} array`.
     let array (elt : SynType) : SynType = SynType.Array (1, elt, range0)
 
+    /// The type `{elt} list` (i.e. an F# list).
     let list (elt : SynType) : SynType =
         SynType.App (named "list", None, [ elt ], [], None, true, range0)
 
+    /// The type `{elt} option`.
     let option (elt : SynType) : SynType =
         SynType.App (named "option", None, [ elt ], [], None, true, range0)
 
+    /// The anonymous type, i.e. the `_` in the type-annotated `x : _`.
     let anon : SynType = SynType.Anon range0
 
+    /// The type `System.Threading.Tasks.Task<{elt}>`.
     let task (elt : SynType) : SynType =
         SynType.App (
             createLongIdent' [ "System" ; "Threading" ; "Tasks" ; "Task" ],
@@ -384,12 +448,15 @@ module SynType =
             range0
         )
 
+    /// The type `string`.
     let string : SynType = named "string"
 
     /// Given ['a1, 'a2] and 'ret, returns 'a1 -> 'a2 -> 'ret.
     let toFun (inputs : SynType list) (ret : SynType) : SynType =
         (ret, List.rev inputs) ||> List.fold (fun ty input -> funFromDomain input ty)
 
+    /// Convert a canonical form like `System.Int32` to a human-readable form like `int32`.
+    /// Throws on unrecognised inputs.
     let primitiveToHumanReadableString (name : LongIdent) : string =
         match name |> List.map _.idText with
         | [ "System" ; "Single" ] -> "single"
@@ -411,6 +478,8 @@ module SynType =
             |> String.concat "."
             |> failwithf "could not create human-readable string for primitive type %s"
 
+    /// Attempt to create a human-readable representation of this type, for use in error messages.
+    /// This function throws if we couldn't decide on a human-readable representation.
     let rec toHumanReadableString (ty : SynType) : string =
         match ty with
         | PrimitiveType t1 -> primitiveToHumanReadableString t1

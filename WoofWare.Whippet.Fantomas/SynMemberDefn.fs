@@ -5,6 +5,7 @@ open Fantomas.FCS.SyntaxTrivia
 open Fantomas.FCS.Text.Range
 open Fantomas.FCS.Xml
 
+/// Methods for manipulating SynMemberDefn, which specifies interface members and other such fields in a type declaration.
 [<RequireQualifiedAccess>]
 module SynMemberDefn =
     let private interfaceMemberSlotFlags =
@@ -17,6 +18,8 @@ module SynMemberDefn =
             SynMemberFlags.MemberKind = SynMemberKind.Member
         }
 
+    /// An `abstract Foo : blah`.
+    /// You specify the shape of any arguments via the input `arity`.
     let abstractMember
         (attrs : SynAttribute list)
         (ident : SynIdent)
@@ -62,10 +65,14 @@ module SynMemberDefn =
             }
         )
 
+    /// `static member Foo = ...`
     let staticMember (binding : SynBinding) : SynMemberDefn =
         let binding = SynBinding.makeStaticMember binding
         SynMemberDefn.Member (binding, range0)
 
+    /// `member this.Foo = ...`
+    ///
+    /// You need to make sure the `this` is present in the name of the binding.
     let memberImplementation (binding : SynBinding) : SynMemberDefn =
         let binding = SynBinding.makeInstanceMember binding
         SynMemberDefn.Member (binding, range0)

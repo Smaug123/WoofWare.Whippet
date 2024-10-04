@@ -7,5 +7,6 @@ open Fantomas.FCS.Text.Range
 [<AutoOpen>]
 module SynConstExt =
     type SynConst with
+        /// Create the constant string with this value.
         static member Create (s : string) : SynConst =
             SynConst.String (s, SynStringKind.Regular, range0)

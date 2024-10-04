@@ -21,8 +21,10 @@ type UnionCase<'ident> =
         Fields : SynFieldData<'ident> list
     }
 
+/// Methods for manipulating `SynUnionCase`, which represents a single case of a discriminated union.
 [<RequireQualifiedAccess>]
 module SynUnionCase =
+    /// Build a SynUnionCase from our structured `UnionCase` type.
     let create (case : UnionCase<Ident option>) : SynUnionCase =
         let fields =
             case.Fields

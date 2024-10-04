@@ -1,6 +1,6 @@
 WoofWare.Whippet.Fantomas.Ast inherit obj
 WoofWare.Whippet.Fantomas.Ast.parse [static method]: string -> Fantomas.FCS.Syntax.ParsedInput
-WoofWare.Whippet.Fantomas.Ast.render [static method]: Fantomas.FCS.Syntax.SynModuleOrNamespace list -> string
+WoofWare.Whippet.Fantomas.Ast.render [static method]: Fantomas.FCS.Syntax.SynModuleOrNamespace list -> string option
 WoofWare.Whippet.Fantomas.CompExprBinding inherit obj - union type with 4 cases
 WoofWare.Whippet.Fantomas.CompExprBinding+Do inherit WoofWare.Whippet.Fantomas.CompExprBinding
 WoofWare.Whippet.Fantomas.CompExprBinding+Do.body [property]: [read-only] Fantomas.FCS.Syntax.SynExpr
@@ -330,7 +330,6 @@ WoofWare.Whippet.Fantomas.SynTypePatterns.|String|_| [static method]: Fantomas.F
 WoofWare.Whippet.Fantomas.SynTypePatterns.|Task|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType option
 WoofWare.Whippet.Fantomas.SynTypePatterns.|TimeSpan|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
 WoofWare.Whippet.Fantomas.SynTypePatterns.|UnitType|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
-WoofWare.Whippet.Fantomas.SynTypePatterns.|Unit|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
 WoofWare.Whippet.Fantomas.SynTypePatterns.|Uri|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
 WoofWare.Whippet.Fantomas.SynUnionCase inherit obj
 WoofWare.Whippet.Fantomas.SynUnionCase.create [static method]: Fantomas.FCS.Syntax.Ident option WoofWare.Whippet.Fantomas.UnionCase -> Fantomas.FCS.Syntax.SynUnionCase

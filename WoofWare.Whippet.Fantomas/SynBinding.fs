@@ -5,6 +5,7 @@ open Fantomas.FCS.SyntaxTrivia
 open Fantomas.FCS.Xml
 open Fantomas.FCS.Text.Range
 
+/// Methods for manipulating `SynBinding`, which represents a `let`-binding or a member definition.
 [<RequireQualifiedAccess>]
 module SynBinding =
 
@@ -29,7 +30,9 @@ module SynBinding =
         | SynPat.Tuple (_, pats, _, _) -> pats |> List.map (fun pat -> SynArgInfo.SynArgInfo ([], false, getName pat))
         | pat -> [ SynArgInfo.SynArgInfo (SynAttributes.Empty, false, getName pat) ]
 
-    let triviaZero (isMember : bool) =
+    /// The basic `SynBindingTrivia` which means "there's nothing special about this binding".
+    /// You tell us whether this is a `member Foo = ...` versus a `let foo = ...`.
+    let triviaZero (isMember : bool) : SynBindingTrivia =
         {
             SynBindingTrivia.EqualsRange = Some range0
             InlineKeyword = None
@@ -40,6 +43,11 @@ module SynBinding =
                     SynLeadingKeyword.Let range0
         }
 
+    /// A simple binding:
+    /// `let {name} {args} = {body}`
+    ///
+    /// If you want this to become an instance member, you need to make sure the `this.` is present as a component
+    /// of the `name`.
     let basic (name : LongIdent) (args : SynPat list) (body : SynExpr) : SynBinding =
         let valInfo : SynValInfo =
             args
@@ -62,11 +70,13 @@ module SynBinding =
             triviaZero false
         )
 
+    /// Set the mutability of this binding: `let mutable i = ...` (or remove the word `mutable`, if `mut` is false).
     let withMutability (mut : bool) (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (pat, kind, inl, _, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia) ->
             SynBinding (pat, kind, inl, mut, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia)
 
+    /// Set the `rec` keyword on this binding: `let rec foo = ...` (or remove the word `rec`, if `isRec` is false).
     let withRecursion (isRec : bool) (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (pat, kind, inl, mut, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia) ->
@@ -91,6 +101,7 @@ module SynBinding =
 
             SynBinding (pat, kind, inl, mut, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia)
 
+    /// Override the accessibility modifier on this binding, or clear it: `let private foo = ...`
     let withAccessibility (acc : SynAccess option) (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (_, kind, inl, mut, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia) ->
@@ -102,11 +113,13 @@ module SynBinding =
 
             SynBinding (acc, kind, inl, mut, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia)
 
+    /// Set the XML docstring on this binding: `/// blah\nlet foo = ...`
     let withXmlDoc (doc : PreXmlDoc) (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (acc, kind, inl, mut, attrs, _, valData, headPat, returnInfo, expr, range, debugPoint, trivia) ->
             SynBinding (acc, kind, inl, mut, attrs, doc, valData, headPat, returnInfo, expr, range, debugPoint, trivia)
 
+    /// Set the return type annotation: `let foo : int = ...`
     let withReturnAnnotation (ty : SynType) (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (acc, kind, inl, mut, attrs, doc, valData, headPat, _, expr, range, debugPoint, trivia) ->
@@ -136,6 +149,7 @@ module SynBinding =
                 trivia
             )
 
+    /// Make the definition an `inline` definition: `let inline foo = ...`
     let inline makeInline (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (acc, kind, _, mut, attrs, doc, valData, headPat, ret, expr, range, debugPoint, trivia) ->
@@ -157,6 +171,8 @@ module SynBinding =
                 }
             )
 
+    /// Make the definition not be an `inline` definition: that is, turn `let inline foo = ...` into `let foo = ...`.
+    /// This is a no-op if the binding is already not inline.
     let inline makeNotInline (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (acc, kind, _, mut, attrs, doc, valData, headPat, ret, expr, range, debugPoint, trivia) ->
@@ -178,12 +194,14 @@ module SynBinding =
                 }
             )
 
+    /// Set or remove the `inline` keyword on the given binding.
     let inline setInline (isInline : bool) (binding : SynBinding) : SynBinding =
         if isInline then
             makeInline binding
         else
             makeNotInline binding
 
+    /// Convert this member definition to a `static` member.
     let makeStaticMember (binding : SynBinding) : SynBinding =
         let memberFlags =
             {
@@ -208,6 +226,8 @@ module SynBinding =
 
             SynBinding (acc, kind, inl, mut, attrs, doc, valData, headPat, ret, expr, range, debugPoint, trivia)
 
+    /// Convert this member definition to an instance member, `member this.Foo = ...`.
+    /// You need to make sure the `this` is present in the name of the binding.
     let makeInstanceMember (binding : SynBinding) : SynBinding =
         let memberFlags =
             {

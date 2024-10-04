@@ -19,6 +19,7 @@ type SynFieldData<'Ident> =
         Type : SynType
     }
 
+/// Methods for manipulating `SynField`, which represents a field of a record or union.
 [<RequireQualifiedAccess>]
 module SynField =
     /// Get the useful information out of a SynField.
@@ -29,6 +30,7 @@ module SynField =
             Type = fieldType
         }
 
+    /// Functorial `map`.
     let mapIdent<'a, 'b> (f : 'a -> 'b) (x : SynFieldData<'a>) : SynFieldData<'b> =
         let ident = f x.Ident
 
@@ -38,7 +40,7 @@ module SynField =
             Type = x.Type
         }
 
-    /// Throws if the field has no identifier.
+    /// Convert a `SynField` into our structured `SynFieldData` type. Throws if the field has no identifier.
     let extractWithIdent (f : SynField) : SynFieldData<Ident> =
         f
         |> extract
@@ -48,6 +50,7 @@ module SynField =
             | Some i -> i
         )
 
+    /// Convert our structured `SynFieldData` type into an AST `SynField`.
     let make (data : SynFieldData<Ident option>) : SynField =
         let attrs : SynAttributeList list =
             data.Attrs
@@ -70,6 +73,7 @@ module SynField =
             SynFieldTrivia.Zero
         )
 
+    /// Set the docstring of this `SynField`.
     let withDocString (doc : PreXmlDoc) (f : SynField) : SynField =
         match f with
         | SynField (attributes, isStatic, idOpt, fieldType, isMutable, _, accessibility, range, trivia) ->
