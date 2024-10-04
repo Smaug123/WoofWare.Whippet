@@ -5,6 +5,8 @@ open Fantomas.FCS.Text.Range
 
 [<RequireQualifiedAccess>]
 module SynArgPats =
+    /// Create a SynArgPats which represents the tuple of the given case names.
+    /// For example, this specifies the `(a, b, c)` in the pattern match arm `| Foo (a, b, c)`.
     let createNamed (caseNames : string list) : SynArgPats =
         match caseNames.Length with
         | 0 -> SynArgPats.Pats []
@@ -20,6 +22,9 @@ module SynArgPats =
             |> List.singleton
             |> SynArgPats.Pats
 
+    /// Create a SynArgPats representing the tuple of the given patterns.
+    /// For example, if the input `SynPat`s are `[Named "a" ; Named "b" ; Named "c"]`, then this would
+    /// specify the `(a, b, c)` in the pattern match arm `| Foo (a, b, c)`.
     let create (pats : SynPat list) : SynArgPats =
         match pats.Length with
         | 0 -> SynArgPats.Pats []

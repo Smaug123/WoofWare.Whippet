@@ -3,6 +3,7 @@ namespace WoofWare.Whippet.Fantomas
 open Fantomas.FCS.Syntax
 open Fantomas.FCS.Text.Range
 
+/// Module for manipulating primitive types like `int` or `string`.
 [<RequireQualifiedAccess>]
 module Primitives =
     /// Given e.g. "byte", returns "System.Byte".

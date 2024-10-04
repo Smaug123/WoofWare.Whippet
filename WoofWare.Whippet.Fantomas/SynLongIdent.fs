@@ -4,9 +4,12 @@ open Fantomas.FCS.SyntaxTrivia
 open Fantomas.FCS.Text.Range
 open Fantomas.FCS.Syntax
 
+/// Methods for manipulating the SynLongIdent type. This is a LongIdent, but specifically one which is appearing in the
+/// AST somewhere.
 [<RequireQualifiedAccess>]
 module SynLongIdent =
 
+    /// The ">=" identifier.
     let geq =
         SynLongIdent.SynLongIdent (
             [ Ident.create "op_GreaterThanOrEqual" ],
@@ -14,6 +17,7 @@ module SynLongIdent =
             [ Some (IdentTrivia.OriginalNotation ">=") ]
         )
 
+    /// The "<=" identifier.
     let leq =
         SynLongIdent.SynLongIdent (
             [ Ident.create "op_LessThanOrEqual" ],
@@ -21,36 +25,49 @@ module SynLongIdent =
             [ Some (IdentTrivia.OriginalNotation "<=") ]
         )
 
+    /// The ">" identifier.
     let gt =
         SynLongIdent.SynLongIdent ([ Ident.create "op_GreaterThan" ], [], [ Some (IdentTrivia.OriginalNotation ">") ])
 
+    /// The "<" identifier.
     let lt =
         SynLongIdent.SynLongIdent ([ Ident.create "op_LessThan" ], [], [ Some (IdentTrivia.OriginalNotation "<") ])
 
+    /// The "-" identifier.
     let sub =
         SynLongIdent.SynLongIdent ([ Ident.create "op_Subtraction" ], [], [ Some (IdentTrivia.OriginalNotation "-") ])
 
+    /// The "=" identifier.
     let eq =
         SynLongIdent.SynLongIdent ([ Ident.create "op_Equality" ], [], [ Some (IdentTrivia.OriginalNotation "=") ])
 
+    /// The "&&" identifier.
     let booleanAnd =
         SynLongIdent.SynLongIdent ([ Ident.create "op_BooleanAnd" ], [], [ Some (IdentTrivia.OriginalNotation "&&") ])
 
+    /// The "||" identifier.
     let booleanOr =
         SynLongIdent.SynLongIdent ([ Ident.create "op_BooleanOr" ], [], [ Some (IdentTrivia.OriginalNotation "||") ])
 
+    /// The "+" identifier.
     let plus =
         SynLongIdent.SynLongIdent ([ Ident.create "op_Addition" ], [], [ Some (IdentTrivia.OriginalNotation "+") ])
 
+    /// The "*" identifier.
     let times =
         SynLongIdent.SynLongIdent ([ Ident.create "op_Multiply" ], [], [ Some (IdentTrivia.OriginalNotation "*") ])
 
+    /// The "|>" identifier.
     let pipe =
         SynLongIdent.SynLongIdent ([ Ident.create "op_PipeRight" ], [], [ Some (IdentTrivia.OriginalNotation "|>") ])
 
+    /// Convert this SynLongIdent into a human-readable string for display.
+    /// This is not quite round-trippable, but it should be round-trippable if your identifiers are not pathological
+    /// (e.g. you should not have a full stop in your identifiers; that's the job of LongIdent, not Ident).
     let toString (sli : SynLongIdent) : string =
         sli.LongIdent |> List.map _.idText |> String.concat "."
 
+    /// Build a SynLongIdent from a LongIdent (by attaching dummy location information to it).
     let create (ident : LongIdent) : SynLongIdent =
         let commas =
             match ident with
@@ -59,8 +76,12 @@ module SynLongIdent =
 
         SynLongIdent.SynLongIdent (ident, commas, List.replicate ident.Length None)
 
+    /// Build a SynLongIdent from an Ident. Please don't put full stops in the argument, I don't know what will happen;
+    /// use `create` if you have multiple components.
     let inline createI (i : Ident) : SynLongIdent = create [ i ]
 
+    /// Build a SynLongIdent from a string which is expected to be "basically an Ident" - no full stops, for example.
+    /// Use `createS'` if you have multiple components.
     let inline createS (s : string) : SynLongIdent = createI (Ident (s, range0))
 
     let inline createS' (s : string list) : SynLongIdent =

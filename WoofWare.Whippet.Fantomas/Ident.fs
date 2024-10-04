@@ -6,8 +6,12 @@ open System.Text.RegularExpressions
 open Fantomas.FCS.Syntax
 open Fantomas.FCS.Text.Range
 
+/// Methods for manipulating the `Ident` type. This type indicates a variable or type identifier in many contexts:
+/// whenever the AST needs to name something, it is usually with the `Ident` type.
 [<RequireQualifiedAccess>]
 module Ident =
+    /// "Cast" a string into an `Ident`. Probably don't put any weird characters in this; I don't know how well it will
+    /// work!
     let inline create (s : string) = Ident (s, range0)
 
     /// Fantomas bug, perhaps? "type" is not rendered as ``type``, although the ASTs are identical
@@ -36,7 +40,9 @@ module Ident =
 
     let private alnum = Regex @"^[a-zA-Z][a-zA-Z0-9]*$"
 
-    let createSanitisedTypeName (s : string) =
+    /// Create an `Ident` for this string, suitable for use as a type name. So, for example, we'll put it into
+    /// PascalCase if it was in snake_case, we'll remove non-alphanumeric characters, and so on.
+    let createSanitisedTypeName (s : string) : Ident =
         let result = StringBuilder ()
         let mutable capitalize = true
 
@@ -58,6 +64,7 @@ module Ident =
 
         Ident (result.ToString (), range0)
 
+    /// Create an Ident which is the same as the input but which has its initial char lowercased if it's a letter.
     let lowerFirstLetter (x : Ident) : Ident =
         let result = StringBuilder x.idText.Length
         result.Append (Char.ToLowerInvariant x.idText.[0]) |> ignore

@@ -3,6 +3,7 @@ namespace WoofWare.Whippet.Fantomas
 open Fantomas.FCS.Xml
 open Fantomas.FCS.Text.Range
 
+/// Module for manipulating the PreXmlDoc AST type (which represents XML docstrings).
 [<RequireQualifiedAccess>]
 module PreXmlDoc =
     let create (s : string) : PreXmlDoc =

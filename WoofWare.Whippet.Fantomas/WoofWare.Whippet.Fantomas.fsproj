@@ -35,6 +35,8 @@
     <Compile Include="SynModuleDecl.fs" />
     <Compile Include="SynModuleOrNamespace.fs" />
     <Compile Include="Ast.fs" />
+    <None Include="version.json" />
+    <EmbeddedResource Include="SurfaceBaseline.txt" />
   </ItemGroup>
 
   <ItemGroup>
