@@ -46,7 +46,7 @@
     <Compile Include="SynModuleDecl.fs" />
     <Compile Include="SynModuleOrNamespace.fs" />
     <Compile Include="Ast.fs" />
-    <None Include="..\README.md">
+    <None Include="README.md">
       <Pack>True</Pack>
       <PackagePath>/</PackagePath>
       <Link>README.md</Link>
