@@ -158,7 +158,7 @@ jobs:
     - name: Upload NuGet artifact (Fantomas)
       uses: actions/upload-artifact@v4
       with:
-        name: nuget-package-core
+        name: nuget-package-fantomas
         path: WoofWare.Whippet.Fantomas/bin/Release/WoofWare.Whippet.Fantomas.*.nupkg
 
   expected-pack:
