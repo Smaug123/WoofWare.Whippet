@@ -17,11 +17,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="RuntimeConfig.fs"/>
-        <Compile Include="GeneratedRuntimeConfig.fs" />
-        <Compile Include="AppContext.fs" />
-        <Compile Include="RuntimeLocator.fs" />
-        <Compile Include="Context.fs" />
         <Compile Include="Program.fs"/>
         <None Include="../README.md">
             <Pack>True</Pack>
@@ -29,11 +24,9 @@
         </None>
     </ItemGroup>
     <ItemGroup>
-        <!--<PackageReference Include="Fantomas.FCS" Version="6.3.15" />-->
         <PackageReference Include="Ionide.ProjInfo" Version="0.67.0" />
         <PackageReference Include="Microsoft.Build.Framework" Version="17.2.0" ExcludeAssets="runtime" PrivateAssets="all" />
         <PackageReference Include="NuGet.Frameworks" Version="6.11.1" ExcludeAssets="runtime" PrivateAssets="all" />
-        <PackageReference Include="WoofWare.DotnetRuntimeLocator" Version="0.1.9" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
