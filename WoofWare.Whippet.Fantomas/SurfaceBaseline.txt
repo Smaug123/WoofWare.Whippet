@@ -1,0 +1,350 @@
+WoofWare.Whippet.Fantomas.Ast inherit obj
+WoofWare.Whippet.Fantomas.Ast.parse [static method]: string -> Fantomas.FCS.Syntax.ParsedInput
+WoofWare.Whippet.Fantomas.Ast.render [static method]: Fantomas.FCS.Syntax.SynModuleOrNamespace list -> string option
+WoofWare.Whippet.Fantomas.CompExprBinding inherit obj - union type with 4 cases
+WoofWare.Whippet.Fantomas.CompExprBinding+Do inherit WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding+Do.body [property]: [read-only] Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+Do.get_body [method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+Let inherit WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding+Let.get_rhs [method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+Let.get_varName [method]: unit -> string
+WoofWare.Whippet.Fantomas.CompExprBinding+Let.rhs [property]: [read-only] Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+Let.varName [property]: [read-only] string
+WoofWare.Whippet.Fantomas.CompExprBinding+LetBang inherit WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding+LetBang.get_rhs [method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+LetBang.get_varName [method]: unit -> string
+WoofWare.Whippet.Fantomas.CompExprBinding+LetBang.rhs [property]: [read-only] Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+LetBang.varName [property]: [read-only] string
+WoofWare.Whippet.Fantomas.CompExprBinding+Tags inherit obj
+WoofWare.Whippet.Fantomas.CompExprBinding+Tags.Do [static field]: int = 3
+WoofWare.Whippet.Fantomas.CompExprBinding+Tags.Let [static field]: int = 1
+WoofWare.Whippet.Fantomas.CompExprBinding+Tags.LetBang [static field]: int = 0
+WoofWare.Whippet.Fantomas.CompExprBinding+Tags.Use [static field]: int = 2
+WoofWare.Whippet.Fantomas.CompExprBinding+Use inherit WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding+Use.get_rhs [method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+Use.get_varName [method]: unit -> string
+WoofWare.Whippet.Fantomas.CompExprBinding+Use.rhs [property]: [read-only] Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.CompExprBinding+Use.varName [property]: [read-only] string
+WoofWare.Whippet.Fantomas.CompExprBinding.get_IsDo [method]: unit -> bool
+WoofWare.Whippet.Fantomas.CompExprBinding.get_IsLet [method]: unit -> bool
+WoofWare.Whippet.Fantomas.CompExprBinding.get_IsLetBang [method]: unit -> bool
+WoofWare.Whippet.Fantomas.CompExprBinding.get_IsUse [method]: unit -> bool
+WoofWare.Whippet.Fantomas.CompExprBinding.get_Tag [method]: unit -> int
+WoofWare.Whippet.Fantomas.CompExprBinding.IsDo [property]: [read-only] bool
+WoofWare.Whippet.Fantomas.CompExprBinding.IsLet [property]: [read-only] bool
+WoofWare.Whippet.Fantomas.CompExprBinding.IsLetBang [property]: [read-only] bool
+WoofWare.Whippet.Fantomas.CompExprBinding.IsUse [property]: [read-only] bool
+WoofWare.Whippet.Fantomas.CompExprBinding.NewDo [static method]: Fantomas.FCS.Syntax.SynExpr -> WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding.NewLet [static method]: (string, Fantomas.FCS.Syntax.SynExpr) -> WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding.NewLetBang [static method]: (string, Fantomas.FCS.Syntax.SynExpr) -> WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding.NewUse [static method]: (string, Fantomas.FCS.Syntax.SynExpr) -> WoofWare.Whippet.Fantomas.CompExprBinding
+WoofWare.Whippet.Fantomas.CompExprBinding.Tag [property]: [read-only] int
+WoofWare.Whippet.Fantomas.Ident inherit obj
+WoofWare.Whippet.Fantomas.Ident.create [static method]: string -> Fantomas.FCS.Syntax.Ident
+WoofWare.Whippet.Fantomas.Ident.createSanitisedParamName [static method]: string -> Fantomas.FCS.Syntax.Ident
+WoofWare.Whippet.Fantomas.Ident.createSanitisedTypeName [static method]: string -> Fantomas.FCS.Syntax.Ident
+WoofWare.Whippet.Fantomas.Ident.lowerFirstLetter [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.Ident
+WoofWare.Whippet.Fantomas.PreXmlDoc inherit obj
+WoofWare.Whippet.Fantomas.PreXmlDoc.create [static method]: string -> Fantomas.FCS.Xml.PreXmlDoc
+WoofWare.Whippet.Fantomas.PreXmlDoc.create' [static method]: string seq -> Fantomas.FCS.Xml.PreXmlDoc
+WoofWare.Whippet.Fantomas.Primitives inherit obj
+WoofWare.Whippet.Fantomas.Primitives.qualifyType [static method]: string -> Fantomas.FCS.Syntax.Ident list option
+WoofWare.Whippet.Fantomas.SynArgInfo inherit obj
+WoofWare.Whippet.Fantomas.SynArgInfo.empty [static property]: [read-only] Fantomas.FCS.Syntax.SynArgInfo
+WoofWare.Whippet.Fantomas.SynArgInfo.get_empty [static method]: unit -> Fantomas.FCS.Syntax.SynArgInfo
+WoofWare.Whippet.Fantomas.SynArgPats inherit obj
+WoofWare.Whippet.Fantomas.SynArgPats.create [static method]: Fantomas.FCS.Syntax.SynPat list -> Fantomas.FCS.Syntax.SynArgPats
+WoofWare.Whippet.Fantomas.SynArgPats.createNamed [static method]: string list -> Fantomas.FCS.Syntax.SynArgPats
+WoofWare.Whippet.Fantomas.SynAttribute inherit obj
+WoofWare.Whippet.Fantomas.SynAttribute.autoOpen [static property]: [read-only] Fantomas.FCS.Syntax.SynAttribute
+WoofWare.Whippet.Fantomas.SynAttribute.compilationRepresentation [static property]: [read-only] Fantomas.FCS.Syntax.SynAttribute
+WoofWare.Whippet.Fantomas.SynAttribute.create [static method]: Fantomas.FCS.Syntax.SynLongIdent -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynAttribute
+WoofWare.Whippet.Fantomas.SynAttribute.get_autoOpen [static method]: unit -> Fantomas.FCS.Syntax.SynAttribute
+WoofWare.Whippet.Fantomas.SynAttribute.get_compilationRepresentation [static method]: unit -> Fantomas.FCS.Syntax.SynAttribute
+WoofWare.Whippet.Fantomas.SynAttribute.get_requireQualifiedAccess [static method]: unit -> Fantomas.FCS.Syntax.SynAttribute
+WoofWare.Whippet.Fantomas.SynAttribute.requireQualifiedAccess [static property]: [read-only] Fantomas.FCS.Syntax.SynAttribute
+WoofWare.Whippet.Fantomas.SynAttributes inherit obj
+WoofWare.Whippet.Fantomas.SynAttributes.ofAttrs [static method]: Fantomas.FCS.Syntax.SynAttribute list -> Fantomas.FCS.Syntax.SynAttributeList list
+WoofWare.Whippet.Fantomas.SynBinding inherit obj
+WoofWare.Whippet.Fantomas.SynBinding.basic [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynPat list -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.makeInline [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.makeInstanceMember [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.makeNotInline [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.makeStaticMember [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.setInline [static method]: bool -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.triviaZero [static method]: bool -> Fantomas.FCS.SyntaxTrivia.SynBindingTrivia
+WoofWare.Whippet.Fantomas.SynBinding.withAccessibility [static method]: Fantomas.FCS.Syntax.SynAccess option -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.withMutability [static method]: bool -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.withRecursion [static method]: bool -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.withReturnAnnotation [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.withXmlDoc [static method]: Fantomas.FCS.Xml.PreXmlDoc -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynComponentInfo inherit obj
+WoofWare.Whippet.Fantomas.SynComponentInfo.addAttributes [static method]: Fantomas.FCS.Syntax.SynAttribute list -> Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynComponentInfo.create [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynComponentInfo.createLong [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynComponentInfo.setAccessibility [static method]: Fantomas.FCS.Syntax.SynAccess option -> Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynComponentInfo.setGenerics [static method]: Fantomas.FCS.Syntax.SynTyparDecls option -> Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynComponentInfo.withAccessibility [static method]: Fantomas.FCS.Syntax.SynAccess -> Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynComponentInfo.withDocString [static method]: Fantomas.FCS.Xml.PreXmlDoc -> Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynComponentInfo.withGenerics [static method]: Fantomas.FCS.Syntax.SynTyparDecl list -> Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynComponentInfo
+WoofWare.Whippet.Fantomas.SynConstExt inherit obj
+WoofWare.Whippet.Fantomas.SynConstExt.SynConst.Create.Static [static method]: string -> Fantomas.FCS.Syntax.SynConst
+WoofWare.Whippet.Fantomas.SynExpr inherit obj
+WoofWare.Whippet.Fantomas.SynExpr.applyFunction [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.applyTo [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.arrayIndexRange [static method]: Fantomas.FCS.Syntax.SynExpr option -> Fantomas.FCS.Syntax.SynExpr option -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.arrayLiteral [static method]: Fantomas.FCS.Syntax.SynExpr list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.assign [static method]: Fantomas.FCS.Syntax.SynLongIdent -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.assignIndex [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.awaitTask [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.booleanAnd [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.booleanOr [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.callGenericMethod [static method]: Fantomas.FCS.Syntax.SynLongIdent -> Fantomas.FCS.Syntax.SynType list -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.callGenericMethod' [static method]: string -> string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.callMethod [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.callMethodArg [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createCompExpr [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> WoofWare.Whippet.Fantomas.CompExprBinding list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createDo [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createForEach [static method]: Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createIdent [static method]: string -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createIdent' [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createLambda [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createLet [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createLongIdent [static method]: string list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createLongIdent' [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createLongIdent'' [static method]: Fantomas.FCS.Syntax.SynLongIdent -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createMatch [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynMatchClause list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createNew [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createNull [static method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createThunk [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createWhile [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.dotGet [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.equals [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.get_reraise [static method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.greaterThan [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.greaterThanOrEqual [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.ifThenElse [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.index [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.lessThan [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.lessThanOrEqual [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.listCons [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.listLiteral [static method]: Fantomas.FCS.Syntax.SynExpr list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.minus [static method]: Fantomas.FCS.Syntax.SynLongIdent -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.minusN [static method]: Fantomas.FCS.Syntax.SynLongIdent -> int -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.paren [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.pipeThroughFunction [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.pipeThroughTryWith [static method]: Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.plus [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.reraise [static property]: [read-only] Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.sequential [static method]: Fantomas.FCS.Syntax.SynExpr list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.startAsTask [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.stripOptionalParen [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.times [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.toString [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.tuple [static method]: Fantomas.FCS.Syntax.SynExpr list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.tupleNoParen [static method]: Fantomas.FCS.Syntax.SynExpr list -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.typeAnnotate [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.typeApp [static method]: Fantomas.FCS.Syntax.SynType list -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.upcast' [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExprExtensions inherit obj
+WoofWare.Whippet.Fantomas.SynExprExtensions.SynExpr.CreateConst.Static [static method]: bool -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExprExtensions.SynExpr.CreateConst.Static [static method]: char -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExprExtensions.SynExpr.CreateConst.Static [static method]: int -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExprExtensions.SynExpr.CreateConst.Static [static method]: string -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExprExtensions.SynExpr.CreateConst.Static [static method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExprLetOrUseTrivia inherit obj
+WoofWare.Whippet.Fantomas.SynExprLetOrUseTrivia.empty [static property]: [read-only] Fantomas.FCS.SyntaxTrivia.SynExprLetOrUseTrivia
+WoofWare.Whippet.Fantomas.SynExprLetOrUseTrivia.get_empty [static method]: unit -> Fantomas.FCS.SyntaxTrivia.SynExprLetOrUseTrivia
+WoofWare.Whippet.Fantomas.SynField inherit obj
+WoofWare.Whippet.Fantomas.SynField.extract [static method]: Fantomas.FCS.Syntax.SynField -> Fantomas.FCS.Syntax.Ident option WoofWare.Whippet.Fantomas.SynFieldData
+WoofWare.Whippet.Fantomas.SynField.extractWithIdent [static method]: Fantomas.FCS.Syntax.SynField -> Fantomas.FCS.Syntax.Ident WoofWare.Whippet.Fantomas.SynFieldData
+WoofWare.Whippet.Fantomas.SynField.make [static method]: Fantomas.FCS.Syntax.Ident option WoofWare.Whippet.Fantomas.SynFieldData -> Fantomas.FCS.Syntax.SynField
+WoofWare.Whippet.Fantomas.SynField.mapIdent [static method]: ('a -> 'b) -> 'a WoofWare.Whippet.Fantomas.SynFieldData -> 'b WoofWare.Whippet.Fantomas.SynFieldData
+WoofWare.Whippet.Fantomas.SynField.withDocString [static method]: Fantomas.FCS.Xml.PreXmlDoc -> Fantomas.FCS.Syntax.SynField -> Fantomas.FCS.Syntax.SynField
+WoofWare.Whippet.Fantomas.SynFieldData`1 inherit obj
+WoofWare.Whippet.Fantomas.SynFieldData`1..ctor [constructor]: (Fantomas.FCS.Syntax.SynAttribute list, 'Ident, Fantomas.FCS.Syntax.SynType)
+WoofWare.Whippet.Fantomas.SynFieldData`1.Attrs [property]: [read-only] Fantomas.FCS.Syntax.SynAttribute list
+WoofWare.Whippet.Fantomas.SynFieldData`1.get_Attrs [method]: unit -> Fantomas.FCS.Syntax.SynAttribute list
+WoofWare.Whippet.Fantomas.SynFieldData`1.get_Ident [method]: unit -> 'Ident
+WoofWare.Whippet.Fantomas.SynFieldData`1.get_Type [method]: unit -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynFieldData`1.Ident [property]: [read-only] 'Ident
+WoofWare.Whippet.Fantomas.SynFieldData`1.Type [property]: [read-only] Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynIdent inherit obj
+WoofWare.Whippet.Fantomas.SynIdent.createI [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynIdent
+WoofWare.Whippet.Fantomas.SynIdent.createS [static method]: string -> Fantomas.FCS.Syntax.SynIdent
+WoofWare.Whippet.Fantomas.SynLongIdent inherit obj
+WoofWare.Whippet.Fantomas.SynLongIdent.booleanAnd [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.booleanOr [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.create [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.createI [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.createS [static method]: string -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.createS' [static method]: string list -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.eq [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.geq [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_booleanAnd [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_booleanOr [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_eq [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_geq [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_gt [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_leq [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_lt [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_pipe [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_plus [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_sub [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_times [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.gt [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.isArray [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isChoice [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isDictionary [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isIDictionary [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isList [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isMap [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isNullable [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isOption [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isReadOnlyDictionary [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isResponse [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.isUnit [static method]: Fantomas.FCS.Syntax.SynLongIdent -> bool
+WoofWare.Whippet.Fantomas.SynLongIdent.leq [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.lt [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.pipe [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.plus [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.sub [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.times [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.toString [static method]: Fantomas.FCS.Syntax.SynLongIdent -> string
+WoofWare.Whippet.Fantomas.SynMatchClause inherit obj
+WoofWare.Whippet.Fantomas.SynMatchClause.create [static method]: Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynMatchClause
+WoofWare.Whippet.Fantomas.SynMatchClause.withWhere [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynMatchClause -> Fantomas.FCS.Syntax.SynMatchClause
+WoofWare.Whippet.Fantomas.SynMemberDefn inherit obj
+WoofWare.Whippet.Fantomas.SynMemberDefn.abstractMember [static method]: Fantomas.FCS.Syntax.SynAttribute list -> Fantomas.FCS.Syntax.SynIdent -> Fantomas.FCS.Syntax.SynTyparDecls option -> Fantomas.FCS.Syntax.SynValInfo -> Fantomas.FCS.Xml.PreXmlDoc -> Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynMemberDefn
+WoofWare.Whippet.Fantomas.SynMemberDefn.memberImplementation [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynMemberDefn
+WoofWare.Whippet.Fantomas.SynMemberDefn.staticMember [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynMemberDefn
+WoofWare.Whippet.Fantomas.SynModuleDecl inherit obj
+WoofWare.Whippet.Fantomas.SynModuleDecl.createLet [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynModuleDecl
+WoofWare.Whippet.Fantomas.SynModuleDecl.createLets [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynModuleDecl
+WoofWare.Whippet.Fantomas.SynModuleDecl.createTypes [static method]: Fantomas.FCS.Syntax.SynTypeDefn list -> Fantomas.FCS.Syntax.SynModuleDecl
+WoofWare.Whippet.Fantomas.SynModuleDecl.nestedModule [static method]: Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynModuleDecl list -> Fantomas.FCS.Syntax.SynModuleDecl
+WoofWare.Whippet.Fantomas.SynModuleDecl.openAny [static method]: Fantomas.FCS.Syntax.SynOpenDeclTarget -> Fantomas.FCS.Syntax.SynModuleDecl
+WoofWare.Whippet.Fantomas.SynModuleOrNamespace inherit obj
+WoofWare.Whippet.Fantomas.SynModuleOrNamespace.createNamespace [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynModuleDecl list -> Fantomas.FCS.Syntax.SynModuleOrNamespace
+WoofWare.Whippet.Fantomas.SynPat inherit obj
+WoofWare.Whippet.Fantomas.SynPat.annotateType [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.annotateTypeNoParen [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.anon [static property]: [read-only] Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.createConst [static method]: Fantomas.FCS.Syntax.SynConst -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.createNull [static property]: [read-only] Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.emptyArray [static property]: [read-only] Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.emptyList [static property]: [read-only] Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.get_anon [static method]: unit -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.get_createNull [static method]: unit -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.get_emptyArray [static method]: unit -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.get_emptyList [static method]: unit -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.get_unit [static method]: unit -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.identWithArgs [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynArgPats -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.listCons [static method]: Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.named [static method]: string -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.namedI [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.nameWithArgs [static method]: string -> Fantomas.FCS.Syntax.SynPat list -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.paren [static method]: Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.tuple [static method]: Fantomas.FCS.Syntax.SynPat list -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.tupleNoParen [static method]: Fantomas.FCS.Syntax.SynPat list -> Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynPat.unit [static property]: [read-only] Fantomas.FCS.Syntax.SynPat
+WoofWare.Whippet.Fantomas.SynSimplePat inherit obj
+WoofWare.Whippet.Fantomas.SynSimplePat.createId [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynSimplePat
+WoofWare.Whippet.Fantomas.SynSimplePats inherit obj
+WoofWare.Whippet.Fantomas.SynSimplePats.create [static method]: Fantomas.FCS.Syntax.SynSimplePat list -> Fantomas.FCS.Syntax.SynSimplePats
+WoofWare.Whippet.Fantomas.SynType inherit obj
+WoofWare.Whippet.Fantomas.SynType.anon [static property]: [read-only] Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.app [static method]: string -> Fantomas.FCS.Syntax.SynType list -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.app' [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType list -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.appPostfix [static method]: string -> Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.appPostfix' [static method]: string list -> Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.array [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.bool [static property]: [read-only] Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.createLongIdent [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.createLongIdent' [static method]: string list -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.funFromDomain [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.get_anon [static method]: unit -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.get_bool [static method]: unit -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.get_int [static method]: unit -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.get_obj [static method]: unit -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.get_string [static method]: unit -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.get_unit [static method]: unit -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.getType [static method]: Fantomas.FCS.Syntax.SynType -> ((Fantomas.FCS.Syntax.SynType * bool) list * Fantomas.FCS.Syntax.SynType)
+WoofWare.Whippet.Fantomas.SynType.int [static property]: [read-only] Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.list [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.named [static method]: string -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.obj [static property]: [read-only] Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.option [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.paren [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.primitiveToHumanReadableString [static method]: Fantomas.FCS.Syntax.Ident list -> string
+WoofWare.Whippet.Fantomas.SynType.provablyEqual [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType -> bool
+WoofWare.Whippet.Fantomas.SynType.signatureParamOfType [static method]: Fantomas.FCS.Syntax.SynAttribute list -> Fantomas.FCS.Syntax.SynType -> bool -> Fantomas.FCS.Syntax.Ident option -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.string [static property]: [read-only] Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.stripOptionalParen [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.task [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.toFun [static method]: Fantomas.FCS.Syntax.SynType list -> Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.toHumanReadableString [static method]: Fantomas.FCS.Syntax.SynType -> string
+WoofWare.Whippet.Fantomas.SynType.tupleNoParen [static method]: Fantomas.FCS.Syntax.SynType list -> Fantomas.FCS.Syntax.SynType option
+WoofWare.Whippet.Fantomas.SynType.unit [static property]: [read-only] Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynType.var [static method]: Fantomas.FCS.Syntax.SynTypar -> Fantomas.FCS.Syntax.SynType
+WoofWare.Whippet.Fantomas.SynTypeDefn inherit obj
+WoofWare.Whippet.Fantomas.SynTypeDefn.create [static method]: Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynTypeDefnRepr -> Fantomas.FCS.Syntax.SynTypeDefn
+WoofWare.Whippet.Fantomas.SynTypeDefn.getAttribute [static method]: string -> Fantomas.FCS.Syntax.SynTypeDefn -> Fantomas.FCS.Syntax.SynAttribute option
+WoofWare.Whippet.Fantomas.SynTypeDefn.getName [static method]: Fantomas.FCS.Syntax.SynTypeDefn -> Fantomas.FCS.Syntax.Ident list
+WoofWare.Whippet.Fantomas.SynTypeDefn.hasAttribute [static method]: string -> Fantomas.FCS.Syntax.SynTypeDefn -> bool
+WoofWare.Whippet.Fantomas.SynTypeDefn.withMemberDefns [static method]: Fantomas.FCS.Syntax.SynMemberDefn list -> Fantomas.FCS.Syntax.SynTypeDefn -> Fantomas.FCS.Syntax.SynTypeDefn
+WoofWare.Whippet.Fantomas.SynTypeDefnRepr inherit obj
+WoofWare.Whippet.Fantomas.SynTypeDefnRepr.augmentation [static method]: unit -> Fantomas.FCS.Syntax.SynTypeDefnRepr
+WoofWare.Whippet.Fantomas.SynTypeDefnRepr.interfaceType [static method]: Fantomas.FCS.Syntax.SynMemberDefn list -> Fantomas.FCS.Syntax.SynTypeDefnRepr
+WoofWare.Whippet.Fantomas.SynTypeDefnRepr.record [static method]: Fantomas.FCS.Syntax.SynField list -> Fantomas.FCS.Syntax.SynTypeDefnRepr
+WoofWare.Whippet.Fantomas.SynTypeDefnRepr.recordWithAccess [static method]: Fantomas.FCS.Syntax.SynAccess option -> Fantomas.FCS.Syntax.SynField list -> Fantomas.FCS.Syntax.SynTypeDefnRepr
+WoofWare.Whippet.Fantomas.SynTypeDefnRepr.union [static method]: Fantomas.FCS.Syntax.SynUnionCase list -> Fantomas.FCS.Syntax.SynTypeDefnRepr
+WoofWare.Whippet.Fantomas.SynTypeDefnRepr.unionWithAccess [static method]: Fantomas.FCS.Syntax.SynAccess option -> Fantomas.FCS.Syntax.SynUnionCase list -> Fantomas.FCS.Syntax.SynTypeDefnRepr
+WoofWare.Whippet.Fantomas.SynTypePatterns inherit obj
+WoofWare.Whippet.Fantomas.SynTypePatterns.|ArrayType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|BigInt|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|Byte|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|ChoiceType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType list option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|DateOnly|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|DateTimeOffset|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|DateTime|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|DictionaryType|_| [static method]: Fantomas.FCS.Syntax.SynType -> (Fantomas.FCS.Syntax.SynType * Fantomas.FCS.Syntax.SynType) option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|DirectoryInfo|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|FileInfo|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|Guid|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|HttpContent|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|HttpResponseMessage|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|IDictionaryType|_| [static method]: Fantomas.FCS.Syntax.SynType -> (Fantomas.FCS.Syntax.SynType * Fantomas.FCS.Syntax.SynType) option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|IReadOnlyDictionaryType|_| [static method]: Fantomas.FCS.Syntax.SynType -> (Fantomas.FCS.Syntax.SynType * Fantomas.FCS.Syntax.SynType) option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|JsonNode|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|ListType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|MapType|_| [static method]: Fantomas.FCS.Syntax.SynType -> (Fantomas.FCS.Syntax.SynType * Fantomas.FCS.Syntax.SynType) option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|Measure|_| [static method]: Fantomas.FCS.Syntax.SynType -> (Fantomas.FCS.Syntax.Ident * Fantomas.FCS.Syntax.Ident list) option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|NullableType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|NumberType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.Ident list option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|OptionType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|PrimitiveType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.Ident list option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|RestEaseResponseType|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|Stream|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|String|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|Task|_| [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynType option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|TimeSpan|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|UnitType|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynTypePatterns.|Uri|_| [static method]: Fantomas.FCS.Syntax.SynType -> unit option
+WoofWare.Whippet.Fantomas.SynUnionCase inherit obj
+WoofWare.Whippet.Fantomas.SynUnionCase.create [static method]: Fantomas.FCS.Syntax.Ident option WoofWare.Whippet.Fantomas.UnionCase -> Fantomas.FCS.Syntax.SynUnionCase
+WoofWare.Whippet.Fantomas.SynValInfo inherit obj
+WoofWare.Whippet.Fantomas.SynValInfo.empty [static property]: [read-only] Fantomas.FCS.Syntax.SynValInfo
+WoofWare.Whippet.Fantomas.SynValInfo.get_empty [static method]: unit -> Fantomas.FCS.Syntax.SynValInfo
+WoofWare.Whippet.Fantomas.UnionCase`1 inherit obj
+WoofWare.Whippet.Fantomas.UnionCase`1..ctor [constructor]: (Fantomas.FCS.Syntax.Ident, Fantomas.FCS.Xml.PreXmlDoc option, Fantomas.FCS.Syntax.SynAccess option, Fantomas.FCS.Syntax.SynAttribute list, 'ident WoofWare.Whippet.Fantomas.SynFieldData list)
+WoofWare.Whippet.Fantomas.UnionCase`1.Access [property]: [read-only] Fantomas.FCS.Syntax.SynAccess option
+WoofWare.Whippet.Fantomas.UnionCase`1.Attributes [property]: [read-only] Fantomas.FCS.Syntax.SynAttribute list
+WoofWare.Whippet.Fantomas.UnionCase`1.Fields [property]: [read-only] 'ident WoofWare.Whippet.Fantomas.SynFieldData list
+WoofWare.Whippet.Fantomas.UnionCase`1.get_Access [method]: unit -> Fantomas.FCS.Syntax.SynAccess option
+WoofWare.Whippet.Fantomas.UnionCase`1.get_Attributes [method]: unit -> Fantomas.FCS.Syntax.SynAttribute list
+WoofWare.Whippet.Fantomas.UnionCase`1.get_Fields [method]: unit -> 'ident WoofWare.Whippet.Fantomas.SynFieldData list
+WoofWare.Whippet.Fantomas.UnionCase`1.get_Name [method]: unit -> Fantomas.FCS.Syntax.Ident
+WoofWare.Whippet.Fantomas.UnionCase`1.get_XmlDoc [method]: unit -> Fantomas.FCS.Xml.PreXmlDoc option
+WoofWare.Whippet.Fantomas.UnionCase`1.Name [property]: [read-only] Fantomas.FCS.Syntax.Ident
+WoofWare.Whippet.Fantomas.UnionCase`1.XmlDoc [property]: [read-only] Fantomas.FCS.Xml.PreXmlDoc option

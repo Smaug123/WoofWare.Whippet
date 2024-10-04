@@ -24,7 +24,6 @@
         </None>
     </ItemGroup>
     <ItemGroup>
-        <!--<PackageReference Include="Fantomas.FCS" Version="6.3.15" />-->
         <PackageReference Include="Ionide.ProjInfo" Version="0.67.0" />
         <PackageReference Include="Microsoft.Build.Framework" Version="17.2.0" ExcludeAssets="runtime" PrivateAssets="all" />
         <PackageReference Include="NuGet.Frameworks" Version="6.11.1" ExcludeAssets="runtime" PrivateAssets="all" />

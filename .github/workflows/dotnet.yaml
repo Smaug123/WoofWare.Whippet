@@ -155,6 +155,11 @@ jobs:
       with:
         name: nuget-package-core
         path: WoofWare.Whippet.Core/bin/Release/WoofWare.Whippet.Core.*.nupkg
+    - name: Upload NuGet artifact (Fantomas)
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-package-fantomas
+        path: WoofWare.Whippet.Fantomas/bin/Release/WoofWare.Whippet.Fantomas.*.nupkg
 
   expected-pack:
     needs: [nuget-pack]
@@ -176,6 +181,14 @@ jobs:
       - name: Check NuGet contents
         # Verify that there is exactly one nupkg in the artifact that would be NuGet published
         run: if [[ $(find packed-core -maxdepth 1 -name 'WoofWare.Whippet.Core.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+      - name: Download NuGet artifact (Fantomas)
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-fantomas
+          path: packed-fantomas
+      - name: Check NuGet contents
+        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
+        run: if [[ $(find packed-fantomas -maxdepth 1 -name 'WoofWare.Whippet.Fantomas.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
 
   all-required-checks-complete:
     needs: [check-dotnet-format, check-nix-format, build, build-nix, linkcheck, flake-check, nuget-pack, expected-pack, analyzers]

@@ -61,7 +61,7 @@ module Program =
                 failwith
                     $"Expected GenerateRawFromRaw to take exactly one parameter: a RawSourceGenerationArgs. Got %i{pars.Length}"
 
-            if pars.[0].ParameterType <> typeof<RawSourceGenerationArgs> then
+            if pars.[0].ParameterType.FullName <> typeof<RawSourceGenerationArgs>.FullName then
                 failwith
                     $"Expected GenerateRawFromRaw to take exactly one parameter: a RawSourceGenerationArgs. Got %s{pars.[0].ParameterType.FullName}"
 
@@ -96,7 +96,7 @@ module Program =
             )
 
         let projectOptions =
-            defaultLoader.LoadProjects ([ args.InputFile.FullName ]) |> Seq.toArray
+            defaultLoader.LoadProjects [ args.InputFile.FullName ] |> Seq.toArray
 
         let desiredProject =
             projectOptions
@@ -104,7 +104,7 @@ module Program =
 
         let toGenerate =
             desiredProject.Items
-            |> List.choose (fun (ProjectItem.Compile (name, fullPath, metadata)) ->
+            |> List.choose (fun (ProjectItem.Compile (_name, fullPath, metadata)) ->
                 match metadata with
                 | None -> None
                 | Some metadata ->
@@ -122,7 +122,9 @@ module Program =
             )
 
         Console.Error.WriteLine $"Loading plugin: %s{args.PluginDll.FullName}"
+
         let pluginAssembly = Assembly.LoadFrom args.PluginDll.FullName
+
         // We will look up any member called GenerateRawFromRaw and/or GenerateFromRaw.
         // It's your responsibility to decide whether to do anything with this call; you return null if you don't want
         // to do anything.
