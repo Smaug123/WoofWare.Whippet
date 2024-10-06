@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Define package reference metadata -->
+  <ItemDefinitionGroup>
+    <PackageReference>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemDefinitionGroup>
+
+  <!-- Properties to control the executable path -->
+  <PropertyGroup>
+    <SourceGeneratorExe>$(MSBuildThisFileDirectory)../lib/net8.0/WoofWare.Whippet.dll</SourceGeneratorExe>
+  </PropertyGroup>
+
+  <Target Name="GetWhippetPlugins"
+          DependsOnTargets="ResolvePackageAssets"
+          BeforeTargets="CoreCompile"
+          Condition="'$(DesignTimeBuild)' != 'true'">
+    <ItemGroup>
+      <!-- Filter to only WhippetPlugin=true references and get their resolved paths -->
+      <WhippetPlugin Include="@(ReferencePath)"
+                     Condition="'%(ReferencePath.NuGetPackageId)' != '' and
+                              '@(PackageReference->WithMetadataValue('Identity', '%(ReferencePath.NuGetPackageId)')->WithMetadataValue('WhippetPlugin', 'true'))' != ''">
+        <PluginName>%(ReferencePath.NuGetPackageId)</PluginName>
+      </WhippetPlugin>
+
+      <WhippetPlugin Include="@(ReferencePath)"
+                     Condition="'%(ReferencePath.ReferenceSourceTarget)' == 'ProjectReference' and
+                               '%(ReferencePath.WhippetPlugin)' == 'true'">
+        <PluginName>$([System.IO.Path]::GetFileNameWithoutExtension('%(ReferencePath.Filename)'))</PluginName>
+      </WhippetPlugin>
+
+      <!-- Create the properly formatted command line arguments -->
+      <WhippetPluginArgs Include="%(WhippetPlugin.PluginName)">
+        <Path>%(WhippetPlugin.FullPath)</Path>
+      </WhippetPluginArgs>
+    </ItemGroup>
+
+    <!-- Store all arguments in a property for the Exec task -->
+    <PropertyGroup>
+      <WhippetPluginCommandLine>@(WhippetPluginArgs->'"%(Path)"', ' ')</WhippetPluginCommandLine>
+    </PropertyGroup>
+
+    <!-- Execute the command -->
+    <Exec Command="&quot;$(MSBuildSDKsPath)/../../../dotnet&quot; exec &quot;$(SourceGeneratorExe)&quot; &quot;$(MSBuildProjectFullPath)&quot; $(WhippetPluginCommandLine)"
+          WorkingDirectory="$(MSBuildProjectDirectory)"
+          StandardOutputImportance="high" />
+  </Target>
+</Project>

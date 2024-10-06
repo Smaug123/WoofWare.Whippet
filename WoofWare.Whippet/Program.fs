@@ -10,27 +10,27 @@ open WoofWare.Whippet.Core
 
 type Args =
     {
-        PluginDll : FileInfo
         InputFile : FileInfo
+        Plugins : FileInfo list
     }
 
 type WhippetTarget =
     {
         InputSource : FileInfo
         GeneratedDest : FileInfo
+        Params : Map<string, string>
     }
 
 module Program =
     let parseArgs (argv : string array) =
         let inputFile = argv.[0] |> FileInfo
-        let pluginDll = argv.[1] |> FileInfo
 
         {
             InputFile = inputFile
-            PluginDll = pluginDll
+            Plugins = argv.[1..] |> Seq.map FileInfo |> Seq.toList
         }
 
-    let getGenerateRawFromRaw (host : obj) : (RawSourceGenerationArgs -> string) option =
+    let getGenerateRawFromRaw (host : obj) : (RawSourceGenerationArgs -> string option) option =
         let pluginType = host.GetType ()
 
         let generateRawFromRaw =
@@ -67,11 +67,11 @@ module Program =
 
             let retType = generateRawFromRaw.ReturnType
 
-            if retType <> typeof<string> then
+            if retType <> typeof<string option> then
                 failwith
-                    $"Expected GenerateRawFromRaw method to have return type `string`, but was: %s{retType.FullName}"
+                    $"Expected GenerateRawFromRaw method to have return type `string option`, but was: %s{retType.FullName}"
 
-            fun args -> generateRawFromRaw.Invoke (host, [| args |]) |> unbox<string>
+            fun args -> generateRawFromRaw.Invoke (host, [| args |]) |> unbox<string option>
             |> Some
 
     [<EntryPoint>]
@@ -113,65 +113,80 @@ module Program =
                 | None -> None
                 | Some myriadFile ->
 
+                let pars =
+                    metadata
+                    |> Map.toSeq
+                    |> Seq.choose (fun (key, value) ->
+                        if key.StartsWith ("WhippetParam", StringComparison.Ordinal) then
+                            Some (key.Substring "WhippetParam".Length, value)
+                        else
+                            None
+                    )
+                    |> Map.ofSeq
+
                 {
                     GeneratedDest = FileInfo fullPath
                     InputSource =
                         FileInfo (Path.Combine (Path.GetDirectoryName desiredProject.ProjectFileName, myriadFile))
+                    Params = pars
                 }
                 |> Some
             )
 
-        Console.Error.WriteLine $"Loading plugin: %s{args.PluginDll.FullName}"
+        for pluginDll in args.Plugins do
+            Console.Error.WriteLine $"Loading plugin: %s{pluginDll.FullName}"
 
-        let pluginAssembly = Assembly.LoadFrom args.PluginDll.FullName
+            let pluginAssembly = Assembly.LoadFrom pluginDll.FullName
 
-        // We will look up any member called GenerateRawFromRaw and/or GenerateFromRaw.
-        // It's your responsibility to decide whether to do anything with this call; you return null if you don't want
-        // to do anything.
-        // Alternatively, return the text you want to output.
-        // We provide you with the input file contents.
-        // GenerateRawFromRaw should return plain text.
-        // GenerateFromRaw should return a Fantomas AST.
-        let applicablePlugins =
-            pluginAssembly.ExportedTypes
-            |> Seq.choose (fun ty ->
-                if
-                    ty.CustomAttributes
-                    |> Seq.exists (fun attr -> attr.AttributeType.Name = typeof<WhippetGeneratorAttribute>.Name)
-                then
-                    Some (ty, Activator.CreateInstance ty)
-                else
-                    None
-            )
-            |> Seq.toList
+            // We will look up any member called GenerateRawFromRaw and/or GenerateFromRaw.
+            // It's your responsibility to decide whether to do anything with this call; you return null if you don't want
+            // to do anything.
+            // Alternatively, return the text you want to output.
+            // We provide you with the input file contents.
+            // GenerateRawFromRaw should return plain text.
+            // GenerateFromRaw should return a Fantomas AST.
+            let applicablePlugins =
+                pluginAssembly.ExportedTypes
+                |> Seq.choose (fun ty ->
+                    if
+                        ty.CustomAttributes
+                        |> Seq.exists (fun attr -> attr.AttributeType.Name = typeof<WhippetGeneratorAttribute>.Name)
+                    then
+                        Some (ty, Activator.CreateInstance ty)
+                    else
+                        None
+                )
+                |> Seq.toList
 
-        for item in toGenerate do
-            use output = item.GeneratedDest.Open (FileMode.Create, FileAccess.Write)
-            use outputWriter = new StreamWriter (output, leaveOpen = true)
+            for item in toGenerate do
+                use output = item.GeneratedDest.Open (FileMode.Create, FileAccess.Write)
+                use outputWriter = new StreamWriter (output, leaveOpen = true)
 
-            for plugin, hostClass in applicablePlugins do
-                match getGenerateRawFromRaw hostClass with
-                | None -> ()
-                | Some generateRawFromRaw ->
-                    let fileContents = File.ReadAllBytes item.InputSource.FullName
+                for plugin, hostClass in applicablePlugins do
+                    match getGenerateRawFromRaw hostClass with
+                    | None -> ()
+                    | Some generateRawFromRaw ->
+                        let fileContents = File.ReadAllBytes item.InputSource.FullName
 
-                    let args =
-                        {
-                            RawSourceGenerationArgs.FilePath = item.InputSource.FullName
-                            FileContents = fileContents
-                        }
+                        let args =
+                            {
+                                RawSourceGenerationArgs.FilePath = item.InputSource.FullName
+                                FileContents = fileContents
+                                Parameters = item.Params
+                            }
 
-                    let result = generateRawFromRaw args
+                        let result = generateRawFromRaw args
 
-                    match result with
-                    | null -> ()
-                    | result ->
-                        Console.Error.WriteLine
-                            $"Writing output for generator %s{plugin.Name} to file %s{item.GeneratedDest.FullName}"
+                        match result with
+                        | None
+                        | Some null -> ()
+                        | result ->
+                            Console.Error.WriteLine
+                                $"Writing output for generator %s{plugin.Name} to file %s{item.GeneratedDest.FullName}"
 
-                        outputWriter.Write result
-                        outputWriter.Write "\n"
+                            outputWriter.Write result
+                            outputWriter.Write "\n"
 
-                    ()
+                        ()
 
         0

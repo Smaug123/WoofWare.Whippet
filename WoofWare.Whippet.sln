@@ -10,6 +10,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Fantomas",
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Fantomas.Test", "WoofWare.Whippet.Fantomas.Test\WoofWare.Whippet.Fantomas.Test.fsproj", "{E220B17E-D608-43CB-B117-329BA240B13B}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Ionide.ProjInfo", "..\proj-info\src\Ionide.ProjInfo\Ionide.ProjInfo.fsproj", "{5543965C-5694-420D-9BBA-F3C4BBD74014}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{E220B17E-D608-43CB-B117-329BA240B13B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E220B17E-D608-43CB-B117-329BA240B13B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E220B17E-D608-43CB-B117-329BA240B13B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5543965C-5694-420D-9BBA-F3C4BBD74014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5543965C-5694-420D-9BBA-F3C4BBD74014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5543965C-5694-420D-9BBA-F3C4BBD74014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5543965C-5694-420D-9BBA-F3C4BBD74014}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
