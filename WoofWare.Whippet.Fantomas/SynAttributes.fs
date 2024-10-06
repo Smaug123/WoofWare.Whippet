@@ -17,3 +17,7 @@ module SynAttributes =
                 Range = range0
             }
         )
+
+    /// Get all the attributes out of this SynAttributes, as a list of individual attributes.
+    let toAttrs (attrs : SynAttributes) : SynAttribute list =
+        attrs |> List.collect (fun attr -> attr.Attributes)

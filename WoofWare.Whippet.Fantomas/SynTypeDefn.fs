@@ -1,5 +1,6 @@
 namespace WoofWare.Whippet.Fantomas
 
+open System
 open Fantomas.FCS.Syntax
 open Fantomas.FCS.SyntaxTrivia
 open Fantomas.FCS.Text.Range
@@ -7,6 +8,24 @@ open Fantomas.FCS.Text.Range
 /// Methods for manipulating `SynTypeDefn`, which represents any type definition like `type Foo = ...`.
 [<RequireQualifiedAccess>]
 module SynTypeDefn =
+
+    /// Returns true iff the input type is an F# record.
+    let isRecord (SynTypeDefn.SynTypeDefn (_, repr, _, _, _, _)) : bool =
+        match repr with
+        | SynTypeDefnRepr.Simple (SynTypeDefnSimpleRepr.Record _, _) -> true
+        | _ -> false
+
+    /// Returns true iff the input type is a discriminated union.
+    let isDu (SynTypeDefn.SynTypeDefn (_, repr, _, _, _, _)) : bool =
+        match repr with
+        | SynTypeDefnRepr.Simple (SynTypeDefnSimpleRepr.Union _, _) -> true
+        | _ -> false
+
+    /// Returns true iff the input type is an enum: `type Foo = | X = 1 ...`
+    let isEnum (SynTypeDefn.SynTypeDefn (_, repr, _, _, _, _)) : bool =
+        match repr with
+        | SynTypeDefnRepr.Simple (SynTypeDefnSimpleRepr.Enum _, _) -> true
+        | _ -> false
 
     /// Build a `SynTypeDefn` from its components:
     /// the "front matter" `SynComponentInfo`, and the "body" `SynTypeDefnRepr`.
@@ -36,6 +55,9 @@ module SynTypeDefn =
         | SynTypeDefn (SynComponentInfo.SynComponentInfo (_, _, _, id, _, _, _, _), _, _, _, _, _) -> id
 
     /// Select from this type definition the first attribute with the given name: `[<Foo>] type Blah = ...`
+    ///
+    /// Pass e.g. `typeof<MyAttribute>.Name` as the name for maximum type safety.
+    /// Don't fully qualify the input; this should basically just be an Ident rather than a LongIdent.
     let getAttribute (attrName : string) (defn : SynTypeDefn) : SynAttribute option =
         match defn with
         | SynTypeDefn (SynComponentInfo.SynComponentInfo (attrs, _, _, _, _, _, _, _), _, _, _, _, _) ->
