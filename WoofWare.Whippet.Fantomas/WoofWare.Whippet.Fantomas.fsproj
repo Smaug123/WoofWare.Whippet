@@ -17,6 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="List.fs" />
     <Compile Include="Primitives.fs" />
     <Compile Include="SynAttributes.fs" />
     <Compile Include="SynConst.fs" />
@@ -45,6 +46,7 @@
     <Compile Include="SynAttribute.fs" />
     <Compile Include="SynModuleDecl.fs" />
     <Compile Include="SynModuleOrNamespace.fs" />
+    <Compile Include="AstHelper.fs" />
     <Compile Include="Ast.fs" />
     <None Include="README.md">
       <Pack>True</Pack>

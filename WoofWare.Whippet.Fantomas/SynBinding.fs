@@ -44,6 +44,30 @@ module SynBinding =
         }
 
     /// A simple binding:
+    /// `let {a, b} = {body}`
+    let basicTuple (args : SynPat list) (body : SynExpr) : SynBinding =
+        let valInfo : SynValInfo =
+            args
+            |> List.map getArgInfo
+            |> fun x -> SynValInfo.SynValInfo (x, SynArgInfo.SynArgInfo ([], false, None))
+
+        SynBinding.SynBinding (
+            None,
+            SynBindingKind.Normal,
+            false,
+            false,
+            [],
+            PreXmlDoc.Empty,
+            SynValData.SynValData (None, valInfo, None),
+            SynPat.tupleNoParen args,
+            None,
+            body,
+            range0,
+            DebugPointAtBinding.Yes range0,
+            triviaZero false
+        )
+
+    /// A simple binding:
     /// `let {name} {args} = {body}`
     ///
     /// If you want this to become an instance member, you need to make sure the `this.` is present as a component
