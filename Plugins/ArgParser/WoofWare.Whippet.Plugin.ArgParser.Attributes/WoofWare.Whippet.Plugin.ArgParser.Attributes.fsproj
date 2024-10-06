@@ -19,7 +19,7 @@
     <ItemGroup>
       <Compile Include="Attributes.fs" />
       <EmbeddedResource Include="SurfaceBaseline.txt" />
-      <None Include="version.json" />
+      <EmbeddedResource Include="version.json" />
     </ItemGroup>
   
   <ItemGroup>

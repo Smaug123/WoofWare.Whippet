@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\WoofWare.Whippet.ArgParser\WoofWare.Whippet.Plugin.ArgParser.Consumer\WoofWare.Whippet.Plugin.ArgParser.Consumer.fsproj" />
+      <ProjectReference Include="..\..\WoofWare.Whippet.Plugin.ArgParser.Consumer\WoofWare.Whippet.Plugin.ArgParser.Consumer.fsproj" />
     </ItemGroup>
 
 </Project>
