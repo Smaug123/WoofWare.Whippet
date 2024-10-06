@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>netstandard2.0</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <Authors>Patrick Stevens</Authors>
+      <Copyright>Copyright (c) Patrick Stevens 2024</Copyright>
+      <Description>Attributes to accompany the WoofWare.Whippet.Plugin.ArgParser source generator, to indicate what you want your types to be doing.</Description>
+      <RepositoryType>git</RepositoryType>
+      <RepositoryUrl>https://github.com/Smaug123/WoofWare.Whippet</RepositoryUrl>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
+      <PackageTags>fsharp;source-generator;source-gen;whippet;arguments;arg-parser</PackageTags>
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <WarnOn>FS3559</WarnOn>
+      <PackageId>WoofWare.Myriad.Plugin.ArgParser.Attributes</PackageId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="Attributes.fs" />
+      <EmbeddedResource Include="SurfaceBaseline.txt" />
+      <None Include="version.json" />
+    </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="4.3.4" />
+  </ItemGroup>
+</Project>

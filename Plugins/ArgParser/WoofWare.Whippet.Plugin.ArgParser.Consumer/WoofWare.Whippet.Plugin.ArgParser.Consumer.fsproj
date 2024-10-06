@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <IsPackable>false</IsPackable>
+      <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory)/../../../WoofWare.Whippet/bin/$(Configuration)</RestoreAdditionalProjectSources>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="Args.fs" />
+      <Compile Include="GeneratedArgs.fs">
+        <WhippetFile>Args.fs</WhippetFile>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <!-- This dance is to get a binary reference on WoofWare.Whippet. NuGet caching will *completely screw us over*, so
+           CI
+        -->
+      <PackageReference Include="WoofWare.Whippet" Version="*-*" />
+      <!-- end of dance -->
+
+      <ProjectReference Include="..\WoofWare.Whippet.Plugin.ArgParser.Attributes\WoofWare.Whippet.Plugin.ArgParser.Attributes.fsproj" />
+      <ProjectReference Include="..\WoofWare.Whippet.Plugin.ArgParser\WoofWare.Whippet.Plugin.ArgParser.fsproj" PrivateAssets="all" WhippetPlugin="true" />
+    </ItemGroup>
+
+</Project>

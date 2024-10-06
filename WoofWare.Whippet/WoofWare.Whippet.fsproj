@@ -17,6 +17,7 @@
         <DevelopmentDependency>true</DevelopmentDependency>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <NoWarn>NU5118</NoWarn>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,6 +31,8 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
+        <Content Include="build\WoofWare.Whippet.targets" PackagePath="build" />
+        <Content Include="version.json" />
     </ItemGroup>
     <ItemGroup>
         <!--
@@ -44,14 +47,7 @@
         <PackageReference Include="WoofWare.DotnetRuntimeLocator" Version="0.1.9" />
     </ItemGroup>
     <ItemGroup>
-      <!--<ProjectReference Include="..\..\proj-info\src\Ionide.ProjInfo\Ionide.ProjInfo.fsproj" />-->
       <ProjectReference Include="..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="version.json" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="build\WoofWare.Whippet.targets" PackagePath="build" />
     </ItemGroup>
 
 </Project>
