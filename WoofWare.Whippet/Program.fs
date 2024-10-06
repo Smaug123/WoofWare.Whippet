@@ -131,10 +131,17 @@ module Program =
                     )
                     |> Map.ofSeq
 
+                let inputSource =
+                    FileInfo (Path.Combine (Path.GetDirectoryName desiredProject.ProjectFileName, myriadFile))
+
+                let generatedDest = FileInfo fullPath
+
+                if inputSource.FullName = generatedDest.FullName then
+                    failwith $"Input source %s{inputSource.FullName} was identical to output path; aborting."
+
                 {
-                    GeneratedDest = FileInfo fullPath
-                    InputSource =
-                        FileInfo (Path.Combine (Path.GetDirectoryName desiredProject.ProjectFileName, myriadFile))
+                    GeneratedDest = generatedDest
+                    InputSource = inputSource
                     Params = pars
                 }
                 |> Some

@@ -66,6 +66,8 @@ WoofWare.Whippet.Fantomas.InterfaceType.Inherits [property]: [read-only] Fantoma
 WoofWare.Whippet.Fantomas.InterfaceType.Members [property]: [read-only] WoofWare.Whippet.Fantomas.MemberInfo list
 WoofWare.Whippet.Fantomas.InterfaceType.Name [property]: [read-only] Fantomas.FCS.Syntax.Ident list
 WoofWare.Whippet.Fantomas.InterfaceType.Properties [property]: [read-only] WoofWare.Whippet.Fantomas.PropertyInfo list
+WoofWare.Whippet.Fantomas.Measure inherit obj
+WoofWare.Whippet.Fantomas.Measure.getLanguagePrimitivesMeasure [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.MemberInfo inherit obj
 WoofWare.Whippet.Fantomas.MemberInfo..ctor [constructor]: (Fantomas.FCS.Syntax.SynType, Fantomas.FCS.Syntax.SynAccess option, WoofWare.Whippet.Fantomas.TupledArg list, Fantomas.FCS.Syntax.Ident, Fantomas.FCS.Syntax.SynAttribute list, Fantomas.FCS.Xml.PreXmlDoc option, bool, bool)
 WoofWare.Whippet.Fantomas.MemberInfo.Accessibility [property]: [read-only] Fantomas.FCS.Syntax.SynAccess option

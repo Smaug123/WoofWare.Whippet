@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="JsonRecord.fs" />
+        <Compile Include="GeneratedJson.fs">
+          <WhippetFile>JsonRecord.fs</WhippetFile>
+        </Compile>
+        <Compile Include="SerializationAndDeserialization.fs" />
+        <Compile Include="GeneratedSerializationAndDeserialization.fs">
+          <WhippetFile>SerializationAndDeserialization.fs</WhippetFile>
+        </Compile>
+      <Compile Include="PureGymDto.fs" />
+      <Compile Include="GeneratedPureGymDto.fs">
+        <WhippetFile>PureGymDto.fs</WhippetFile>
+      </Compile>
+    </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\WoofWare.Whippet.Plugin.Json\WoofWare.Whippet.Plugin.Json.fsproj" WhippetPlugin="true" />
+    <PackageReference Include="WoofWare.Whippet" Version="*-*" />
+  </ItemGroup>
+
+</Project>

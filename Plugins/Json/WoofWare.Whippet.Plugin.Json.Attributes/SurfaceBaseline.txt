@@ -1,0 +1,10 @@
+WoofWare.Whippet.Plugin.Json.JsonParseAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.Json.JsonParseAttribute..ctor [constructor]: bool
+WoofWare.Whippet.Plugin.Json.JsonParseAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.Json.JsonParseAttribute.DefaultIsExtensionMethod [static property]: [read-only] bool
+WoofWare.Whippet.Plugin.Json.JsonParseAttribute.get_DefaultIsExtensionMethod [static method]: unit -> bool
+WoofWare.Whippet.Plugin.Json.JsonSerializeAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.Json.JsonSerializeAttribute..ctor [constructor]: bool
+WoofWare.Whippet.Plugin.Json.JsonSerializeAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.Json.JsonSerializeAttribute.DefaultIsExtensionMethod [static property]: [read-only] bool
+WoofWare.Whippet.Plugin.Json.JsonSerializeAttribute.get_DefaultIsExtensionMethod [static method]: unit -> bool

@@ -5,32 +5,34 @@
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <Authors>Patrick Stevens</Authors>
       <Copyright>Copyright (c) Patrick Stevens 2024</Copyright>
-      <Description>Whippet F# source generator plugin, for generating arg parsers.</Description>
+      <Description>Whippet F# source generator plugin, for generating JSON parse and serialize methods.</Description>
       <RepositoryType>git</RepositoryType>
       <RepositoryUrl>https://github.com/Smaug123/WoofWare.Whippet</RepositoryUrl>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <PackageReadmeFile>README.md</PackageReadmeFile>
-      <PackageTags>fsharp;source-generator;source-gen;whippet;arguments;arg-parser</PackageTags>
+      <PackageTags>fsharp;source-generator;source-gen;whippet;json;serialize;deserialize;serde</PackageTags>
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
       <WarnOn>FS3559</WarnOn>
-      <PackageId>WoofWare.Whippet.Plugin.ArgParser</PackageId>
+      <PackageId>WoofWare.Whippet.Plugin.Json</PackageId>
       <DevelopmentDependency>true</DevelopmentDependency>
       <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
       <NoWarn>NU5118</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="README.md" />
-      <Compile Include="ArgParserGenerator.fs" />
-      <EmbeddedResource Include="version.json" />
+        <Compile Include="DesiredGenerator.fs" />
+        <Compile Include="JsonSerializeGenerator.fs" />
+        <Compile Include="JsonParseGenerator.fs" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
       <ProjectReference Include="..\..\..\WoofWare.Whippet.Fantomas\WoofWare.Whippet.Fantomas.fsproj" />
+      <ProjectReference Include="..\WoofWare.Whippet.Plugin.Json.Attributes\WoofWare.Whippet.Plugin.Json.Attributes.fsproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="TypeEquality" Version="0.3.0" />
+      <Content Include="version.json" />
     </ItemGroup>
+
 </Project>

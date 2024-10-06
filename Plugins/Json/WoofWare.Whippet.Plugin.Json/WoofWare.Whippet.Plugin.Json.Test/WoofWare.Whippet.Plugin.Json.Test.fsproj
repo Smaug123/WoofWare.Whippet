@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="PureGymDtos.fs" />
+        <Compile Include="TestJsonSerde.fs" />
+        <Compile Include="TestJsonParse.fs" />
+        <Compile Include="TestExtensionMethod.fs" />
+        <Compile Include="TestPureGymJson.fs" />
+        <Compile Include="TestSurface.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
+      <PackageReference Include="NUnit" Version="4.2.2"/>
+      <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+      <PackageReference Include="FsUnit" Version="6.0.1"/>
+      <PackageReference Include="FsCheck" Version="2.16.6"/>
+      <PackageReference Include="ApiSurface" Version="4.1.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\WoofWare.Whippet.Plugin.Json.Consumer\WoofWare.Whippet.Plugin.Json.Consumer.fsproj" />
+    </ItemGroup>
+
+</Project>
