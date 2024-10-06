@@ -67,11 +67,18 @@ module Program =
 
             let retType = generateRawFromRaw.ReturnType
 
-            if retType <> typeof<string option> then
+            if retType <> typeof<string> then
                 failwith
-                    $"Expected GenerateRawFromRaw method to have return type `string option`, but was: %s{retType.FullName}"
+                    $"Expected GenerateRawFromRaw method to have return type `string`, but was: %s{retType.FullName}"
 
-            fun args -> generateRawFromRaw.Invoke (host, [| args |]) |> unbox<string option>
+            fun args ->
+                let args =
+                    Activator.CreateInstance (
+                        pars.[0].ParameterType,
+                        [| box args.FilePath ; args.FileContents ; args.Parameters |]
+                    )
+
+                generateRawFromRaw.Invoke (host, [| args |]) |> unbox<string> |> Option.ofObj
             |> Some
 
     [<EntryPoint>]
@@ -133,10 +140,15 @@ module Program =
                 |> Some
             )
 
+        let runtime =
+            DotnetRuntime.locate (Assembly.GetExecutingAssembly().Location |> FileInfo)
+
         for pluginDll in args.Plugins do
             Console.Error.WriteLine $"Loading plugin: %s{pluginDll.FullName}"
 
-            let pluginAssembly = Assembly.LoadFrom pluginDll.FullName
+            let ctx = Ctx (pluginDll, runtime)
+
+            let pluginAssembly = ctx.LoadFromAssemblyPath pluginDll.FullName
 
             // We will look up any member called GenerateRawFromRaw and/or GenerateFromRaw.
             // It's your responsibility to decide whether to do anything with this call; you return null if you don't want
@@ -180,7 +192,7 @@ module Program =
                         match result with
                         | None
                         | Some null -> ()
-                        | result ->
+                        | Some result ->
                             Console.Error.WriteLine
                                 $"Writing output for generator %s{plugin.Name} to file %s{item.GeneratedDest.FullName}"
 

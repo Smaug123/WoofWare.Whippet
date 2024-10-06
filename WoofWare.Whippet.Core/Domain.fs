@@ -21,7 +21,7 @@ type RawSourceGenerationArgs =
         /// Contents of the file; you might want to `System.Text.Encoding.UTF8.GetString` this.
         FileContents : byte[]
         /// Extra parameters as supplied through the project file with <Whippet{ParamName}>{ParamValue}</Whippet{ParamName}>.
-        Parameters : Map<string, string>
+        Parameters : IReadOnlyDictionary<string, string>
     }
 
 /// We provide this interface as a helper to give you compile-time safety, but you don't have to use it.
@@ -29,4 +29,4 @@ type RawSourceGenerationArgs =
 /// You must use `RawSourceGenerationArgs`, though!
 type IGenerateRawFromRaw =
     /// Return `null` to indicate "I don't want to do any updates".
-    abstract member GenerateRawFromRaw : RawSourceGenerationArgs -> string option
+    abstract member GenerateRawFromRaw : RawSourceGenerationArgs -> string
