@@ -1,8 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <TargetFramework>netstandard2.0</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <Authors>Patrick Stevens</Authors>
+      <Copyright>Copyright (c) Patrick Stevens 2024</Copyright>
+      <Description>Attributes to accompany the WoofWare.Whippet.Plugin.HttpClient source generator, to indicate what you want your types to be doing.</Description>
+      <RepositoryType>git</RepositoryType>
+      <RepositoryUrl>https://github.com/Smaug123/WoofWare.Whippet</RepositoryUrl>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
+      <PackageTags>fsharp;source-generator;source-gen;whippet;http-client;restease</PackageTags>
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <WarnOn>FS3559</WarnOn>
+      <PackageId>WoofWare.Whippet.Plugin.HttpClient.Attributes</PackageId>
     </PropertyGroup>
 
   <ItemGroup>
