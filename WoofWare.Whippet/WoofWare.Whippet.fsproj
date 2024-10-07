@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-      <OutputType>Exe</OutputType>
+      <OutputType>Library</OutputType>
       <TargetFramework>net8.0</TargetFramework>
       <Authors>Patrick Stevens</Authors>
       <Copyright>Copyright (c) Patrick Stevens 2024</Copyright>
@@ -15,36 +15,21 @@
       <WarnOn>FS3559</WarnOn>
       <PackageId>WoofWare.Whippet</PackageId>
       <DevelopmentDependency>true</DevelopmentDependency>
-      <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
       <NoWarn>NU5118</NoWarn>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <PackAsTool>true</PackAsTool>
-      <RollForward>Major</RollForward>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="RuntimeConfig.fs"/>
-        <Compile Include="RuntimeConfigGen.fs" />
-        <Compile Include="AppContext.fs" />
-        <Compile Include="RuntimeLocator.fs" />
-        <Compile Include="Context.fs" />
-        <Compile Include="Program.fs"/>
         <None Include="../README.md">
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
-        <Content Include="build\WoofWare.Whippet.targets" PackagePath="build" />
-        <EmbeddedResource Include="version.json" />
+      <Content Include="build\WoofWare.Whippet.targets" PackagePath="build" />
+      <EmbeddedResource Include="version.json" />
+      <None Include="../WoofWare.Whippet.App/bin/$(Configuration)/$(TargetFramework)/*" Pack="true" PackagePath="tools/$(TargetFramework)/any/" />
     </ItemGroup>
+  
     <ItemGroup>
-        <PackageReference Include="Ionide.ProjInfo" Version="0.67.0" PrivateAssets="compile" />
-        <!-- None Include="$(OutputPath)\*.dll" Pack="true" PackagePath="lib\$(TargetFramework)" -->
-        <PackageReference Include="Microsoft.Build.Framework" Version="17.2.0" ExcludeAssets="runtime" PrivateAssets="all" />
-        <PackageReference Include="NuGet.Frameworks" Version="6.11.1" ExcludeAssets="runtime" PrivateAssets="all" />
-        <PackageReference Include="WoofWare.DotnetRuntimeLocator" Version="0.1.9" />
+      <ProjectReference Include="..\WoofWare.Whippet.App\WoofWare.Whippet.App.fsproj" PrivateAssets="all" />
     </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
-    </ItemGroup>
-
 </Project>

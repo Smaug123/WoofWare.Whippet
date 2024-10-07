@@ -75,7 +75,7 @@ module Program =
                 let args =
                     Activator.CreateInstance (
                         pars.[0].ParameterType,
-                        [| box args.FilePath ; args.FileContents ; args.Parameters |]
+                        [| box args.FilePath ; box args.FileContents ; box args.Parameters |]
                     )
 
                 generateRawFromRaw.Invoke (host, [| args |]) |> unbox<string> |> Option.ofObj

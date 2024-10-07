@@ -9,7 +9,7 @@
 
   <!-- Properties to control the executable path -->
   <PropertyGroup>
-    <SourceGeneratorExe>$(MSBuildThisFileDirectory)../lib/net8.0/WoofWare.Whippet.dll</SourceGeneratorExe>
+    <SourceGeneratorExe>$(MSBuildThisFileDirectory)../tools/net8.0/any/WoofWare.Whippet.App.dll</SourceGeneratorExe>
   </PropertyGroup>
 
   <Target Name="GetWhippetPlugins"
