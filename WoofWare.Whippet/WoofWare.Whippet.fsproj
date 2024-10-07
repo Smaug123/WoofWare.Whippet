@@ -19,6 +19,7 @@
       <NoWarn>NU5118</NoWarn>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <PackAsTool>true</PackAsTool>
+      <RollForward>Major</RollForward>
     </PropertyGroup>
 
     <ItemGroup>
