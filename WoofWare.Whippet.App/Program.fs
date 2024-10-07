@@ -182,8 +182,6 @@ module Program =
                 pluginDll, applicablePlugins
             )
 
-        // TODO: should ideally loop over files, not plugins, so we fully generate a file before moving on to the next
-        // one
         for item in toGenerate do
             use output = item.GeneratedDest.Open (FileMode.Create, FileAccess.Write)
             use outputWriter = new StreamWriter (output, leaveOpen = true)
