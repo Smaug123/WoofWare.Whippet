@@ -3,14 +3,23 @@ namespace ConsumePlugin
 open System.Text.Json.Serialization
 open WoofWare.Whippet.Plugin.Json
 
-/// Module containing JSON serializing methods for the InternalTypeNotExtensionSerial type
-[<RequireQualifiedAccess ; CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module internal InternalTypeNotExtensionSerial =
-    /// Serialize to a JSON node
-    let toJsonNode (input : InternalTypeNotExtensionSerial) : System.Text.Json.Nodes.JsonNode =
-        let node = System.Text.Json.Nodes.JsonObject ()
-        do node.Add ((Literals.something), (input.InternalThing2 |> System.Text.Json.Nodes.JsonValue.Create<string>))
-        node :> _
+/// Module containing JSON serializing extension members for the InternalTypeNotExtensionSerial type
+[<AutoOpen>]
+module internal InternalTypeNotExtensionSerialJsonSerializeExtension =
+    /// Extension methods for JSON parsing
+    type InternalTypeNotExtensionSerial with
+
+        /// Serialize to a JSON node
+        static member toJsonNode (input : InternalTypeNotExtensionSerial) : System.Text.Json.Nodes.JsonNode =
+            let node = System.Text.Json.Nodes.JsonObject ()
+
+            do
+                node.Add (
+                    (Literals.something),
+                    (input.InternalThing2 |> System.Text.Json.Nodes.JsonValue.Create<string>)
+                )
+
+            node :> _
 namespace ConsumePlugin
 
 open System.Text.Json.Serialization
@@ -30,138 +39,147 @@ module internal InternalTypeExtensionJsonSerializeExtension =
 
 namespace ConsumePlugin
 
-/// Module containing JSON parsing methods for the InnerType type
-[<RequireQualifiedAccess ; CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module InnerType =
-    /// Parse from a JSON node.
-    let jsonParse (node : System.Text.Json.Nodes.JsonNode) : InnerType =
-        let arg_0 =
-            (match node.[(Literals.something)] with
-             | null ->
-                 raise (
-                     System.Collections.Generic.KeyNotFoundException (
-                         sprintf "Required key '%s' not found on JSON object" ((Literals.something))
-                     )
-                 )
-             | v -> v)
-                .AsValue()
-                .GetValue<System.String> ()
+/// Module containing JSON parsing extension members for the InnerType type
+[<AutoOpen>]
+module InnerTypeJsonParseExtension =
+    /// Extension methods for JSON parsing
+    type InnerType with
 
-        {
-            Thing = arg_0
-        }
+        /// Parse from a JSON node.
+        static member jsonParse (node : System.Text.Json.Nodes.JsonNode) : InnerType =
+            let arg_0 =
+                (match node.[(Literals.something)] with
+                 | null ->
+                     raise (
+                         System.Collections.Generic.KeyNotFoundException (
+                             sprintf "Required key '%s' not found on JSON object" ((Literals.something))
+                         )
+                     )
+                 | v -> v)
+                    .AsValue()
+                    .GetValue<System.String> ()
+
+            {
+                Thing = arg_0
+            }
 namespace ConsumePlugin
 
-/// Module containing JSON parsing methods for the JsonRecordType type
-[<RequireQualifiedAccess ; CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module JsonRecordType =
-    /// Parse from a JSON node.
-    let jsonParse (node : System.Text.Json.Nodes.JsonNode) : JsonRecordType =
-        let arg_5 =
-            (match node.["f"] with
-             | null ->
-                 raise (
-                     System.Collections.Generic.KeyNotFoundException (
-                         sprintf "Required key '%s' not found on JSON object" ("f")
-                     )
-                 )
-             | v -> v)
-                .AsArray ()
-            |> Seq.map (fun elt -> elt.AsValue().GetValue<System.Int32> ())
-            |> Array.ofSeq
+/// Module containing JSON parsing extension members for the JsonRecordType type
+[<AutoOpen>]
+module JsonRecordTypeJsonParseExtension =
+    /// Extension methods for JSON parsing
+    type JsonRecordType with
 
-        let arg_4 =
-            (match node.["e"] with
-             | null ->
-                 raise (
-                     System.Collections.Generic.KeyNotFoundException (
-                         sprintf "Required key '%s' not found on JSON object" ("e")
+        /// Parse from a JSON node.
+        static member jsonParse (node : System.Text.Json.Nodes.JsonNode) : JsonRecordType =
+            let arg_5 =
+                (match node.["f"] with
+                 | null ->
+                     raise (
+                         System.Collections.Generic.KeyNotFoundException (
+                             sprintf "Required key '%s' not found on JSON object" ("f")
+                         )
                      )
-                 )
-             | v -> v)
-                .AsArray ()
-            |> Seq.map (fun elt -> elt.AsValue().GetValue<System.String> ())
-            |> Array.ofSeq
+                 | v -> v)
+                    .AsArray ()
+                |> Seq.map (fun elt -> elt.AsValue().GetValue<System.Int32> ())
+                |> Array.ofSeq
 
-        let arg_3 =
-            InnerType.jsonParse (
-                match node.["d"] with
-                | null ->
-                    raise (
-                        System.Collections.Generic.KeyNotFoundException (
-                            sprintf "Required key '%s' not found on JSON object" ("d")
+            let arg_4 =
+                (match node.["e"] with
+                 | null ->
+                     raise (
+                         System.Collections.Generic.KeyNotFoundException (
+                             sprintf "Required key '%s' not found on JSON object" ("e")
+                         )
+                     )
+                 | v -> v)
+                    .AsArray ()
+                |> Seq.map (fun elt -> elt.AsValue().GetValue<System.String> ())
+                |> Array.ofSeq
+
+            let arg_3 =
+                InnerType.jsonParse (
+                    match node.["d"] with
+                    | null ->
+                        raise (
+                            System.Collections.Generic.KeyNotFoundException (
+                                sprintf "Required key '%s' not found on JSON object" ("d")
+                            )
                         )
-                    )
-                | v -> v
-            )
+                    | v -> v
+                )
 
-        let arg_2 =
-            (match node.["hi"] with
-             | null ->
-                 raise (
-                     System.Collections.Generic.KeyNotFoundException (
-                         sprintf "Required key '%s' not found on JSON object" ("hi")
+            let arg_2 =
+                (match node.["hi"] with
+                 | null ->
+                     raise (
+                         System.Collections.Generic.KeyNotFoundException (
+                             sprintf "Required key '%s' not found on JSON object" ("hi")
+                         )
                      )
-                 )
-             | v -> v)
-                .AsArray ()
-            |> Seq.map (fun elt -> elt.AsValue().GetValue<System.Int32> ())
-            |> List.ofSeq
+                 | v -> v)
+                    .AsArray ()
+                |> Seq.map (fun elt -> elt.AsValue().GetValue<System.Int32> ())
+                |> List.ofSeq
 
-        let arg_1 =
-            (match node.["another-thing"] with
-             | null ->
-                 raise (
-                     System.Collections.Generic.KeyNotFoundException (
-                         sprintf "Required key '%s' not found on JSON object" ("another-thing")
+            let arg_1 =
+                (match node.["another-thing"] with
+                 | null ->
+                     raise (
+                         System.Collections.Generic.KeyNotFoundException (
+                             sprintf "Required key '%s' not found on JSON object" ("another-thing")
+                         )
                      )
-                 )
-             | v -> v)
-                .AsValue()
-                .GetValue<System.String> ()
+                 | v -> v)
+                    .AsValue()
+                    .GetValue<System.String> ()
 
-        let arg_0 =
-            (match node.["a"] with
-             | null ->
-                 raise (
-                     System.Collections.Generic.KeyNotFoundException (
-                         sprintf "Required key '%s' not found on JSON object" ("a")
+            let arg_0 =
+                (match node.["a"] with
+                 | null ->
+                     raise (
+                         System.Collections.Generic.KeyNotFoundException (
+                             sprintf "Required key '%s' not found on JSON object" ("a")
+                         )
                      )
-                 )
-             | v -> v)
-                .AsValue()
-                .GetValue<System.Int32> ()
+                 | v -> v)
+                    .AsValue()
+                    .GetValue<System.Int32> ()
 
-        {
-            A = arg_0
-            B = arg_1
-            C = arg_2
-            D = arg_3
-            E = arg_4
-            F = arg_5
-        }
+            {
+                A = arg_0
+                B = arg_1
+                C = arg_2
+                D = arg_3
+                E = arg_4
+                F = arg_5
+            }
 namespace ConsumePlugin
 
-/// Module containing JSON parsing methods for the InternalTypeNotExtension type
-[<RequireQualifiedAccess ; CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module internal InternalTypeNotExtension =
-    /// Parse from a JSON node.
-    let jsonParse (node : System.Text.Json.Nodes.JsonNode) : InternalTypeNotExtension =
-        let arg_0 =
-            (match node.[(Literals.something)] with
-             | null ->
-                 raise (
-                     System.Collections.Generic.KeyNotFoundException (
-                         sprintf "Required key '%s' not found on JSON object" ((Literals.something))
-                     )
-                 )
-             | v -> v)
-                .AsValue()
-                .GetValue<System.String> ()
+/// Module containing JSON parsing extension members for the InternalTypeNotExtension type
+[<AutoOpen>]
+module internal InternalTypeNotExtensionJsonParseExtension =
+    /// Extension methods for JSON parsing
+    type InternalTypeNotExtension with
 
-        {
-            InternalThing = arg_0
-        }
+        /// Parse from a JSON node.
+        static member jsonParse (node : System.Text.Json.Nodes.JsonNode) : InternalTypeNotExtension =
+            let arg_0 =
+                (match node.[(Literals.something)] with
+                 | null ->
+                     raise (
+                         System.Collections.Generic.KeyNotFoundException (
+                             sprintf "Required key '%s' not found on JSON object" ((Literals.something))
+                         )
+                     )
+                 | v -> v)
+                    .AsValue()
+                    .GetValue<System.String> ()
+
+            {
+                InternalThing = arg_0
+            }
 namespace ConsumePlugin
 
 /// Module containing JSON parsing extension members for the InternalTypeExtension type

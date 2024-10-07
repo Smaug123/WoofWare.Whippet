@@ -4,7 +4,7 @@ Whippet is a source generator for F#, inspired by [Myriad](https://github.com/Mo
 
 It is currently vapourware; please do not use it.
 With some modest changes to [WoofWare.Myriad.Plugins](https://github.com/Smaug123/WoofWare.Myriad/) I was able to use Whippet to generate source files in that repo.
-However, it currently lacks any of Myriad's ease of invocation, and indeed most of the future features intended to distinguish Whippet from Myriad.
+However, it currently lacks most of the future features intended to distinguish Whippet from Myriad.
 
 Differentiating features:
 

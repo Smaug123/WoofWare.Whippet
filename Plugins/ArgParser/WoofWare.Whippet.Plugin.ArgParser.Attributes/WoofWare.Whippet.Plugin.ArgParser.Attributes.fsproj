@@ -13,15 +13,16 @@
       <PackageTags>fsharp;source-generator;source-gen;whippet;arguments;arg-parser</PackageTags>
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
       <WarnOn>FS3559</WarnOn>
-      <PackageId>WoofWare.Myriad.Plugin.ArgParser.Attributes</PackageId>
+      <PackageId>WoofWare.Whippet.Plugin.ArgParser.Attributes</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
       <Compile Include="Attributes.fs" />
       <EmbeddedResource Include="SurfaceBaseline.txt" />
       <EmbeddedResource Include="version.json" />
+      <Content Include="README.md" />
     </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="4.3.4" />
   </ItemGroup>

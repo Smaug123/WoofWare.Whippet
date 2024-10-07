@@ -672,7 +672,8 @@ module internal JsonParseGenerator =
             | SynTypeDefnRepr.Simple (SynTypeDefnSimpleRepr.Union (_accessibility, cases, _range), _) ->
                 let optionGet (i : Ident option) =
                     match i with
-                    | None -> failwith "WoofWare.Myriad requires union cases to have identifiers on each field."
+                    | None ->
+                        failwith "WoofWare.Whippet.Plugin.Json requires union cases to have identifiers on each field."
                     | Some i -> i
 
                 cases

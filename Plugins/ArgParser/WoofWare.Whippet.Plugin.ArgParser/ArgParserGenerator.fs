@@ -431,26 +431,13 @@ module internal ArgParserGenerator =
                     |> List.choose (fun attr ->
                         let (SynLongIdent.SynLongIdent (name, _, _)) = attr.TypeName
 
-                        match name |> List.map _.idText with
-                        | [ "ArgumentDefaultFunction" ]
-                        | [ "ArgumentDefaultFunctionAttribute" ]
-                        | [ "Plugins" ; "ArgumentDefaultFunction" ]
-                        | [ "Plugins" ; "ArgumentDefaultFunctionAttribute" ]
-                        | [ "Myriad" ; "Plugins" ; "ArgumentDefaultFunction" ]
-                        | [ "Myriad" ; "Plugins" ; "ArgumentDefaultFunctionAttribute" ]
-                        | [ "WoofWare" ; "Myriad" ; "Plugins" ; "ArgumentDefaultFunction" ]
-                        | [ "WoofWare" ; "Myriad" ; "Plugins" ; "ArgumentDefaultFunctionAttribute" ] ->
+                        match name |> List.map _.idText |> List.last with
+                        | "ArgumentDefaultFunction"
+                        | "ArgumentDefaultFunctionAttribute" ->
                             ArgumentDefaultSpec.FunctionCall (Ident.create ("Default" + fieldName.idText))
                             |> Some
-                        | [ "ArgumentDefaultEnvironmentVariable" ]
-                        | [ "ArgumentDefaultEnvironmentVariableAttribute" ]
-                        | [ "Plugins" ; "ArgumentDefaultEnvironmentVariable" ]
-                        | [ "Plugins" ; "ArgumentDefaultEnvironmentVariableAttribute" ]
-                        | [ "Myriad" ; "Plugins" ; "ArgumentDefaultEnvironmentVariable" ]
-                        | [ "Myriad" ; "Plugins" ; "ArgumentDefaultEnvironmentVariableAttribute" ]
-                        | [ "WoofWare" ; "Myriad" ; "Plugins" ; "ArgumentDefaultEnvironmentVariable" ]
-                        | [ "WoofWare" ; "Myriad" ; "Plugins" ; "ArgumentDefaultEnvironmentVariableAttribute" ] ->
-
+                        | "ArgumentDefaultEnvironmentVariable"
+                        | "ArgumentDefaultEnvironmentVariableAttribute" ->
                             ArgumentDefaultSpec.EnvironmentVariable attr.ArgExpr |> Some
                         | _ -> None
                     )
@@ -836,7 +823,7 @@ module internal ArgParserGenerator =
                 | Accumulation.List Accumulation.Optional
                 | Accumulation.List (Accumulation.Choice _) ->
                     failwith
-                        "WoofWare.Myriad invariant violated: expected a list to contain only a Required accumulation. Non-positional lists cannot be optional or Choice, nor can they themselves contain lists."
+                        "WoofWare.Whippet.Plugin.ArgParser invariant violated: expected a list to contain only a Required accumulation. Non-positional lists cannot be optional or Choice, nor can they themselves contain lists."
                 | Accumulation.List Accumulation.Required ->
                     [
                         SynExpr.createIdent "value"
@@ -1291,7 +1278,7 @@ module internal ArgParserGenerator =
                 | Accumulation.List Accumulation.Optional
                 | Accumulation.List (Accumulation.Choice _) ->
                     failwith
-                        "WoofWare.Myriad invariant violated: expected a list to contain only a Required accumulation. Non-positional lists cannot be optional or Choice, nor can they themselves contain lists."
+                        "WoofWare.Whippet.Plugin.ArgParser invariant violated: expected a list to contain only a Required accumulation. Non-positional lists cannot be optional or Choice, nor can they themselves contain lists."
                 | Accumulation.List Accumulation.Required ->
                     SynExpr.createIdent "ResizeArray"
                     |> SynExpr.applyTo (SynExpr.CreateConst ())
@@ -1430,7 +1417,7 @@ module internal ArgParserGenerator =
                 | Accumulation.List Accumulation.Optional
                 | Accumulation.List (Accumulation.Choice _) ->
                     failwith
-                        "WoofWare.Myriad invariant violated: expected a list to contain only a Required accumulation. Non-positional lists cannot be optional or Choice, nor can they themselves contain lists."
+                        "WoofWare.Whippet.Plugin.ArgParser invariant violated: expected a list to contain only a Required accumulation. Non-positional lists cannot be optional or Choice, nor can they themselves contain lists."
                 | Accumulation.List Accumulation.Required ->
                     SynBinding.basic
                         [ pf.TargetVariable ]
@@ -1746,7 +1733,8 @@ module internal ArgParserGenerator =
         ]
         |> SynModuleOrNamespace.createNamespace ns
 
-/// Myriad generator that provides a catamorphism for an algebraic data type.
+/// Whippet generator that provides an argument parser, taking a list of command line args and parsing them into a
+/// structured record.
 [<WhippetGenerator>]
 type ArgParserGenerator () =
 

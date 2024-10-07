@@ -20,19 +20,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="DesiredGenerator.fs" />
-        <Compile Include="JsonSerializeGenerator.fs" />
-        <Compile Include="JsonParseGenerator.fs" />
+      <Compile Include="DesiredGenerator.fs" />
+      <Compile Include="JsonSerializeGenerator.fs" />
+      <Compile Include="JsonParseGenerator.fs" />
+      <Content Include="README.md" />
+      <EmbeddedResource Include="version.json" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
       <ProjectReference Include="..\..\..\WoofWare.Whippet.Fantomas\WoofWare.Whippet.Fantomas.fsproj" />
       <ProjectReference Include="..\WoofWare.Whippet.Plugin.Json.Attributes\WoofWare.Whippet.Plugin.Json.Attributes.fsproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="version.json" />
     </ItemGroup>
 
 </Project>

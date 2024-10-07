@@ -1,4 +1,4 @@
-namespace WoofWare.Myriad.Plugins.Test
+namespace WoofWare.Whippet.Plugin.Json.Test
 
 open System.Text.Json.Nodes
 open ConsumePlugin
