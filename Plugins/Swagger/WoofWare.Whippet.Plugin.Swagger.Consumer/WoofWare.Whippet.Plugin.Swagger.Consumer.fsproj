@@ -9,8 +9,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\HttpClient\WoofWare.Whippet.Plugin.HttpClient.Attributes\WoofWare.Whippet.Plugin.HttpClient.Attributes.fsproj" />
     <ProjectReference Include="..\..\Json\WoofWare.Whippet.Plugin.Json.Attributes\WoofWare.Whippet.Plugin.Json.Attributes.fsproj" />
+    <ProjectReference Include="..\..\Json\WoofWare.Whippet.Plugin.Json\WoofWare.Whippet.Plugin.Json.fsproj" PrivateAssets="all" WhippetPlugin="true" />
     <ProjectReference Include="..\WoofWare.Whippet.Plugin.Swagger\WoofWare.Whippet.Plugin.Swagger.fsproj" PrivateAssets="all" WhippetPlugin="true" />
     <ProjectReference Include="..\..\InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.fsproj" PrivateAssets="all" WhippetPlugin="true" />
+    <ProjectReference Include="..\..\HttpClient\WoofWare.Whippet.Plugin.HttpClient\WoofWare.Whippet.Plugin.HttpClient.fsproj" PrivateAssets="all" WhippetPlugin="true" />
     <!-- Dance to get a binary dependency on a locally-built Whippet -->
     <!-- ProjectReference Include="..\..\..\WoofWare.Whippet\WoofWare.Whippet.fsproj" PrivateAssets="all" -->
     <PackageReference Include="WoofWare.Whippet" Version="*-*" PrivateAssets="all" />
@@ -24,7 +26,7 @@
     </Compile>
     <Compile Include="Generated2SwaggerGitea.fs">
       <WhippetFile>GeneratedSwaggerGitea.fs</WhippetFile>
-      <WhippetParamIGitea>InterfaceMock</WhippetParamIGitea>
+      <WhippetParamIGitea>InterfaceMock!HttpClient</WhippetParamIGitea>
     </Compile>
   </ItemGroup>
 

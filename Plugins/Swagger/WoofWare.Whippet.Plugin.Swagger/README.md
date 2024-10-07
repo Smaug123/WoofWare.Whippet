@@ -16,8 +16,6 @@ In your `fsproj`:
     <Compile Include="Client.fs">
         <WhippetFile>my-swagger-schema.json</WhippetFile>
         <WhippetParamClassName>GiteaClient</WhippetParamClassName>
-        <!-- Optionally: -->
-        <WhippetParamGenerateMock>true</WhippetParamGenerateMock>
     </Compile>
 </ItemGroup>
 ```
@@ -61,14 +59,12 @@ That means if you choose to, you can chain another Whippet generator off this on
     </Compile>
     <Compile Include="Client2.fs">
         <WhippetFile>Client.fs</WhippetFile>
+        <WhippetParamIGiteaClient>InterfaceMock</WhippetParamIGiteaClient>
     </Compile>
 </ItemGroup>
 ```
 
-The `<ClassName />` key tells us what to name the resulting interface (it gets an `I` prepended for you).
-You can optionally also set `<GenerateMockVisibility>v</GenerateMockVisibility>` to add the `[<GenerateMock>]` attribute to the type
-(where `v` should be `internal` or `public`, indicating "resulting mock type is internal" vs "is public"),
-so that the following manoeuvre will result in a generated mock:
+The `<WhippetParamClassName />` key tells us what to name the resulting interface (it gets an `I` prepended for you).
 
 ### What's the point?
 
