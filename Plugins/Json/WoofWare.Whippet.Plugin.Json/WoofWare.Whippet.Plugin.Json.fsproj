@@ -23,7 +23,11 @@
       <Compile Include="DesiredGenerator.fs" />
       <Compile Include="JsonSerializeGenerator.fs" />
       <Compile Include="JsonParseGenerator.fs" />
-      <Content Include="README.md" />
+      <None Include="README.md">
+        <Pack>True</Pack>
+        <PackagePath>/</PackagePath>
+        <Link>README.md</Link>
+      </None>
       <EmbeddedResource Include="version.json" />
     </ItemGroup>
 
