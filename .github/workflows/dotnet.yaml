@@ -265,7 +265,7 @@ jobs:
         run: git diff --name-only --no-color --exit-cod*e
 
   all-required-checks-complete:
-    needs: [check-dotnet-format, check-nix-format, build, build-nix, linkcheck, flake-check, nuget-pack, expected-pack, analyzers]
+    needs: [check-dotnet-format, check-nix-format, build, build-nix, linkcheck, flake-check, nuget-pack, expected-pack, analyzers, check-accurate-generations]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
