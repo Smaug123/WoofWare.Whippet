@@ -251,6 +251,22 @@ jobs:
       - name: Check NuGet contents
         # Verify that there is exactly one nupkg in the artifact that would be NuGet published
         run: if [[ $(find packed-argparser -maxdepth 1 -name 'WoofWare.Whippet.Plugin.ArgParser.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+      - name: Download NuGet artifact (httpclient attrs)
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-httpclient-attrs
+          path: packed-httpclient-attrs
+      - name: Check NuGet contents
+        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
+        run: if [[ $(find packed-httpclient-attrs -maxdepth 1 -name 'WoofWare.Whippet.Plugin.HttpClient.Attributes.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+      - name: Download NuGet artifact (httpclient plugin)
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-httpclient
+          path: packed-httpclient
+      - name: Check NuGet contents
+        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
+        run: if [[ $(find packed-httpclient -maxdepth 1 -name 'WoofWare.Whippet.Plugin.HttpClient.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
 
   check-accurate-generations:
     runs-on: ubuntu-latest
