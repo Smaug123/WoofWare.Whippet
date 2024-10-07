@@ -24,7 +24,7 @@
 
     <ItemGroup>
         <Compile Include="RuntimeConfig.fs"/>
-        <Compile Include="GeneratedRuntimeConfig.fs" />
+        <Compile Include="RuntimeConfigGen.fs" />
         <Compile Include="AppContext.fs" />
         <Compile Include="RuntimeLocator.fs" />
         <Compile Include="Context.fs" />
