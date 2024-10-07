@@ -5,8 +5,7 @@ open System.IO
 open System.Reflection
 
 // Fix for https://github.com/Smaug123/unofficial-nunit-runner/issues/8
-// (This tells the DLL loader to look next to the test DLL for dependencies.)
-// TODO: do we actually need this when we move to the Hooks world?
+// (This tells the DLL loader to look next to the input DLL for dependencies.)
 /// Context manager to set the AppContext.BaseDirectory of the executing DLL.
 type SetBaseDir (testDll : FileInfo) =
     let oldBaseDir = AppContext.BaseDirectory

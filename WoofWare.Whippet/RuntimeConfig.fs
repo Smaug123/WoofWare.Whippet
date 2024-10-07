@@ -1,7 +1,6 @@
 namespace WoofWare.Whippet
 
 open System
-open System.Text.Json.Nodes
 
 type FrameworkDescription =
     {
@@ -21,8 +20,6 @@ type RuntimeConfig =
     {
         RuntimeOptions : RuntimeOptions
     }
-
-    static member jsonParse (s : JsonNode) : RuntimeConfig = failwith "TODO"
 
 [<RequireQualifiedAccess>]
 type RollForward =
