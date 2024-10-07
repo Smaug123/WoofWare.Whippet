@@ -9,7 +9,7 @@ open WoofWare.Whippet.Plugin.Json
 open WoofWare.Whippet.Plugin.HttpClient
 open RestEase
 
-[<HttpClient>]
+[<HttpClient false>]
 type IVaultClient =
     [<Get "v1/{mountPoint}/{path}">]
     abstract GetSecret :

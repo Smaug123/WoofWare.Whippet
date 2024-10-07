@@ -9,7 +9,7 @@ open System.Net.Http
 open WoofWare.Whippet.Plugin.HttpClient
 open RestEase
 
-[<HttpClient>]
+[<HttpClient false>]
 [<BaseAddress "https://whatnot.com">]
 type IPureGymApi =
     [<Get("v1/gyms/")>]

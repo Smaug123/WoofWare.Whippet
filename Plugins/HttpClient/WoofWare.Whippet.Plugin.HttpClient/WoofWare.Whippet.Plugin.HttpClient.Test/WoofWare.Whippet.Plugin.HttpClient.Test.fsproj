@@ -8,18 +8,31 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="HttpClient.fs" />
+        <Compile Include="PureGymDtos.fs" />
+        <Compile Include="TestPureGymRestApi.fs" />
+        <Compile Include="TestPathParam.fs" />
+        <Compile Include="TestReturnTypes.fs" />
+        <Compile Include="TestAllowAnyStatusCode.fs" />
+        <Compile Include="TestBasePath.fs" />
+        <Compile Include="TestBodyParam.fs" />
+        <Compile Include="TestVaultClient.fs" />
+        <Compile Include="TestVariableHeader.fs" />
         <Compile Include="TestSurface.fs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ApiSurface" Version="4.1.6" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
-        <PackageReference Include="NUnit" Version="4.2.2"/>
-        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+      <PackageReference Include="ApiSurface" Version="4.1.6" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
+      <PackageReference Include="NUnit" Version="4.2.2"/>
+      <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+      <PackageReference Include="FsUnit" Version="6.0.1"/>
+      <PackageReference Include="RestEase" Version="1.6.4"/>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\WoofWare.Whippet.Plugin.HttpClient.Attributes\WoofWare.Whippet.Plugin.HttpClient.Attributes.fsproj" />
+      <ProjectReference Include="..\..\WoofWare.Whippet.Plugin.HttpClient.Consumer\WoofWare.Whippet.Plugin.HttpClient.Consumer.fsproj" />
       <ProjectReference Include="..\WoofWare.Whippet.Plugin.HttpClient.fsproj" />
     </ItemGroup>
 
