@@ -24,9 +24,14 @@
       <WhippetFile>swagger-gitea.json</WhippetFile>
       <WhippetParamClassName>Gitea</WhippetParamClassName>
     </Compile>
-    <Compile Include="Generated2SwaggerGitea.fs">
+    <Compile Include="GeneratedSwaggerGiteaMockAndJson.fs">
       <WhippetFile>GeneratedSwaggerGitea.fs</WhippetFile>
-      <WhippetParamIGitea>InterfaceMock!HttpClient</WhippetParamIGitea>
+      <WhippetParamIGitea>InterfaceMock</WhippetParamIGitea>
+    </Compile>
+    <Compile Include="GeneratedSwaggerGiteaHttpClient.fs">
+      <WhippetFile>GeneratedSwaggerGitea.fs</WhippetFile>
+      <WhippetParamIGitea>HttpClient</WhippetParamIGitea>
+      <WhippetSuppressPlugin>WoofWare.Whippet.Plugin.Json</WhippetSuppressPlugin>
     </Compile>
   </ItemGroup>
 

@@ -3358,7 +3358,7 @@ type LanguageStatistics =
     }
 
 /// This documentation describes the Gitea API.
-[<HttpClient false ; RestEase.BasePath "/api/v1">]
+[<RestEase.BasePath "/api/v1">]
 type IGitea =
     /// Returns the Person actor for a user
     [<RestEase.Get "activitypub/user/{username}">]

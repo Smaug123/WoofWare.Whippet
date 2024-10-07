@@ -492,7 +492,6 @@ module internal SwaggerClientGenerator =
         |> SynTypeDefn.create (
             let attrs =
                 [
-                    yield SynAttribute.create (SynLongIdent.createS' [ "HttpClient" ]) (SynExpr.CreateConst false)
                     yield
                         SynAttribute.create
                             (SynLongIdent.createS' [ "RestEase" ; "BasePath" ])
