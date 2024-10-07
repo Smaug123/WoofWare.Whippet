@@ -5,9 +5,8 @@ namespace WoofWare.Whippet.Plugin.HttpClient
 /// This generator is intended to replicate much of the functionality of RestEase,
 /// i.e. to stamp out HTTP REST clients from interfaces defining the API.
 ///
-/// If you supply isExtensionMethod = true, you will get extension methods.
-/// These can only be consumed from F#, but the benefit is that they don't use up the module name
-/// (since by default we create a module called "{TypeName}").
+/// If you supply isExtensionMethod = false, you will get a genuine module (which can
+/// be consumed from C#) rather than extension methods.
 type HttpClientAttribute (isExtensionMethod : bool) =
     inherit System.Attribute ()
     /// The default value of `isExtensionMethod`, the optional argument to the HttpClientAttribute constructor.
