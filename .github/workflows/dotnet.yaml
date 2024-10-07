@@ -174,12 +174,12 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nuget-package-argparser-attrs
-        path: Plugins/Json/WoofWare.Whippet.Plugin.ArgParser.Attributes/bin/Release/WoofWare.Whippet.Plugin.ArgParser.*.nupkg
+        path: Plugins/ArgParser/WoofWare.Whippet.Plugin.ArgParser.Attributes/bin/Release/WoofWare.Whippet.Plugin.ArgParser.*.nupkg
     - name: Upload NuGet artifact (argparser plugin)
       uses: actions/upload-artifact@v4
       with:
         name: nuget-package-argparser
-        path: Plugins/Json/WoofWare.Whippet.Plugin.ArgParser/bin/Release/WoofWare.Whippet.Plugin.ArgParser.*.nupkg
+        path: Plugins/ArgParser/WoofWare.Whippet.Plugin.ArgParser/bin/Release/WoofWare.Whippet.Plugin.ArgParser.*.nupkg
 
   expected-pack:
     needs: [nuget-pack]
