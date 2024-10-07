@@ -45,7 +45,8 @@ module Ast =
 
         let cfg = FormatConfig.Default
 
-        CodeFormatter.FormatASTAsync (parseTree, cfg) |> Async.RunSynchronously |> Some
+        let output = CodeFormatter.FormatASTAsync (parseTree, cfg) |> Async.RunSynchronously
+        Some output
 
     /// For each namespace in the AST, returns the types defined therein.
     let getTypes (ast : ParsedInput) : (LongIdent * SynTypeDefn list) list =

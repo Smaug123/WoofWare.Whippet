@@ -48,6 +48,7 @@
     <Compile Include="SynModuleOrNamespace.fs" />
     <Compile Include="AstHelper.fs" />
     <Compile Include="Ast.fs" />
+    <Compile Include="Measure.fs" />
     <None Include="README.md">
       <Pack>True</Pack>
       <PackagePath>/</PackagePath>

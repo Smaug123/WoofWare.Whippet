@@ -1,0 +1,24 @@
+WoofWare.Whippet.Plugin.ArgParser.ArgParserAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.ArgParserAttribute..ctor [constructor]: bool
+WoofWare.Whippet.Plugin.ArgParser.ArgParserAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.ArgParser.ArgParserAttribute.DefaultIsExtensionMethod [static property]: [read-only] bool
+WoofWare.Whippet.Plugin.ArgParser.ArgParserAttribute.get_DefaultIsExtensionMethod [static method]: unit -> bool
+WoofWare.Whippet.Plugin.ArgParser.ArgumentDefaultEnvironmentVariableAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.ArgumentDefaultEnvironmentVariableAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.ArgParser.ArgumentDefaultFunctionAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.ArgumentDefaultFunctionAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.ArgParser.ArgumentFlagAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.ArgumentFlagAttribute..ctor [constructor]: bool
+WoofWare.Whippet.Plugin.ArgParser.ArgumentHelpTextAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.ArgumentHelpTextAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.ArgParser.ArgumentLongForm inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.ArgumentLongForm..ctor [constructor]: string
+WoofWare.Whippet.Plugin.ArgParser.InvariantCultureAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.InvariantCultureAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.ArgParser.ParseExactAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.ParseExactAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.ArgParser.PositionalArgsAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.ArgParser.PositionalArgsAttribute..ctor [constructor]: bool
+WoofWare.Whippet.Plugin.ArgParser.PositionalArgsAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.ArgParser.PositionalArgsAttribute.DefaultIncludeFlagLike [static property]: [read-only] bool
+WoofWare.Whippet.Plugin.ArgParser.PositionalArgsAttribute.get_DefaultIncludeFlagLike [static method]: unit -> bool

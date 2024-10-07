@@ -1,11 +1,13 @@
 {
-  "version": "0.3",
+  "version": "0.1",
   "publicReleaseRefSpec": [
     "^refs/heads/main$"
   ],
   "pathFilters": [
     "./",
+    ":/WoofWare.Whippet.Core/",
     ":/WoofWare.Whippet.Fantomas/",
+    ":/Plugins/ArgParser/WoofWare.Whippet.Plugins.ArgParser.Attributes/",
     ":/global.json",
     ":/Directory.Build.props"
   ]

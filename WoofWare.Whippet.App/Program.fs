@@ -10,27 +10,27 @@ open WoofWare.Whippet.Core
 
 type Args =
     {
-        PluginDll : FileInfo
         InputFile : FileInfo
+        Plugins : FileInfo list
     }
 
 type WhippetTarget =
     {
         InputSource : FileInfo
         GeneratedDest : FileInfo
+        Params : Map<string, string>
     }
 
 module Program =
     let parseArgs (argv : string array) =
         let inputFile = argv.[0] |> FileInfo
-        let pluginDll = argv.[1] |> FileInfo
 
         {
             InputFile = inputFile
-            PluginDll = pluginDll
+            Plugins = argv.[1..] |> Seq.map FileInfo |> Seq.toList
         }
 
-    let getGenerateRawFromRaw (host : obj) : (RawSourceGenerationArgs -> string) option =
+    let getGenerateRawFromRaw (host : obj) : (RawSourceGenerationArgs -> string option) option =
         let pluginType = host.GetType ()
 
         let generateRawFromRaw =
@@ -71,7 +71,14 @@ module Program =
                 failwith
                     $"Expected GenerateRawFromRaw method to have return type `string`, but was: %s{retType.FullName}"
 
-            fun args -> generateRawFromRaw.Invoke (host, [| args |]) |> unbox<string>
+            fun args ->
+                let args =
+                    Activator.CreateInstance (
+                        pars.[0].ParameterType,
+                        [| box args.FilePath ; box args.FileContents ; box args.Parameters |]
+                    )
+
+                generateRawFromRaw.Invoke (host, [| args |]) |> unbox<string> |> Option.ofObj
             |> Some
 
     [<EntryPoint>]
@@ -113,17 +120,50 @@ module Program =
                 | None -> None
                 | Some myriadFile ->
 
+                let pars =
+                    metadata
+                    |> Map.toSeq
+                    |> Seq.choose (fun (key, value) ->
+                        if key.StartsWith ("WhippetParam", StringComparison.Ordinal) then
+                            Some (key.Substring "WhippetParam".Length, value)
+                        else
+                            None
+                    )
+                    |> Map.ofSeq
+
+                let inputSource =
+                    FileInfo (Path.Combine (Path.GetDirectoryName desiredProject.ProjectFileName, myriadFile))
+
+                let generatedDest = FileInfo fullPath
+
+                if inputSource.FullName = generatedDest.FullName then
+                    failwith $"Input source %s{inputSource.FullName} was identical to output path; aborting."
+
                 {
-                    GeneratedDest = FileInfo fullPath
-                    InputSource =
-                        FileInfo (Path.Combine (Path.GetDirectoryName desiredProject.ProjectFileName, myriadFile))
+                    GeneratedDest = generatedDest
+                    InputSource = inputSource
+                    Params = pars
                 }
                 |> Some
             )
 
-        Console.Error.WriteLine $"Loading plugin: %s{args.PluginDll.FullName}"
+        let runtime =
+            DotnetRuntime.locate (Assembly.GetExecutingAssembly().Location |> FileInfo)
 
-        let pluginAssembly = Assembly.LoadFrom args.PluginDll.FullName
+        let pluginDll =
+            match args.Plugins with
+            | [] -> failwith "must supply a plugin!"
+            | [ plugin ] -> plugin
+            | _ -> failwith "We don't yet support running more than one Whippet plugin in a given project file"
+
+        // TODO: should ideally loop over files, not plugins, so we fully generate a file before moving on to the next
+        // one
+
+        Console.Error.WriteLine $"Loading plugin: %s{pluginDll.FullName}"
+
+        let ctx = Ctx (pluginDll, runtime)
+
+        let pluginAssembly = ctx.LoadFromAssemblyPath pluginDll.FullName
 
         // We will look up any member called GenerateRawFromRaw and/or GenerateFromRaw.
         // It's your responsibility to decide whether to do anything with this call; you return null if you don't want
@@ -159,13 +199,15 @@ module Program =
                         {
                             RawSourceGenerationArgs.FilePath = item.InputSource.FullName
                             FileContents = fileContents
+                            Parameters = item.Params
                         }
 
                     let result = generateRawFromRaw args
 
                     match result with
-                    | null -> ()
-                    | result ->
+                    | None
+                    | Some null -> ()
+                    | Some result ->
                         Console.Error.WriteLine
                             $"Writing output for generator %s{plugin.Name} to file %s{item.GeneratedDest.FullName}"
 

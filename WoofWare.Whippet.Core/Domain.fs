@@ -1,5 +1,7 @@
 ﻿namespace WoofWare.Whippet.Core
 
+open System.Collections.Generic
+
 (*
 These types should take no dependencies and should only change additively; otherwise consumers will break!
 *)
@@ -18,6 +20,8 @@ type RawSourceGenerationArgs =
         FilePath : string
         /// Contents of the file; you might want to `System.Text.Encoding.UTF8.GetString` this.
         FileContents : byte[]
+        /// Extra parameters as supplied through the project file with <Whippet{ParamName}>{ParamValue}</Whippet{ParamName}>.
+        Parameters : IReadOnlyDictionary<string, string>
     }
 
 /// We provide this interface as a helper to give you compile-time safety, but you don't have to use it.

@@ -1,11 +1,13 @@
 WoofWare.Whippet.Core.IGenerateRawFromRaw - interface with 1 member(s)
 WoofWare.Whippet.Core.IGenerateRawFromRaw.GenerateRawFromRaw [method]: WoofWare.Whippet.Core.RawSourceGenerationArgs -> string
-WoofWare.Whippet.Core.RawSourceGenerationArgs inherit obj, implements WoofWare.Whippet.Core.RawSourceGenerationArgs System.IEquatable, System.Collections.IStructuralEquatable, WoofWare.Whippet.Core.RawSourceGenerationArgs System.IComparable, System.IComparable, System.Collections.IStructuralComparable
-WoofWare.Whippet.Core.RawSourceGenerationArgs..ctor [constructor]: (string, System.Byte [])
+WoofWare.Whippet.Core.RawSourceGenerationArgs inherit obj, implements WoofWare.Whippet.Core.RawSourceGenerationArgs System.IEquatable, System.Collections.IStructuralEquatable
+WoofWare.Whippet.Core.RawSourceGenerationArgs..ctor [constructor]: (string, System.Byte [], System.Collections.Generic.IReadOnlyDictionary<string, string>)
 WoofWare.Whippet.Core.RawSourceGenerationArgs.Equals [method]: (WoofWare.Whippet.Core.RawSourceGenerationArgs, System.Collections.IEqualityComparer) -> bool
 WoofWare.Whippet.Core.RawSourceGenerationArgs.FileContents [property]: [read-only] System.Byte []
 WoofWare.Whippet.Core.RawSourceGenerationArgs.FilePath [property]: [read-only] string
 WoofWare.Whippet.Core.RawSourceGenerationArgs.get_FileContents [method]: unit -> System.Byte []
 WoofWare.Whippet.Core.RawSourceGenerationArgs.get_FilePath [method]: unit -> string
+WoofWare.Whippet.Core.RawSourceGenerationArgs.get_Parameters [method]: unit -> System.Collections.Generic.IReadOnlyDictionary<string, string>
+WoofWare.Whippet.Core.RawSourceGenerationArgs.Parameters [property]: [read-only] System.Collections.Generic.IReadOnlyDictionary<string, string>
 WoofWare.Whippet.Core.WhippetGeneratorAttribute inherit System.Attribute
 WoofWare.Whippet.Core.WhippetGeneratorAttribute..ctor [constructor]: unit
