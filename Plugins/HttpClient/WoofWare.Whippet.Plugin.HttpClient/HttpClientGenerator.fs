@@ -135,10 +135,9 @@ module internal HttpClientGenerator =
     let extractHeaderInformation (attrs : SynAttribute list) : SynExpr list list =
         attrs
         |> List.choose (fun attr ->
-            match SynLongIdent.toString attr.TypeName with
+            match attr.TypeName.LongIdent |> List.last |> _.idText with
             | "Header"
-            | "RestEase.Header"
-            | "WoofWare.Myriad.Plugins.RestEase.Header" ->
+            | "HeaderAttribute" ->
                 match attr.ArgExpr with
                 | SynExpr.Paren (SynExpr.Tuple (_, [ v1 ; v2 ], _, _), _, _, _) ->
                     Some [ SynExpr.stripOptionalParen v1 ; SynExpr.stripOptionalParen v2 ]
@@ -646,11 +645,7 @@ module internal HttpClientGenerator =
     let getHttpAttributes (attrs : SynAttribute list) : HttpAttribute list =
         attrs
         |> List.choose (fun attr ->
-            match SynLongIdent.toString attr.TypeName with
-            | "RestEase.Query"
-            | "RestEase.QueryAttribute"
-            | "WoofWare.Myriad.Plugins.RestEase.Query"
-            | "WoofWare.Myriad.Plugins.RestEase.QueryAttribute"
+            match attr.TypeName.LongIdent |> List.last |> _.idText with
             | "Query"
             | "QueryAttribute" ->
                 match attr.ArgExpr with
@@ -659,10 +654,6 @@ module internal HttpClientGenerator =
                     Some (HttpAttribute.Query (Some s))
                 | SynExpr.Const (a, _) -> failwith $"unrecognised constant arg to the Query attribute: %+A{a}"
                 | _ -> None
-            | "RestEase.Path"
-            | "RestEase.PathAttribute"
-            | "WoofWare.Myriad.Plugins.RestEase.Path"
-            | "WoofWare.Myriad.Plugins.RestEase.PathAttribute"
             | "Path"
             | "PathAttribute" ->
                 match attr.ArgExpr |> SynExpr.stripOptionalParen with
@@ -671,10 +662,6 @@ module internal HttpClientGenerator =
                 | SynExpr.Const (SynConst.Unit, _) -> Some (HttpAttribute.Path PathSpec.MatchArgName)
                 | SynExpr.Const (a, _) -> failwith $"unrecognised constant arg to the Path attribute: %+A{a}"
                 | _ -> None
-            | "RestEase.Body"
-            | "RestEase.BodyAttribute"
-            | "WoofWare.Myriad.Plugins.RestEase.Body"
-            | "WoofWare.Myriad.Plugins.RestEase.BodyAttribute"
             | "Body"
             | "BodyAttribute" ->
                 match attr.ArgExpr with
@@ -687,26 +674,18 @@ module internal HttpClientGenerator =
     let extractBasePath (attrs : SynAttribute list) : SynExpr option =
         attrs
         |> List.tryPick (fun attr ->
-            match SynLongIdent.toString attr.TypeName with
+            match attr.TypeName.LongIdent |> List.last |> _.idText with
             | "BasePath"
-            | "RestEase.BasePath"
-            | "WoofWare.Myriad.Plugins.RestEase.BasePath"
-            | "BasePathAttribute"
-            | "RestEase.BasePathAttribute"
-            | "WoofWare.Myriad.Plugins.RestEase.BasePathAttribute" -> Some attr.ArgExpr
+            | "BasePathAttribute" -> Some attr.ArgExpr
             | _ -> None
         )
 
     let extractBaseAddress (attrs : SynAttribute list) : SynExpr option =
         attrs
         |> List.tryPick (fun attr ->
-            match SynLongIdent.toString attr.TypeName with
+            match attr.TypeName.LongIdent |> List.last |> _.idText with
             | "BaseAddress"
-            | "RestEase.BaseAddress"
-            | "WoofWare.Myriad.Plugins.RestEase.BaseAddress"
-            | "BaseAddressAttribute"
-            | "RestEase.BaseAddressAttribute"
-            | "WoofWare.Myriad.Plugins.RestEase.BaseAddressAttribute" -> Some attr.ArgExpr
+            | "BaseAddressAttribute" -> Some attr.ArgExpr
             | _ -> None
         )
 
