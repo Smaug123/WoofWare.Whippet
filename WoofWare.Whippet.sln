@@ -28,6 +28,14 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.Jso
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.App", "WoofWare.Whippet.App\WoofWare.Whippet.App.fsproj", "{A2258153-1C1F-4B25-B49A-BCC8EA4A3278}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.HttpClient", "Plugins\HttpClient\WoofWare.Whippet.Plugin.HttpClient\WoofWare.Whippet.Plugin.HttpClient.fsproj", "{53352296-A95F-4153-BABB-BF1D4B1C3531}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.HttpClient.Attributes", "Plugins\HttpClient\WoofWare.Whippet.Plugin.HttpClient.Attributes\WoofWare.Whippet.Plugin.HttpClient.Attributes.fsproj", "{985634CD-739C-43E4-8469-C75C20DC7D9F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.HttpClient.Consumer", "Plugins\HttpClient\WoofWare.Whippet.Plugin.HttpClient.Consumer\WoofWare.Whippet.Plugin.HttpClient.Consumer.fsproj", "{6754719D-E942-4EBE-AB2B-6FAD997DB685}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.HttpClient.Test", "Plugins\HttpClient\WoofWare.Whippet.Plugin.HttpClient\WoofWare.Whippet.Plugin.HttpClient.Test\WoofWare.Whippet.Plugin.HttpClient.Test.fsproj", "{4DDD15F1-F273-441B-92F3-76BD9C089529}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,5 +98,21 @@ Global
 		{A2258153-1C1F-4B25-B49A-BCC8EA4A3278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2258153-1C1F-4B25-B49A-BCC8EA4A3278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2258153-1C1F-4B25-B49A-BCC8EA4A3278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53352296-A95F-4153-BABB-BF1D4B1C3531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53352296-A95F-4153-BABB-BF1D4B1C3531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53352296-A95F-4153-BABB-BF1D4B1C3531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53352296-A95F-4153-BABB-BF1D4B1C3531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{985634CD-739C-43E4-8469-C75C20DC7D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{985634CD-739C-43E4-8469-C75C20DC7D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{985634CD-739C-43E4-8469-C75C20DC7D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{985634CD-739C-43E4-8469-C75C20DC7D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6754719D-E942-4EBE-AB2B-6FAD997DB685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6754719D-E942-4EBE-AB2B-6FAD997DB685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6754719D-E942-4EBE-AB2B-6FAD997DB685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6754719D-E942-4EBE-AB2B-6FAD997DB685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DDD15F1-F273-441B-92F3-76BD9C089529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DDD15F1-F273-441B-92F3-76BD9C089529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DDD15F1-F273-441B-92F3-76BD9C089529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DDD15F1-F273-441B-92F3-76BD9C089529}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

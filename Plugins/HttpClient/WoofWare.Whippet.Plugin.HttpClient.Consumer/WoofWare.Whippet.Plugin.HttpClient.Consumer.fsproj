@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="PureGymDto.fs" />
+      <Compile Include="GeneratedPureGymDto.fs">
+        <WhippetFile>PureGymDto.fs</WhippetFile>
+      </Compile>
+      <Compile Include="RestApiExample.fs"/>
+      <Compile Include="GeneratedRestClient.fs">
+        <WhippetFile>RestApiExample.fs</WhippetFile>
+      </Compile>
+      <Compile Include="VaultDto.fs" />
+      <Compile Include="GeneratedVaultDto.fs">
+        <WhippetFile>VaultDto.fs</WhippetFile>
+      </Compile>
+      <Compile Include="Vault.fs" />
+      <Compile Include="GeneratedVault.fs">
+        <WhippetFile>Vault.fs</WhippetFile>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Json\WoofWare.Whippet.Plugin.Json.Attributes\WoofWare.Whippet.Plugin.Json.Attributes.fsproj" />
+      <ProjectReference Include="..\WoofWare.Whippet.Plugin.HttpClient.Attributes\WoofWare.Whippet.Plugin.HttpClient.Attributes.fsproj" />
+      
+      <ProjectReference Include="..\WoofWare.Whippet.Plugin.HttpClient\WoofWare.Whippet.Plugin.HttpClient.fsproj" WhippetPlugin="true" />
+      <ProjectReference Include="..\..\Json\WoofWare.Whippet.Plugin.Json\WoofWare.Whippet.Plugin.Json.fsproj" WhippetPlugin="true" />
+      <!-- Dance to get a binary dependency on a locally-built Whippet -->
+      <PackageReference Include="WoofWare.Whippet" Version="*-*" PrivateAssets="all" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="RestEase" Version="1.6.4" />
+    </ItemGroup>
+
+</Project>
