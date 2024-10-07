@@ -184,12 +184,12 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nuget-package-httpclient-attrs
-        path: Plugins/ArgParser/WoofWare.Whippet.Plugin.HttpClient.Attributes/bin/Release/WoofWare.Whippet.Plugin.HttpClient.*.nupkg
+        path: Plugins/HttpClient/WoofWare.Whippet.Plugin.HttpClient.Attributes/bin/Release/WoofWare.Whippet.Plugin.HttpClient.*.nupkg
     - name: Upload NuGet artifact (httpclient plugin)
       uses: actions/upload-artifact@v4
       with:
         name: nuget-package-httpclient
-        path: Plugins/ArgParser/WoofWare.Whippet.Plugin.HttpClient/bin/Release/WoofWare.Whippet.Plugin.HttpClient.*.nupkg
+        path: Plugins/HttpClient/WoofWare.Whippet.Plugin.HttpClient/bin/Release/WoofWare.Whippet.Plugin.HttpClient.*.nupkg
 
   expected-pack:
     needs: [nuget-pack]
