@@ -190,6 +190,28 @@ jobs:
         # Verify that there is exactly one nupkg in the artifact that would be NuGet published
         run: if [[ $(find packed-fantomas -maxdepth 1 -name 'WoofWare.Whippet.Fantomas.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
 
+  check-accurate-generations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # so that NerdBank.GitVersioning has access to history
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Whitespace change to invalidate all caches
+        run: |
+            find . -type f -name '*.fs' -exec bash -c "echo ' ' >> '{}'" \;
+      - name: Generate code
+        run: nix develop --command dotnet build
+      - name: Run Fantomas
+        run: nix run .#fantomas -- .
+      - name: Verify there is no diff
+        run: git diff --name-only --no-color --exit-cod*e
+
   all-required-checks-complete:
     needs: [check-dotnet-format, check-nix-format, build, build-nix, linkcheck, flake-check, nuget-pack, expected-pack, analyzers]
     if: ${{ always() }}
