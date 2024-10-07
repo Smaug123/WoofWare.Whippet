@@ -256,6 +256,7 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       - name: Whitespace change to invalidate all caches
         run: |
+            find . -type f -name '*.fs' -exec bash -c "echo ' ' >> '{}'" \;
             find . -type f -name 'Generated*.fs' -exec bash -c "rm '{}'" \;
       - name: Generate code
         run: nix develop --command dotnet build
