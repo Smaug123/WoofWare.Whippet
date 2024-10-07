@@ -20,8 +20,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="DesiredGenerator.fs" />
-        <Compile Include="HttpClientGenerator.fs" />
+      <Compile Include="DesiredGenerator.fs" />
+      <Compile Include="HttpClientGenerator.fs" />
+      <EmbeddedResource Include="version.json" />
+      <None Include="README.md">
+        <Pack>True</Pack>
+        <PackagePath>/</PackagePath>
+        <Link>README.md</Link>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
