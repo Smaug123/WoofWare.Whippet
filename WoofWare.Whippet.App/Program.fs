@@ -150,70 +150,66 @@ module Program =
         let runtime =
             DotnetRuntime.locate (Assembly.GetExecutingAssembly().Location |> FileInfo)
 
-        let pluginDll =
-            match args.Plugins with
-            | [] -> failwith "must supply a plugin!"
-            | [ plugin ] -> plugin
-            | _ -> failwith "We don't yet support running more than one Whippet plugin in a given project file"
+        let plugins =
+            args.Plugins
+            |> List.map (fun pluginDll ->
+                let ctx = Ctx (pluginDll, runtime)
 
-        // TODO: should ideally loop over files, not plugins, so we fully generate a file before moving on to the next
-        // one
+                let pluginAssembly = ctx.LoadFromAssemblyPath pluginDll.FullName
 
-        Console.Error.WriteLine $"Loading plugin: %s{pluginDll.FullName}"
+                // We will look up any member called GenerateRawFromRaw and/or GenerateFromRaw.
+                // It's your responsibility to decide whether to do anything with this call; you return null if you don't want
+                // to do anything.
+                // Alternatively, return the text you want to output.
+                // We provide you with the input file contents.
+                // GenerateRawFromRaw should return plain text.
+                // GenerateFromRaw should return a Fantomas AST.
+                let applicablePlugins =
+                    pluginAssembly.ExportedTypes
+                    |> Seq.choose (fun ty ->
+                        if
+                            ty.CustomAttributes
+                            |> Seq.exists (fun attr ->
+                                attr.AttributeType.Name = typeof<WhippetGeneratorAttribute>.Name
+                            )
+                        then
+                            Some (ty, Activator.CreateInstance ty)
+                        else
+                            None
+                    )
+                    |> Seq.toList
 
-        let ctx = Ctx (pluginDll, runtime)
-
-        let pluginAssembly = ctx.LoadFromAssemblyPath pluginDll.FullName
-
-        // We will look up any member called GenerateRawFromRaw and/or GenerateFromRaw.
-        // It's your responsibility to decide whether to do anything with this call; you return null if you don't want
-        // to do anything.
-        // Alternatively, return the text you want to output.
-        // We provide you with the input file contents.
-        // GenerateRawFromRaw should return plain text.
-        // GenerateFromRaw should return a Fantomas AST.
-        let applicablePlugins =
-            pluginAssembly.ExportedTypes
-            |> Seq.choose (fun ty ->
-                if
-                    ty.CustomAttributes
-                    |> Seq.exists (fun attr -> attr.AttributeType.Name = typeof<WhippetGeneratorAttribute>.Name)
-                then
-                    Some (ty, Activator.CreateInstance ty)
-                else
-                    None
+                pluginDll, applicablePlugins
             )
-            |> Seq.toList
 
         for item in toGenerate do
             use output = item.GeneratedDest.Open (FileMode.Create, FileAccess.Write)
             use outputWriter = new StreamWriter (output, leaveOpen = true)
 
-            for plugin, hostClass in applicablePlugins do
-                match getGenerateRawFromRaw hostClass with
-                | None -> ()
-                | Some generateRawFromRaw ->
-                    let fileContents = File.ReadAllBytes item.InputSource.FullName
+            for _, applicablePlugins in plugins do
+                for plugin, hostClass in applicablePlugins do
+                    match getGenerateRawFromRaw hostClass with
+                    | None -> ()
+                    | Some generateRawFromRaw ->
+                        let fileContents = File.ReadAllBytes item.InputSource.FullName
 
-                    let args =
-                        {
-                            RawSourceGenerationArgs.FilePath = item.InputSource.FullName
-                            FileContents = fileContents
-                            Parameters = item.Params
-                        }
+                        let args =
+                            {
+                                RawSourceGenerationArgs.FilePath = item.InputSource.FullName
+                                FileContents = fileContents
+                                Parameters = item.Params
+                            }
 
-                    let result = generateRawFromRaw args
+                        let result = generateRawFromRaw args
 
-                    match result with
-                    | None
-                    | Some null -> ()
-                    | Some result ->
-                        Console.Error.WriteLine
-                            $"Writing output for generator %s{plugin.Name} to file %s{item.GeneratedDest.FullName}"
+                        match result with
+                        | None
+                        | Some null -> ()
+                        | Some result ->
+                            Console.Error.WriteLine
+                                $"Writing output for generator %s{plugin.Name} to file %s{item.GeneratedDest.FullName}"
 
-                        outputWriter.Write result
-                        outputWriter.Write "\n"
-
-                    ()
+                            outputWriter.Write result
+                            outputWriter.Write "\n"
 
         0

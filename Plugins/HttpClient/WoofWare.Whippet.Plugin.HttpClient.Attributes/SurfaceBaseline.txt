@@ -1,0 +1,41 @@
+WoofWare.Whippet.Plugin.HttpClient.HttpClientAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.HttpClientAttribute..ctor [constructor]: bool
+WoofWare.Whippet.Plugin.HttpClient.HttpClientAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.HttpClient.HttpClientAttribute.DefaultIsExtensionMethod [static property]: [read-only] bool
+WoofWare.Whippet.Plugin.HttpClient.HttpClientAttribute.get_DefaultIsExtensionMethod [static method]: unit -> bool
+WoofWare.Whippet.Plugin.HttpClient.RestEase inherit obj
+WoofWare.Whippet.Plugin.HttpClient.RestEase+AllowAnyStatusCodeAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+AllowAnyStatusCodeAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.HttpClient.RestEase+BaseAddressAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+BaseAddressAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+BasePathAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+BasePathAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+BodyAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+BodyAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.HttpClient.RestEase+DeleteAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+DeleteAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+GetAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+GetAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+HeadAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+HeadAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+HeaderAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+HeaderAttribute..ctor [constructor]: (string, string option)
+WoofWare.Whippet.Plugin.HttpClient.RestEase+HeaderAttribute..ctor [constructor]: (string, string)
+WoofWare.Whippet.Plugin.HttpClient.RestEase+HeaderAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+OptionsAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+OptionsAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PatchAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PatchAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PathAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PathAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PathAttribute..ctor [constructor]: string option
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PathAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PostAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PostAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PutAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+PutAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+QueryAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+QueryAttribute..ctor [constructor]: string
+WoofWare.Whippet.Plugin.HttpClient.RestEase+QueryAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.HttpClient.RestEase+TraceAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.HttpClient.RestEase+TraceAttribute..ctor [constructor]: string

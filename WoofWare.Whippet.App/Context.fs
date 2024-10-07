@@ -8,11 +8,7 @@ type Ctx (dll : FileInfo, runtimes : DirectoryInfo list) =
     inherit AssemblyLoadContext ()
 
     override this.Load (target : AssemblyName) : Assembly =
-        let path = Path.Combine (dll.Directory.FullName, $"%s{target.Name}.dll")
-
-        if File.Exists path then
-            this.LoadFromAssemblyPath path
-        else
+        let localPath = Path.Combine (dll.Directory.FullName, $"%s{target.Name}.dll")
 
         runtimes
         |> List.tryPick (fun di ->
@@ -23,4 +19,9 @@ type Ctx (dll : FileInfo, runtimes : DirectoryInfo list) =
             else
                 None
         )
-        |> Option.defaultValue null
+        |> Option.defaultWith (fun () ->
+            if File.Exists localPath then
+                this.LoadFromAssemblyPath localPath
+            else
+                null
+        )

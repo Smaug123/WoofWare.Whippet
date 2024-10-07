@@ -6,13 +6,13 @@ open Fantomas.FCS.Syntax
 open WoofWare.Whippet.Core
 open WoofWare.Whippet.Fantomas
 
-type internal JsonSerializeOutputSpec =
+type JsonSerializeOutputSpec =
     {
         ExtensionMethods : bool
     }
 
 [<RequireQualifiedAccess>]
-module internal JsonSerializeGenerator =
+module JsonSerializeGenerator =
     open Fantomas.FCS.Text.Range
 
 

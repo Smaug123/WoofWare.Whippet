@@ -7,13 +7,13 @@ open Fantomas.FCS.SyntaxTrivia
 open WoofWare.Whippet.Core
 open WoofWare.Whippet.Fantomas
 
-type internal JsonParseOutputSpec =
+type JsonParseOutputSpec =
     {
         ExtensionMethods : bool
     }
 
 [<RequireQualifiedAccess>]
-module internal JsonParseGenerator =
+module JsonParseGenerator =
     open Fantomas.FCS.Text.Range
 
     type JsonParseOption =
