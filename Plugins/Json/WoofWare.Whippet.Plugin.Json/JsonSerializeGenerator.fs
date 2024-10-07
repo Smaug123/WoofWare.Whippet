@@ -555,7 +555,7 @@ type JsonSerializeGenerator () =
                                 desired
                                 |> List.tryPick (fun generator ->
                                     match generator with
-                                    | DesiredGenerator.JsonSerialize arg ->
+                                    | Some (DesiredGenerator.JsonSerialize arg) ->
                                         let spec =
                                             {
                                                 ExtensionMethods =

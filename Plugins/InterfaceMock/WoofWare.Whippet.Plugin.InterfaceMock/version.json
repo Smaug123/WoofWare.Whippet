@@ -5,8 +5,6 @@
   ],
   "pathFilters": [
     "./",
-    ":/Plugins/Json/WoofWare.Whippet.Plugin.Json",
-    "!:/Plugins/Json/WoofWare.Whippet.Plugin.Json/WoofWare.Whippet.Plugin.Json.Test/",
     ":/WoofWare.Whippet.Core/",
     ":/WoofWare.Whippet.Fantomas/",
     ":/global.json",
