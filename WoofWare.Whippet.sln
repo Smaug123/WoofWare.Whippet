@@ -42,6 +42,14 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.Int
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.InterfaceMock.Test", "Plugins\InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.Test\WoofWare.Whippet.Plugin.InterfaceMock.Test.fsproj", "{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.Swagger", "Plugins\Swagger\WoofWare.Whippet.Plugin.Swagger\WoofWare.Whippet.Plugin.Swagger.fsproj", "{114895ED-FE7A-498B-9F60-FECA85A88422}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.Swagger.Consumer", "Plugins\Swagger\WoofWare.Whippet.Plugin.Swagger.Consumer\WoofWare.Whippet.Plugin.Swagger.Consumer.fsproj", "{0E6A57A6-FCB5-4D57-8C4B-9081D347028C}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.Swagger.Test", "Plugins\Swagger\WoofWare.Whippet.Plugin.Swagger\WoofWare.Whippet.Plugin.Swagger.Test\WoofWare.Whippet.Plugin.Swagger.Test.fsproj", "{320D227C-6C26-4B62-8DD4-0EA420C36D7E}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.InterfaceMock.Attributes", "Plugins\InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.Attributes\WoofWare.Whippet.Plugin.InterfaceMock.Attributes.fsproj", "{A3DCC00E-AA51-408B-93C3-5F227CFFCBD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,5 +140,21 @@ Global
 		{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114895ED-FE7A-498B-9F60-FECA85A88422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114895ED-FE7A-498B-9F60-FECA85A88422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114895ED-FE7A-498B-9F60-FECA85A88422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114895ED-FE7A-498B-9F60-FECA85A88422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E6A57A6-FCB5-4D57-8C4B-9081D347028C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6A57A6-FCB5-4D57-8C4B-9081D347028C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6A57A6-FCB5-4D57-8C4B-9081D347028C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6A57A6-FCB5-4D57-8C4B-9081D347028C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320D227C-6C26-4B62-8DD4-0EA420C36D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320D227C-6C26-4B62-8DD4-0EA420C36D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320D227C-6C26-4B62-8DD4-0EA420C36D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320D227C-6C26-4B62-8DD4-0EA420C36D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3DCC00E-AA51-408B-93C3-5F227CFFCBD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3DCC00E-AA51-408B-93C3-5F227CFFCBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3DCC00E-AA51-408B-93C3-5F227CFFCBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3DCC00E-AA51-408B-93C3-5F227CFFCBD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
