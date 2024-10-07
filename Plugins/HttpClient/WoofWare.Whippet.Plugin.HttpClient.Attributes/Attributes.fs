@@ -1,6 +1,6 @@
 namespace WoofWare.Whippet.Plugin.HttpClient
 
-/// Attribute indicating a record type to which the "create HTTP client" Myriad
+/// Attribute indicating a record type to which the "create HTTP client" Whippet
 /// generator should apply during build.
 /// This generator is intended to replicate much of the functionality of RestEase,
 /// i.e. to stamp out HTTP REST clients from interfaces defining the API.
