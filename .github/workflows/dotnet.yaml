@@ -139,10 +139,10 @@ jobs:
       with:
         extra_nix_config: |
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-    - name: Restore dependencies
-      run: nix develop --command dotnet restore
-    - name: Build
-      run: nix develop --command dotnet build --no-restore --configuration Release
+    - name: Build source generator
+      run: nix develop --command dotnet build WoofWare.Whippet/
+    - name: Build solution
+      run: nix develop --command dotnet build --configuration Release
     - name: Pack
       run: nix develop --command dotnet pack --configuration Release
     - name: Upload NuGet artifact (runner)

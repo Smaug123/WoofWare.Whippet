@@ -26,10 +26,19 @@
         </None>
       <Content Include="build\WoofWare.Whippet.targets" PackagePath="build" />
       <EmbeddedResource Include="version.json" />
-      <None Include="../WoofWare.Whippet.App/bin/$(Configuration)/$(TargetFramework)/*" Pack="true" PackagePath="tools/$(TargetFramework)/any/" />
     </ItemGroup>
   
     <ItemGroup>
       <ProjectReference Include="..\WoofWare.Whippet.App\WoofWare.Whippet.App.fsproj" PrivateAssets="all" />
     </ItemGroup>
+
+  <PropertyGroup>
+    <DependsOnTargets>Build;_CopyFilesMarkedCopyLocal</DependsOnTargets>
+  </PropertyGroup>
+
+  <Target Name="PackAfterWhippetBuild" AfterTargets="Build">
+    <ItemGroup>
+      <None Include="../WoofWare.Whippet.App/bin/$(Configuration)/$(TargetFramework)/*" Pack="true" PackagePath="tools/$(TargetFramework)/any/" />
+    </ItemGroup>
+  </Target>
 </Project>
