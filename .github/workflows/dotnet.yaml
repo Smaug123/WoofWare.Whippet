@@ -258,6 +258,8 @@ jobs:
         run: |
             find . -type f -name '*.fs' -exec bash -c "echo ' ' >> '{}'" \;
             find . -type f -name 'Generated*.fs' -exec bash -c "rm '{}'" \;
+      - name: Build Whippet
+        run: nix develop --command dotnet build WoofWare.Whippet
       - name: Generate code
         run: nix develop --command dotnet build
       - name: Run Fantomas
