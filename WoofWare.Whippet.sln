@@ -36,6 +36,12 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.Htt
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.HttpClient.Test", "Plugins\HttpClient\WoofWare.Whippet.Plugin.HttpClient\WoofWare.Whippet.Plugin.HttpClient.Test\WoofWare.Whippet.Plugin.HttpClient.Test.fsproj", "{4DDD15F1-F273-441B-92F3-76BD9C089529}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.InterfaceMock", "Plugins\InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.fsproj", "{C69E6668-87D9-4371-ACB3-2E671938A598}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.InterfaceMock.Consumer", "Plugins\InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.Consumer\WoofWare.Whippet.Plugin.InterfaceMock.Consumer.fsproj", "{65C9BCE0-00CD-4CAE-AB0F-A9194B34ABAA}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WoofWare.Whippet.Plugin.InterfaceMock.Test", "Plugins\InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.Test\WoofWare.Whippet.Plugin.InterfaceMock.Test.fsproj", "{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,5 +120,17 @@ Global
 		{4DDD15F1-F273-441B-92F3-76BD9C089529}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DDD15F1-F273-441B-92F3-76BD9C089529}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DDD15F1-F273-441B-92F3-76BD9C089529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69E6668-87D9-4371-ACB3-2E671938A598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C69E6668-87D9-4371-ACB3-2E671938A598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C69E6668-87D9-4371-ACB3-2E671938A598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C69E6668-87D9-4371-ACB3-2E671938A598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65C9BCE0-00CD-4CAE-AB0F-A9194B34ABAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C9BCE0-00CD-4CAE-AB0F-A9194B34ABAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C9BCE0-00CD-4CAE-AB0F-A9194B34ABAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C9BCE0-00CD-4CAE-AB0F-A9194B34ABAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0D4C01-66CD-4E91-9DA5-9ED4F3319AFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

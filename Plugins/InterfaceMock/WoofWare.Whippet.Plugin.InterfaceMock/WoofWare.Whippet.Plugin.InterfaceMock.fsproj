@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>netstandard2.1</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <Authors>Patrick Stevens</Authors>
+      <Copyright>Copyright (c) Patrick Stevens 2024</Copyright>
+      <Description>Whippet F# source generator plugin, for generating records that mock an interface.</Description>
+      <RepositoryType>git</RepositoryType>
+      <RepositoryUrl>https://github.com/Smaug123/WoofWare.Whippet</RepositoryUrl>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
+      <PackageTags>fsharp;source-generator;source-gen;whippet;mock</PackageTags>
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <WarnOn>FS3559</WarnOn>
+      <PackageId>WoofWare.Whippet.Plugin.InterfaceMock</PackageId>
+      <DevelopmentDependency>true</DevelopmentDependency>
+      <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+      <NoWarn>NU5118</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="DesiredGenerator.fs" />
+      <Compile Include="InterfaceMockGenerator.fs" />
+      <None Include="README.md">
+        <Pack>True</Pack>
+        <PackagePath>/</PackagePath>
+        <Link>README.md</Link>
+      </None>
+      <EmbeddedResource Include="version.json" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
+    <ProjectReference Include="..\..\..\WoofWare.Whippet.Fantomas\WoofWare.Whippet.Fantomas.fsproj" />
+  </ItemGroup>
+
+</Project>

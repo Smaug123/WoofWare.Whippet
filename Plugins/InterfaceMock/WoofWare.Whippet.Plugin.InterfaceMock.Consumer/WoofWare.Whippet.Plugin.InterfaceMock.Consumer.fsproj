@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="AssemblyInfo.fs" />
+      <Compile Include="MockExample.fs" />
+      <Compile Include="GeneratedMockExample.fs">
+        <WhippetFile>MockExample.fs</WhippetFile>
+        <WhippetParamIPublicTypeNoAttr>InterfaceMock</WhippetParamIPublicTypeNoAttr>
+        <WhippetParamIPublicTypeNoAttr>InterfaceMock</WhippetParamIPublicTypeNoAttr>
+        <WhippetParamIPublicTypeInternalFalseNoAttr>InterfaceMock(false)</WhippetParamIPublicTypeInternalFalseNoAttr>
+        <WhippetParamInternalTypeNoAttr>InterfaceMock</WhippetParamInternalTypeNoAttr>
+        <WhippetParamPrivateTypeNoAttr>InterfaceMock</WhippetParamPrivateTypeNoAttr>
+        <WhippetParamPrivateTypeInternalFalseNoAttr>InterfaceMock(false)</WhippetParamPrivateTypeInternalFalseNoAttr>
+        <WhippetParamVeryPublicTypeNoAttr>InterfaceMock</WhippetParamVeryPublicTypeNoAttr>
+        <WhippetParamCurriedNoAttr>InterfaceMock</WhippetParamCurriedNoAttr>
+        <WhippetParamTypeWithInterfaceNoAttr>InterfaceMock</WhippetParamTypeWithInterfaceNoAttr>
+      </Compile>
+      <Compile Include="MockExample2.fs" />
+      <Compile Include="GeneratedMockExample2.fs">
+        <WhippetFile>MockExample2.fs</WhippetFile>
+        <WhippetParamIPublicType>InterfaceMock</WhippetParamIPublicType>
+        <WhippetParamIPublicTypeInternalFalse>InterfaceMock(false)</WhippetParamIPublicTypeInternalFalse>
+        <WhippetParamInternalType>InterfaceMock</WhippetParamInternalType>
+        <WhippetParamPrivateType>InterfaceMock</WhippetParamPrivateType>
+        <WhippetParamPrivateTypeInternalFalse>InterfaceMock(false)</WhippetParamPrivateTypeInternalFalse>
+        <WhippetParamVeryPublicType>InterfaceMock</WhippetParamVeryPublicType>
+        <WhippetParamCurried>InterfaceMock</WhippetParamCurried>
+        <WhippetParamTypeWithInterface>InterfaceMock</WhippetParamTypeWithInterface>
+      </Compile>
+    </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.fsproj" WhippetPlugin="true" />
+    <!-- Dance to get a binary dependency on a locally-built Whippet -->
+    <!-- ProjectReference Include="..\..\..\WoofWare.Whippet\WoofWare.Whippet.fsproj" PrivateAssets="all" -->
+    <PackageReference Include="WoofWare.Whippet" Version="*-*" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

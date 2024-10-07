@@ -739,7 +739,7 @@ type JsonParseGenerator () =
                                 desired
                                 |> List.tryPick (fun generator ->
                                     match generator with
-                                    | DesiredGenerator.JsonParse arg ->
+                                    | Some (DesiredGenerator.JsonParse arg) ->
                                         let spec =
                                             {
                                                 ExtensionMethods =
