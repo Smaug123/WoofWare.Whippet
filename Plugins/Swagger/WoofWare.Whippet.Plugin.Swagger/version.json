@@ -5,6 +5,7 @@
   ],
   "pathFilters": [
     "./",
+    "!./WoofWare.Whippet.Plugin.Swagger.Test/",
     ":/WoofWare.Whippet.Core/",
     ":/WoofWare.Whippet.Fantomas/",
     ":/global.json",
