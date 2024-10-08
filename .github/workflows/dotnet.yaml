@@ -150,11 +150,6 @@ jobs:
       with:
         name: nuget-package-runner
         path: WoofWare.Whippet/bin/Release/WoofWare.Whippet.*.nupkg
-    - name: Upload NuGet artifact (Core)
-      uses: actions/upload-artifact@v4
-      with:
-        name: nuget-package-core
-        path: WoofWare.Whippet.Core/bin/Release/WoofWare.Whippet.Core.*.nupkg
     - name: Upload NuGet artifact (core)
       uses: actions/upload-artifact@v4
       with:
@@ -231,14 +226,6 @@ jobs:
       - name: Check NuGet contents
         # Verify that there is exactly one nupkg in the artifact that would be NuGet published
         run: if [[ $(find packed-runner -maxdepth 1 -name 'WoofWare.Whippet.Core.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
-      - name: Download NuGet artifact (core)
-        uses: actions/download-artifact@v4
-        with:
-          name: nuget-package-core
-          path: packed-core
-      - name: Check NuGet contents
-        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
-        run: if [[ $(find packed-core -maxdepth 1 -name 'WoofWare.Whippet.Core.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
       - name: Download NuGet artifact (Fantomas)
         uses: actions/download-artifact@v4
         with:
