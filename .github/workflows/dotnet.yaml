@@ -150,6 +150,11 @@ jobs:
       with:
         name: nuget-package-runner
         path: WoofWare.Whippet/bin/Release/WoofWare.Whippet.*.nupkg
+    - name: Upload NuGet artifact (Core)
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-package-core
+        path: WoofWare.Whippet.Core/bin/Release/WoofWare.Whippet.Core.*.nupkg
     - name: Upload NuGet artifact (core)
       uses: actions/upload-artifact@v4
       with:
@@ -218,6 +223,14 @@ jobs:
       - name: Check NuGet contents
         # Verify that there is exactly one nupkg in the artifact that would be NuGet published
         run: if [[ $(find packed-runner -maxdepth 1 -name 'WoofWare.Whippet.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+      - name: Download NuGet artifact (core)
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-core
+          path: packed-runner
+      - name: Check NuGet contents
+        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
+        run: if [[ $(find packed-runner -maxdepth 1 -name 'WoofWare.Whippet.Core.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
       - name: Download NuGet artifact (core)
         uses: actions/download-artifact@v4
         with:
@@ -370,6 +383,39 @@ jobs:
         uses: G-Research/common-actions/publish-nuget@2b7dc49cb14f3344fbe6019c14a31165e258c059
         with:
           package-name: WoofWare.Whippet
+          nuget-key: ${{ secrets.NUGET_API_KEY }}
+          nupkg-dir: packed/
+          dotnet: ${{ steps.dotnet-identify.outputs.dotnet }}
+
+  nuget-publish-core:
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.repository.fork && github.ref == 'refs/heads/main' }}
+    needs: [all-required-checks-complete]
+    environment: main-deploy
+    permissions:
+      id-token: write
+      attestations: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Download NuGet artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-core
+          path: packed
+      - name: Identify `dotnet`
+        id: dotnet-identify
+        run: nix develop --command bash -c 'echo "dotnet=$(which dotnet)" >> $GITHUB_OUTPUT'
+      - name: Publish to NuGet
+        id: publish-success
+        uses: G-Research/common-actions/publish-nuget@2b7dc49cb14f3344fbe6019c14a31165e258c059
+        with:
+          package-name: WoofWare.Whippet.Core
           nuget-key: ${{ secrets.NUGET_API_KEY }}
           nupkg-dir: packed/
           dotnet: ${{ steps.dotnet-identify.outputs.dotnet }}
