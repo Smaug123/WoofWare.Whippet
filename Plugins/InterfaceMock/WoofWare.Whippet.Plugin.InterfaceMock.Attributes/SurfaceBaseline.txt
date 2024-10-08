@@ -1,0 +1,5 @@
+WoofWare.Whippet.Plugin.InterfaceMock.InterfaceMockAttribute inherit System.Attribute
+WoofWare.Whippet.Plugin.InterfaceMock.InterfaceMockAttribute..ctor [constructor]: bool
+WoofWare.Whippet.Plugin.InterfaceMock.InterfaceMockAttribute..ctor [constructor]: unit
+WoofWare.Whippet.Plugin.InterfaceMock.InterfaceMockAttribute.DefaultIsInternal [static property]: [read-only] bool
+WoofWare.Whippet.Plugin.InterfaceMock.InterfaceMockAttribute.get_DefaultIsInternal [static method]: unit -> bool

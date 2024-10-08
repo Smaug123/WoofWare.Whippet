@@ -8,18 +8,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="TestMockGenerator.fs" />
-        <Compile Include="TestMockGeneratorNoAttr.fs" />
+      <Compile Include="TestMockGenerator.fs" />
+      <Compile Include="TestMockGeneratorNoAttr.fs" />
+      <Compile Include="TestSurface.fs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FsUnit" Version="6.0.1" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
-        <PackageReference Include="NUnit" Version="4.2.2"/>
-        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+      <PackageReference Include="FsUnit" Version="6.0.1" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/>
+      <PackageReference Include="NUnit" Version="4.2.2"/>
+      <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+      <PackageReference Include="ApiSurface" Version="4.1.6"/>
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\WoofWare.Whippet.Plugin.InterfaceMock.Attributes\WoofWare.Whippet.Plugin.InterfaceMock.Attributes.fsproj" />
       <ProjectReference Include="..\..\WoofWare.Whippet.Plugin.InterfaceMock.Consumer\WoofWare.Whippet.Plugin.InterfaceMock.Consumer.fsproj" />
     </ItemGroup>
 
