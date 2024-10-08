@@ -36,7 +36,7 @@
     </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.fsproj" WhippetPlugin="true" />
+    <ProjectReference Include="..\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.fsproj" WhippetPlugin="true" PrivateAssets="all" />
     <!-- Dance to get a binary dependency on a locally-built Whippet -->
     <!-- ProjectReference Include="..\..\..\WoofWare.Whippet\WoofWare.Whippet.fsproj" PrivateAssets="all" -->
     <PackageReference Include="WoofWare.Whippet" Version="*-*" PrivateAssets="all" />

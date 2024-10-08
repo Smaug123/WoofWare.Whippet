@@ -80,3 +80,8 @@ You may supply an `isInternal : bool` argument:
 By default, we make the resulting record type at most internal (never public),
 since this is intended only to be used in tests;
 but you can instead make it public by setting the `false` boolean.
+
+Instead of configuring the client with `<WhippetParamMyType>InterfaceMock</WhippetParamMyType>`,
+you may choose to add an attribute called `InterfaceMock` (with an optional "isInternal" argument)
+to any type you wish to use as an input.
+You may use `WoofWare.Whippet.Plugin.InterfaceMock.Attributes` to provide this attribute, or you may define it yourself.
