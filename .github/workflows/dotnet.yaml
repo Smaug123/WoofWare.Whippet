@@ -222,10 +222,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: nuget-package-core
-          path: packed-runner
+          path: packed-core
       - name: Check NuGet contents
         # Verify that there is exactly one nupkg in the artifact that would be NuGet published
-        run: if [[ $(find packed-runner -maxdepth 1 -name 'WoofWare.Whippet.Core.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+        run: if [[ $(find packed-core -maxdepth 1 -name 'WoofWare.Whippet.Core.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
       - name: Download NuGet artifact (Fantomas)
         uses: actions/download-artifact@v4
         with:
