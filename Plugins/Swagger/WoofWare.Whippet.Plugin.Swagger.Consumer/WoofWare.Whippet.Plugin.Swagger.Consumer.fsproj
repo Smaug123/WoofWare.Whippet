@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\HttpClient\WoofWare.Whippet.Plugin.HttpClient.Attributes\WoofWare.Whippet.Plugin.HttpClient.Attributes.fsproj" />
+    <ProjectReference Include="..\..\Json\WoofWare.Whippet.Plugin.Json.Attributes\WoofWare.Whippet.Plugin.Json.Attributes.fsproj" />
+    <ProjectReference Include="..\..\Json\WoofWare.Whippet.Plugin.Json\WoofWare.Whippet.Plugin.Json.fsproj" PrivateAssets="all" WhippetPlugin="true" />
+    <ProjectReference Include="..\WoofWare.Whippet.Plugin.Swagger\WoofWare.Whippet.Plugin.Swagger.fsproj" PrivateAssets="all" WhippetPlugin="true" />
+    <ProjectReference Include="..\..\InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock\WoofWare.Whippet.Plugin.InterfaceMock.fsproj" PrivateAssets="all" WhippetPlugin="true" />
+    <ProjectReference Include="..\..\HttpClient\WoofWare.Whippet.Plugin.HttpClient\WoofWare.Whippet.Plugin.HttpClient.fsproj" PrivateAssets="all" WhippetPlugin="true" />
+    <!-- Dance to get a binary dependency on a locally-built Whippet -->
+    <!-- ProjectReference Include="..\..\..\WoofWare.Whippet\WoofWare.Whippet.fsproj" PrivateAssets="all" -->
+    <PackageReference Include="WoofWare.Whippet" Version="*-*" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="swagger-gitea.json" />
+    <Compile Include="GeneratedSwaggerGitea.fs">
+      <WhippetFile>swagger-gitea.json</WhippetFile>
+      <WhippetParamClassName>Gitea</WhippetParamClassName>
+    </Compile>
+    <Compile Include="GeneratedSwaggerGiteaMockAndJson.fs">
+      <WhippetFile>GeneratedSwaggerGitea.fs</WhippetFile>
+      <WhippetParamIGitea>InterfaceMock</WhippetParamIGitea>
+    </Compile>
+    <Compile Include="GeneratedSwaggerGiteaHttpClient.fs">
+      <WhippetFile>GeneratedSwaggerGitea.fs</WhippetFile>
+      <WhippetParamIGitea>HttpClient</WhippetParamIGitea>
+      <WhippetSuppressPlugin>JsonParseGenerator,JsonSerializeGenerator</WhippetSuppressPlugin>
+    </Compile>
+  </ItemGroup>
+
+</Project>

@@ -5,7 +5,7 @@ type internal DesiredGenerator =
 
     static member Parse (s : string) =
         match s with
-        | "HttpClient" -> DesiredGenerator.HttpClient None
-        | "HttpClient(true)" -> DesiredGenerator.HttpClient (Some true)
-        | "HttpClient(false)" -> DesiredGenerator.HttpClient (Some false)
-        | _ -> failwith $"Failed to parse as a generator specification: %s{s}"
+        | "HttpClient" -> DesiredGenerator.HttpClient None |> Some
+        | "HttpClient(true)" -> DesiredGenerator.HttpClient (Some true) |> Some
+        | "HttpClient(false)" -> DesiredGenerator.HttpClient (Some false) |> Some
+        | _ -> None

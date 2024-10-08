@@ -968,7 +968,7 @@ type HttpClientGenerator () =
                                 desired
                                 |> List.tryPick (fun generator ->
                                     match generator with
-                                    | DesiredGenerator.HttpClient arg ->
+                                    | Some (DesiredGenerator.HttpClient arg) ->
                                         let spec =
                                             {
                                                 ExtensionMethods =
@@ -978,6 +978,7 @@ type HttpClientGenerator () =
                                             }
 
                                         Some (typeDef, spec)
+                                    | None -> None
                                 )
                             | _ -> None
                         | Some attr ->

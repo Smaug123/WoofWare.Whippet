@@ -200,6 +200,11 @@ jobs:
       with:
         name: nuget-package-interfacemock
         path: Plugins/InterfaceMock/WoofWare.Whippet.Plugin.InterfaceMock/bin/Release/WoofWare.Whippet.Plugin.InterfaceMock.*.nupkg
+    - name: Upload NuGet artifact (swagger plugin)
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-package-swagger
+        path: Plugins/Swagger/WoofWare.Whippet.Plugin.Swagger/bin/Release/WoofWare.Whippet.Plugin.Swagger.*.nupkg
 
   expected-pack:
     needs: [nuget-pack]
@@ -293,6 +298,14 @@ jobs:
       - name: Check NuGet contents
         # Verify that there is exactly one nupkg in the artifact that would be NuGet published
         run: if [[ $(find packed-interfacemock -maxdepth 1 -name 'WoofWare.Whippet.Plugin.InterfaceMock.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
+      - name: Download NuGet artifact (swagger plugin)
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-swagger
+          path: packed-swagger
+      - name: Check NuGet contents
+        # Verify that there is exactly one nupkg in the artifact that would be NuGet published
+        run: if [[ $(find packed-swagger -maxdepth 1 -name 'WoofWare.Whippet.Plugin.Swagger.*.nupkg' -printf c | wc -c) -ne "1" ]]; then exit 1; fi
 
   check-accurate-generations:
     runs-on: ubuntu-latest
@@ -654,6 +667,39 @@ jobs:
         uses: G-Research/common-actions/publish-nuget@2b7dc49cb14f3344fbe6019c14a31165e258c059
         with:
           package-name: WoofWare.Whippet.Plugin.InterfaceMock.Attributes
+          nuget-key: ${{ secrets.NUGET_API_KEY }}
+          nupkg-dir: packed/
+          dotnet: ${{ steps.dotnet-identify.outputs.dotnet }}
+
+  nuget-publish-swagger-plugin:
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.repository.fork && github.ref == 'refs/heads/main' }}
+    needs: [all-required-checks-complete]
+    environment: main-deploy
+    permissions:
+      id-token: write
+      attestations: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v29
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Download NuGet artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package-swagger
+          path: packed
+      - name: Identify `dotnet`
+        id: dotnet-identify
+        run: nix develop --command bash -c 'echo "dotnet=$(which dotnet)" >> $GITHUB_OUTPUT'
+      - name: Publish to NuGet
+        id: publish-success
+        uses: G-Research/common-actions/publish-nuget@2b7dc49cb14f3344fbe6019c14a31165e258c059
+        with:
+          package-name: WoofWare.Whippet.Plugin.Swagger
           nuget-key: ${{ secrets.NUGET_API_KEY }}
           nupkg-dir: packed/
           dotnet: ${{ steps.dotnet-identify.outputs.dotnet }}
