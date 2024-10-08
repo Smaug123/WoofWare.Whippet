@@ -19,6 +19,8 @@ type WhippetTarget =
         InputSource : FileInfo
         GeneratedDest : FileInfo
         Params : Map<string, string>
+        /// Suppress plugins with any of these names.
+        Suppress : string Set
     }
 
 module Program =
@@ -131,6 +133,11 @@ module Program =
                     )
                     |> Map.ofSeq
 
+                let suppress =
+                    Map.tryFind "WhippetSuppressPlugin" metadata
+                    |> Option.map (fun s -> s.Split ',' |> Set.ofArray)
+                    |> Option.defaultValue Set.empty
+
                 let inputSource =
                     FileInfo (Path.Combine (Path.GetDirectoryName desiredProject.ProjectFileName, myriadFile))
 
@@ -143,6 +150,7 @@ module Program =
                     GeneratedDest = generatedDest
                     InputSource = inputSource
                     Params = pars
+                    Suppress = suppress
                 }
                 |> Some
             )
@@ -179,14 +187,20 @@ module Program =
                     )
                     |> Seq.toList
 
-                pluginDll, applicablePlugins
+                pluginAssembly, applicablePlugins
             )
 
         for item in toGenerate do
             use output = item.GeneratedDest.Open (FileMode.Create, FileAccess.Write)
             use outputWriter = new StreamWriter (output, leaveOpen = true)
 
-            for _, applicablePlugins in plugins do
+            let plugins =
+                plugins
+                |> Seq.map (fun (_, plugins) ->
+                    plugins |> List.filter (fun (ty, _) -> not (Set.contains ty.Name item.Suppress))
+                )
+
+            for applicablePlugins in plugins do
                 for plugin, hostClass in applicablePlugins do
                     match getGenerateRawFromRaw hostClass with
                     | None -> ()
