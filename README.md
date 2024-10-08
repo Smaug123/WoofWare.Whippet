@@ -72,7 +72,7 @@ If you want more advanced inputs to your plugin, you will have to create a parse
 
 You can supply `<WhippetSuppressPlugin>JsonSerializeGenerator,JsonParseGenerator</WhippetSuppressPlugin>` (for example) next to `<WhippetFile>`
 to suppress on that file the action of all of the specified comma-separated list of generators.
-(That is, we will ignore any generator from a class)
+(That is, we will ignore any generator defined in a class with one of these names.)
 
 ## Standalone tool
 
