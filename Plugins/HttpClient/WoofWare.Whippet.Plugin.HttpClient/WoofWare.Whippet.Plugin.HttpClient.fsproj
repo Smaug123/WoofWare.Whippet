@@ -36,5 +36,9 @@
       <ProjectReference Include="..\..\Json\WoofWare.Whippet.Plugin.Json\WoofWare.Whippet.Plugin.Json.fsproj" />
       <ProjectReference Include="..\WoofWare.Whippet.Plugin.HttpClient.Attributes\WoofWare.Whippet.Plugin.HttpClient.Attributes.fsproj" />
     </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.0" />
+  </ItemGroup>
 
 </Project>

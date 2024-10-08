@@ -35,4 +35,8 @@
     <ProjectReference Include="..\..\..\WoofWare.Whippet.Fantomas\WoofWare.Whippet.Fantomas.fsproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.0" />
+  </ItemGroup>
+
 </Project>
