@@ -8,7 +8,7 @@
 /// You may optionally specify `isInternal = false` to get a mock with the public visibility modifier.
 type InterfaceMockAttribute (isInternal : bool) =
     inherit System.Attribute ()
-    /// The default value of `isInternal`, the optional argument to the GenerateMockAttribute constructor.
+    /// The default value of `isInternal`, the optional argument to the InterfaceMockAttribute constructor.
     static member DefaultIsInternal = true
 
     /// Shorthand for the "isExtensionMethod = false" constructor; see documentation there for details.
