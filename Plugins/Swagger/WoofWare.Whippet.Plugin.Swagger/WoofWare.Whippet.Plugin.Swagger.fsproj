@@ -31,14 +31,15 @@
         <Link>README.md</Link>
       </None>
     </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    <PackageReference Update="FSharp.Core" Version="6.0.1" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\..\..\WoofWare.Whippet.Core\WoofWare.Whippet.Core.fsproj" />
     <ProjectReference Include="..\..\..\WoofWare.Whippet.Fantomas\WoofWare.Whippet.Fantomas.fsproj" />
   </ItemGroup>
-  
+
 </Project>
