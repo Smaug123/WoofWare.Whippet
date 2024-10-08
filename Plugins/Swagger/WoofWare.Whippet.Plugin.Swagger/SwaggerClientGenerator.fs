@@ -13,9 +13,6 @@ open Fantomas.FCS.Text.Range
 
 type internal SwaggerClientConfig =
     {
-        /// Additionally create a mock with `InterfaceMockGenerator`, with the given boolean arg.
-        /// (`None` means "no mock".)
-        CreateMock : bool option
         ClassName : string
     }
 
@@ -496,13 +493,6 @@ module internal SwaggerClientGenerator =
                         SynAttribute.create
                             (SynLongIdent.createS' [ "RestEase" ; "BasePath" ])
                             (SynExpr.CreateConst basePath)
-                    match options.CreateMock with
-                    | None -> ()
-                    | Some createMockValue ->
-                        yield
-                            SynAttribute.create
-                                (SynLongIdent.createS' [ "GenerateMock" ])
-                                (SynExpr.CreateConst createMockValue)
                 ]
 
             SynComponentInfo.create (Ident.create ("I" + options.ClassName))
@@ -683,24 +673,12 @@ type SwaggerClientGenerator () =
                 if pars.IsEmpty then
                     failwith "No parameters given. You must supply the <WhippetParamClassName /> parameter."
 
-                let createMock =
-                    match Map.tryFind "GENERATEMOCKVISIBILITY" pars with
-                    | None -> None
-                    | Some v ->
-                        match v.ToLowerInvariant () with
-                        | "internal" -> Some true
-                        | "public" -> Some false
-                        | _ ->
-                            failwith
-                                $"Expected GenerateMockVisibility parameter to be 'internal' or 'public', but was: '%s{v.ToLowerInvariant ()}'"
-
                 let className =
                     match Map.tryFind "CLASSNAME" pars with
                     | None -> failwith "You must supply the <WhippetParamClassName /> parameter."
                     | Some v -> v
 
                 {
-                    CreateMock = createMock
                     ClassName = className
                 }
 

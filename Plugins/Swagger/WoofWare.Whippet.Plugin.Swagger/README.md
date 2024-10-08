@@ -11,13 +11,23 @@ Save a Swagger schema as `my-swagger-schema.json`.
 In your `fsproj`:
 
 ```xml
-<ItemGroup>
-    <None Include="my-swagger-schema.json" />
-    <Compile Include="Client.fs">
-        <WhippetFile>my-swagger-schema.json</WhippetFile>
-        <WhippetParamClassName>GiteaClient</WhippetParamClassName>
-    </Compile>
-</ItemGroup>
+<Project>
+    <ItemGroup>
+        <None Include="my-swagger-schema.json" />
+        <Compile Include="Client.fs">
+            <WhippetFile>my-swagger-schema.json</WhippetFile>
+            <WhippetParamClassName>GiteaClient</WhippetParamClassName>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="WoofWare.Whippet.Plugin.HttpClient.Attributes" Version="" />
+        <PackageReference Include="WoofWare.Whippet.Plugin.Json.Attributes" Version="" />
+
+        <!-- Development dependencies, hence PrivateAssets="all". Note `WhippetPlugin="true"`. -->
+        <PackageReference Include="WoofWare.Whippet.Plugin.Swagger" WhippetPlugin="true" Version="" />
+        <PackageReference Include="WoofWare.Whippet" Version="" PrivateAssets="all" />
+    </ItemGroup>
+</Project>
 ```
 
 (Note that you must supply `<WhippetParamClassName>SomeClassName</WhippetParamClassName>` to tell the generator what to name the type it produces.)
@@ -46,22 +56,38 @@ type IGitea =
             ActivityPub System.Threading.Tasks.Task
 ```
 
-That means if you choose to, you can chain another Whippet generator off this one, to generate JSON serde methods and HTTP REST clients:
+That means if you choose to, you can chain other Whippet generators off this one, to generate JSON serde methods and HTTP REST clients:
 
 ```xml
-<ItemGroup>
-    <None Include="my-swagger-schema.json" />
-    <Compile Include="Client.fs">
-        <WhippetFile>my-swagger-schema.json</WhippetFile>
-        <WhippetParamClassName>GiteaClient</WhippetParamClassName>
-        <!-- Optionally: -->
-        <WhippetParamGenerateMock>true</WhippetParamGenerateMock>
-    </Compile>
-    <Compile Include="Client2.fs">
-        <WhippetFile>Client.fs</WhippetFile>
-        <WhippetParamIGiteaClient>InterfaceMock</WhippetParamIGiteaClient>
-    </Compile>
-</ItemGroup>
+<Project>
+    <ItemGroup>
+        <None Include="my-swagger-schema.json" />
+        <Compile Include="Client.fs">
+            <WhippetFile>my-swagger-schema.json</WhippetFile>
+            <WhippetParamClassName>GiteaClient</WhippetParamClassName>
+        </Compile>
+        <Compile Include="GeneratedClientMockAndJson.fs">
+            <WhippetFile>Client.fs</WhippetFile>
+            <WhippetParamIGiteaClient>InterfaceMock</WhippetParamIGiteaClient>
+        </Compile>
+        <Compile Include="GeneratedClient.fs">
+            <WhippetFile>Client.fs</WhippetFile>
+            <WhippetParamIGiteaClient>HttpClient</WhippetParamIGiteaClient>
+            <!-- We're consuming the `Client.fs` file *again*, so prevent the JSON generators from firing again.-->
+            <WhippetSuppressPlugin>JsonParseGenerator,JsonSourceGenerator</WhippetSuppressPlugin>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="WoofWare.Whippet.Plugin.HttpClient.Attributes" Version="" />
+        <PackageReference Include="WoofWare.Whippet.Plugin.Json.Attributes" Version="" />
+
+        <PackageReference Include="WoofWare.Whippet.Plugin.HttpClient" WhippetPlugin="true" Version="" />
+        <PackageReference Include="WoofWare.Whippet.Plugin.Json" WhippetPlugin="true" Version="" />
+        <PackageReference Include="WoofWare.Whippet.Plugin.Swagger" WhippetPlugin="true" Version="" />
+        <PackageReference Include="WoofWare.Whippet.Plugin.InterfaceMock" WhippetPlugin="true" Version="" />
+        <PackageReference Include="WoofWare.Whippet" Version="" PrivateAssets="all" />
+    </ItemGroup>
+</Project>
 ```
 
 The `<WhippetParamClassName />` key tells us what to name the resulting interface (it gets an `I` prepended for you).
