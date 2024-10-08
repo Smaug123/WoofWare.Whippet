@@ -27,6 +27,7 @@
       </None>
       <Compile Include="ArgParserGenerator.fs" />
       <EmbeddedResource Include="version.json" />
+      <None Include="$(OutputPath)\*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
     </ItemGroup>
 
     <ItemGroup>
