@@ -5,6 +5,7 @@
   ],
   "pathFilters": [
     "./",
+    "!./WoofWare.Whippet.Plugin.ArgParser.Test/",
     ":/WoofWare.Whippet.Core/",
     ":/WoofWare.Whippet.Fantomas/",
     ":/Plugins/ArgParser/WoofWare.Whippet.Plugins.ArgParser.Attributes/",

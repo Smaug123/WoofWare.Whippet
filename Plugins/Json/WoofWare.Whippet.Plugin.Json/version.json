@@ -7,6 +7,7 @@
     "./",
     ":/WoofWare.Whippet.Core/",
     ":/WoofWare.Whippet.Fantomas/",
+    "!./WoofWare.Whippet.Plugin.Json.Test/",
     ":/Plugins/Json/WoofWare.Whippet.Plugins.Json.Attributes/",
     ":/global.json",
     ":/Directory.Build.props"
