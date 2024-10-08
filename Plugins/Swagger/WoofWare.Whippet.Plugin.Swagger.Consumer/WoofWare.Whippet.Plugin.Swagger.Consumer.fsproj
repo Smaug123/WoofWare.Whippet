@@ -31,7 +31,7 @@
     <Compile Include="GeneratedSwaggerGiteaHttpClient.fs">
       <WhippetFile>GeneratedSwaggerGitea.fs</WhippetFile>
       <WhippetParamIGitea>HttpClient</WhippetParamIGitea>
-      <WhippetSuppressPlugin>WoofWare.Whippet.Plugin.Json</WhippetSuppressPlugin>
+      <WhippetSuppressPlugin>JsonParseGenerator,JsonSerializeGenerator</WhippetSuppressPlugin>
     </Compile>
   </ItemGroup>
 

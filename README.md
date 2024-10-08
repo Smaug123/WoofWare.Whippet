@@ -70,8 +70,9 @@ through the `Parameters` field on the plugin's args.
 (MSBuild only allows strings here, so the `"true"` in the above example is a string, not a boolean.
 If you want more advanced inputs to your plugin, you will have to create a parser yourself.)
 
-You can supply `<WhippetSuppressPlugin>WoofWare.Whippet.Plugin.Json</WhippetSuppressPlugin>` (for example) next to `<WhippetFile>`
-to suppress on that file the action of all plugins from the specified comma-separated list of plugin assemblies.
+You can supply `<WhippetSuppressPlugin>JsonSerializeGenerator,JsonParseGenerator</WhippetSuppressPlugin>` (for example) next to `<WhippetFile>`
+to suppress on that file the action of all of the specified comma-separated list of generators.
+(That is, we will ignore any generator from a class)
 
 ## Standalone tool
 

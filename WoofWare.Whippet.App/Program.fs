@@ -196,9 +196,11 @@ module Program =
 
             let plugins =
                 plugins
-                |> Seq.filter (fun (assy, _) -> not (Set.contains (assy.GetName().Name) item.Suppress))
+                |> Seq.map (fun (_, plugins) ->
+                    plugins |> List.filter (fun (ty, _) -> not (Set.contains ty.Name item.Suppress))
+                )
 
-            for _, applicablePlugins in plugins do
+            for applicablePlugins in plugins do
                 for plugin, hostClass in applicablePlugins do
                     match getGenerateRawFromRaw hostClass with
                     | None -> ()
