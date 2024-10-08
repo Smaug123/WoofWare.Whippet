@@ -16,14 +16,21 @@
           DependsOnTargets="ResolvePackageAssets"
           BeforeTargets="CoreCompile"
           Condition="'$(DesignTimeBuild)' != 'true'">
+
+    <!-- First, collect our package plugins into a property for easier comparison -->
+    <CreateProperty Value="@(PackageReference->WithMetadataValue('WhippetPlugin', 'true'))">
+      <Output TaskParameter="Value" PropertyName="WhippetPackageIds" />
+    </CreateProperty>
+
     <ItemGroup>
-      <!-- Filter to only WhippetPlugin=true references and get their resolved paths -->
+      <!-- Package reference plugins -->
       <WhippetPlugin Include="@(ReferencePath)"
                      Condition="'%(ReferencePath.NuGetPackageId)' != '' and
-                              '@(PackageReference->WithMetadataValue('Identity', '%(ReferencePath.NuGetPackageId)')->WithMetadataValue('WhippetPlugin', 'true'))' != ''">
+                               $(WhippetPackageIds.Contains('%(ReferencePath.NuGetPackageId)'))">
         <PluginName>%(ReferencePath.NuGetPackageId)</PluginName>
       </WhippetPlugin>
 
+      <!-- Project reference plugins -->
       <WhippetPlugin Include="@(ReferencePath)"
                      Condition="'%(ReferencePath.ReferenceSourceTarget)' == 'ProjectReference' and
                                '%(ReferencePath.WhippetPlugin)' == 'true'">
