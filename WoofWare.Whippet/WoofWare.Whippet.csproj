@@ -17,6 +17,7 @@
       <DevelopmentDependency>true</DevelopmentDependency>
       <NoWarn>NU5118</NoWarn>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      <EnableDefaultItems>false</EnableDefaultItems>
     </PropertyGroup>
 
     <ItemGroup>
@@ -27,7 +28,11 @@
       <Content Include="build\WoofWare.Whippet.targets" PackagePath="build" />
       <EmbeddedResource Include="version.json" />
     </ItemGroup>
-  
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="4.3.4" />
+  </ItemGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\WoofWare.Whippet.App\WoofWare.Whippet.App.fsproj" PrivateAssets="all" />
     </ItemGroup>
