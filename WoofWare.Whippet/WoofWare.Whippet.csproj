@@ -29,10 +29,6 @@
       <EmbeddedResource Include="version.json" />
     </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="4.3.4" />
-  </ItemGroup>
-
     <ItemGroup>
       <ProjectReference Include="..\WoofWare.Whippet.App\WoofWare.Whippet.App.fsproj" PrivateAssets="all" />
     </ItemGroup>
