@@ -8,6 +8,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DebugType>embedded</DebugType>
     <WarnOn>FS3388,FS3559</WarnOn>
+    <NuGetAudit Condition="'$(ForceEnableNuGetAudit)' != 'true'">false</NuGetAudit>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.143" PrivateAssets="all"/>
