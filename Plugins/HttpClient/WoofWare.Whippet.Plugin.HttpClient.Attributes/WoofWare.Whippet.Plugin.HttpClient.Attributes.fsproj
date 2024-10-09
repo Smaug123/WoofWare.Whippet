@@ -14,6 +14,7 @@
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
       <WarnOn>FS3559</WarnOn>
       <PackageId>WoofWare.Whippet.Plugin.HttpClient.Attributes</PackageId>
+      <NuGetAudit>false</NuGetAudit>
     </PropertyGroup>
 
   <ItemGroup>
