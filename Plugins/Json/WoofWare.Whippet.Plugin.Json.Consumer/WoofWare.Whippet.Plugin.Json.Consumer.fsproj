@@ -24,7 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\WoofWare.Whippet.Plugin.Json\WoofWare.Whippet.Plugin.Json.fsproj" WhippetPlugin="true" />
     <!-- Dance to get a binary dependency on a locally-built Whippet -->
-    <!-- ProjectReference Include="..\..\..\WoofWare.Whippet\WoofWare.Whippet.fsproj" PrivateAssets="all" -->
     <PackageReference Include="WoofWare.Whippet" Version="*-*" PrivateAssets="all" />
   </ItemGroup>
 
