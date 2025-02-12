@@ -20,6 +20,7 @@
         <WhippetParamVeryPublicTypeNoAttr>InterfaceMock</WhippetParamVeryPublicTypeNoAttr>
         <WhippetParamCurriedNoAttr>InterfaceMock</WhippetParamCurriedNoAttr>
         <WhippetParamTypeWithInterfaceNoAttr>InterfaceMock</WhippetParamTypeWithInterfaceNoAttr>
+        <WhippetParamTypeWithProperties>InterfaceMock</WhippetParamTypeWithProperties>
       </Compile>
       <Compile Include="MockExample2.fs" />
       <Compile Include="GeneratedMockExample2.fs">
