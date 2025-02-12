@@ -160,6 +160,15 @@ module internal InterfaceMockGenerator =
                     |> SynMemberDefn.memberImplementation
                 )
 
+            let properties =
+                interfaceType.Properties
+                |> List.map (fun pi ->
+                    SynExpr.createLongIdent' [ Ident.create "this" ; pi.Identifier ]
+                    |> SynExpr.applyTo (SynExpr.CreateConst ())
+                    |> SynBinding.basic [ Ident.create "this" ; pi.Identifier ] []
+                    |> SynMemberDefn.memberImplementation
+                )
+
             let interfaceName =
                 let baseName = SynType.createLongIdent interfaceType.Name
 
@@ -175,7 +184,7 @@ module internal InterfaceMockGenerator =
 
                     SynType.app' baseName generics
 
-            SynMemberDefn.Interface (interfaceName, Some range0, Some members, range0)
+            SynMemberDefn.Interface (interfaceName, Some range0, Some (members @ properties), range0)
 
         let access =
             match interfaceType.Accessibility, spec.IsInternal with
@@ -249,6 +258,15 @@ module internal InterfaceMockGenerator =
         |> SynField.make
         |> SynField.withDocString (mem.XmlDoc |> Option.defaultValue PreXmlDoc.Empty)
 
+    let constructProperty (prop : PropertyInfo) : SynField =
+        {
+            Attrs = []
+            Ident = Some prop.Identifier
+            Type = SynType.toFun [ SynType.unit ] prop.Type
+        }
+        |> SynField.make
+        |> SynField.withDocString (prop.XmlDoc |> Option.defaultValue PreXmlDoc.Empty)
+
     let createRecord
         (namespaceId : LongIdent)
         (opens : SynOpenDeclTarget list)
@@ -256,7 +274,12 @@ module internal InterfaceMockGenerator =
         : SynModuleOrNamespace
         =
         let interfaceType = AstHelper.parseInterface interfaceType
-        let fields = interfaceType.Members |> List.map constructMember
+
+        let fields =
+            interfaceType.Members
+            |> List.map constructMember
+            |> List.append (interfaceType.Properties |> List.map constructProperty)
+
         let docString = PreXmlDoc.create "Mock record type for an interface"
 
         let name =
@@ -274,7 +297,7 @@ module internal InterfaceMockGenerator =
         [ yield! opens |> List.map SynModuleDecl.openAny ; yield typeDecl ]
         |> SynModuleOrNamespace.createNamespace namespaceId
 
-/// Myriad generator that creates a record which implements the given interface,
+/// Whippet generator that creates a record which implements the given interface,
 /// but with every field mocked out.
 [<WhippetGenerator>]
 type InterfaceMockGenerator () =
