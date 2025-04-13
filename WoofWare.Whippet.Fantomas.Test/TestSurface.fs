@@ -12,12 +12,10 @@ module TestSurface =
     [<Test>]
     let ``Ensure API surface has not been modified`` () = ApiSurface.assertIdentical coreAssembly
 
-    (*
     [<Test>]
     // https://github.com/nunit/nunit3-vs-adapter/issues/876
     let CheckVersionAgainstRemote () =
-        MonotonicVersion.validate assembly "WoofWare.Whippet.Fantomas"
-    *)
+        MonotonicVersion.validate coreAssembly "WoofWare.Whippet.Fantomas"
 
     [<Test ; Explicit>]
     let ``Update API surface`` () =

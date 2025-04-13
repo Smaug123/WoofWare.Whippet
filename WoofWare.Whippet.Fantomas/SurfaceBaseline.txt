@@ -5,7 +5,6 @@ WoofWare.Whippet.Fantomas.Ast.parse [static method]: string -> Fantomas.FCS.Synt
 WoofWare.Whippet.Fantomas.Ast.render [static method]: Fantomas.FCS.Syntax.SynModuleOrNamespace list -> string option
 WoofWare.Whippet.Fantomas.AstHelper inherit obj
 WoofWare.Whippet.Fantomas.AstHelper.extractOpens [static method]: Fantomas.FCS.Syntax.ParsedInput -> Fantomas.FCS.Syntax.SynOpenDeclTarget list
-WoofWare.Whippet.Fantomas.AstHelper.instantiateRecord [static method]: (Fantomas.FCS.Syntax.SynLongIdent * Fantomas.FCS.Syntax.SynExpr) list -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.AstHelper.parseInterface [static method]: Fantomas.FCS.Syntax.SynTypeDefn -> WoofWare.Whippet.Fantomas.InterfaceType
 WoofWare.Whippet.Fantomas.CompExprBinding inherit obj - union type with 4 cases
 WoofWare.Whippet.Fantomas.CompExprBinding+Do inherit WoofWare.Whippet.Fantomas.CompExprBinding
@@ -226,6 +225,7 @@ WoofWare.Whippet.Fantomas.SynExpr.createLongIdent'' [static method]: Fantomas.FC
 WoofWare.Whippet.Fantomas.SynExpr.createMatch [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynMatchClause list -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.createNew [static method]: Fantomas.FCS.Syntax.SynType -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.createNull [static method]: unit -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.createRecord [static method]: Fantomas.FCS.Syntax.SynExpr option -> (Fantomas.FCS.Syntax.SynLongIdent * Fantomas.FCS.Syntax.SynExpr) list -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.createThunk [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.createWhile [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.dotGet [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
