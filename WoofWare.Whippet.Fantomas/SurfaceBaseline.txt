@@ -271,6 +271,7 @@ WoofWare.Whippet.Fantomas.SynField.extractWithIdent [static method]: Fantomas.FC
 WoofWare.Whippet.Fantomas.SynField.make [static method]: Fantomas.FCS.Syntax.Ident option WoofWare.Whippet.Fantomas.SynFieldData -> Fantomas.FCS.Syntax.SynField
 WoofWare.Whippet.Fantomas.SynField.mapIdent [static method]: ('a -> 'b) -> 'a WoofWare.Whippet.Fantomas.SynFieldData -> 'b WoofWare.Whippet.Fantomas.SynFieldData
 WoofWare.Whippet.Fantomas.SynField.withDocString [static method]: Fantomas.FCS.Xml.PreXmlDoc -> Fantomas.FCS.Syntax.SynField -> Fantomas.FCS.Syntax.SynField
+WoofWare.Whippet.Fantomas.SynField.withMutability [static method]: bool -> Fantomas.FCS.Syntax.SynField -> Fantomas.FCS.Syntax.SynField
 WoofWare.Whippet.Fantomas.SynFieldData`1 inherit obj
 WoofWare.Whippet.Fantomas.SynFieldData`1..ctor [constructor]: (Fantomas.FCS.Syntax.SynAttribute list, 'Ident, Fantomas.FCS.Syntax.SynType)
 WoofWare.Whippet.Fantomas.SynFieldData`1.Attrs [property]: [read-only] Fantomas.FCS.Syntax.SynAttribute list

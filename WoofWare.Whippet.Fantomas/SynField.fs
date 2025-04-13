@@ -78,3 +78,10 @@ module SynField =
         match f with
         | SynField (attributes, isStatic, idOpt, fieldType, isMutable, _, accessibility, range, trivia) ->
             SynField (attributes, isStatic, idOpt, fieldType, isMutable, doc, accessibility, range, trivia)
+
+    /// Set the mutability of this `SynField`.
+    /// For example, `{ mutable Foo : int }` is a record with one mutable field.
+    let withMutability (isMutable : bool) (f : SynField) : SynField =
+        match f with
+        | SynField (attributes, isStatic, idOpt, fieldType, _, doc, accessibility, range, trivia) ->
+            SynField (attributes, isStatic, idOpt, fieldType, isMutable, doc, accessibility, range, trivia)
