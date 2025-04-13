@@ -234,15 +234,6 @@ type UnionType =
 /// Miscellaneous methods for manipulating AST types.
 [<RequireQualifiedAccess>]
 module AstHelper =
-
-    /// Construct a record from the given fields.
-    let instantiateRecord (fields : (SynLongIdent * SynExpr) list) : SynExpr =
-        let fields =
-            fields
-            |> List.map (fun (rfn, synExpr) -> SynExprRecordField ((rfn, true), Some range0, Some synExpr, None))
-
-        SynExpr.Record (None, None, fields, range0)
-
     let rec private extractOpensFromDecl (moduleDecls : SynModuleDecl list) : SynOpenDeclTarget list =
         moduleDecls
         |> List.choose (fun moduleDecl ->

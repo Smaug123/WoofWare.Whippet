@@ -486,7 +486,7 @@ module JsonParseGenerator =
         let finalConstruction =
             fields
             |> List.mapi (fun i fieldData -> SynLongIdent.createI fieldData.Ident, SynExpr.createIdent $"arg_%i{i}")
-            |> AstHelper.instantiateRecord
+            |> SynExpr.createRecord None
 
         (finalConstruction, assignments)
         ||> List.fold (fun final assignment -> SynExpr.createLet [ assignment ] final)

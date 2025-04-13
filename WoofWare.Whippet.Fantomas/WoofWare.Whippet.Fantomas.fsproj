@@ -54,7 +54,7 @@
       <PackagePath>/</PackagePath>
       <Link>README.md</Link>
     </None>
-    <None Include="version.json" />
+    <EmbeddedResource Include="version.json" />
     <EmbeddedResource Include="SurfaceBaseline.txt" />
   </ItemGroup>
 

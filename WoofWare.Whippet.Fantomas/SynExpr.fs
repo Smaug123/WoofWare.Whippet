@@ -413,3 +413,15 @@ module SynExpr =
     /// `{lhs}.[{index}] <- {rhs}`
     let assignIndex (lhs : SynExpr) (index : SynExpr) (rhs : SynExpr) : SynExpr =
         SynExpr.DotIndexedSet (lhs, index, rhs, range0, range0, range0)
+
+    /// { x = 3 ; y = 4 }, or { foo with x = 3 }, for example.
+    let createRecord (updateFrom : SynExpr option) (fields : (SynLongIdent * SynExpr) list) : SynExpr =
+        let updateFrom =
+            updateFrom
+            |> Option.map (fun updateFrom -> updateFrom, (range0, Some Fantomas.FCS.Text.Position.pos0))
+
+        let fields =
+            fields
+            |> List.map (fun (rfn, synExpr) -> SynExprRecordField ((rfn, true), Some range0, Some synExpr, None))
+
+        SynExpr.Record (None, updateFrom, fields, range0)
