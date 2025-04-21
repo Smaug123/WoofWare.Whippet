@@ -74,6 +74,14 @@ module SynExpr =
     let pipeThroughFunction (func : SynExpr) (expr : SynExpr) : SynExpr =
         createAppInfix (createLongIdent'' SynLongIdent.pipe) expr |> applyTo func
 
+    /// {expr} >> {func}
+    let composeWith (func : SynExpr) (expr : SynExpr) : SynExpr =
+        createAppInfix (createLongIdent'' SynLongIdent.compose) expr |> applyTo func
+
+    /// {expr} << {func}
+    let leftComposeWith (func : SynExpr) (expr : SynExpr) : SynExpr =
+        createAppInfix (createLongIdent'' SynLongIdent.composeLeft) expr |> applyTo func
+
     /// if {cond} then {trueBranch} else {falseBranch}
     /// Note that this function puts the trueBranch last, for pipelining convenience:
     /// we assume that the `else` branch is more like an error case and is less interesting.

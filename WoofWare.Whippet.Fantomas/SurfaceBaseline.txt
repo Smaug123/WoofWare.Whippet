@@ -212,6 +212,7 @@ WoofWare.Whippet.Fantomas.SynExpr.callGenericMethod [static method]: Fantomas.FC
 WoofWare.Whippet.Fantomas.SynExpr.callGenericMethod' [static method]: string -> string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.callMethod [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.callMethodArg [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.composeWith [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.createCompExpr [static method]: string -> Fantomas.FCS.Syntax.SynExpr -> WoofWare.Whippet.Fantomas.CompExprBinding list -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.createDo [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.createForEach [static method]: Fantomas.FCS.Syntax.SynPat -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
@@ -235,6 +236,7 @@ WoofWare.Whippet.Fantomas.SynExpr.greaterThan [static method]: Fantomas.FCS.Synt
 WoofWare.Whippet.Fantomas.SynExpr.greaterThanOrEqual [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.ifThenElse [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.index [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
+WoofWare.Whippet.Fantomas.SynExpr.leftComposeWith [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.lessThan [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.lessThanOrEqual [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
 WoofWare.Whippet.Fantomas.SynExpr.listCons [static method]: Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr -> Fantomas.FCS.Syntax.SynExpr
@@ -286,6 +288,8 @@ WoofWare.Whippet.Fantomas.SynIdent.createS [static method]: string -> Fantomas.F
 WoofWare.Whippet.Fantomas.SynLongIdent inherit obj
 WoofWare.Whippet.Fantomas.SynLongIdent.booleanAnd [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.booleanOr [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.compose [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.composeLeft [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.create [static method]: Fantomas.FCS.Syntax.Ident list -> Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.createI [static method]: Fantomas.FCS.Syntax.Ident -> Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.createS [static method]: string -> Fantomas.FCS.Syntax.SynLongIdent
@@ -294,6 +298,8 @@ WoofWare.Whippet.Fantomas.SynLongIdent.eq [static property]: [read-only] Fantoma
 WoofWare.Whippet.Fantomas.SynLongIdent.geq [static property]: [read-only] Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.get_booleanAnd [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.get_booleanOr [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_compose [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
+WoofWare.Whippet.Fantomas.SynLongIdent.get_composeLeft [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.get_eq [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.get_geq [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
 WoofWare.Whippet.Fantomas.SynLongIdent.get_gt [static method]: unit -> Fantomas.FCS.Syntax.SynLongIdent
