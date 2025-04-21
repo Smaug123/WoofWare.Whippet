@@ -17,10 +17,11 @@ module Ident =
     /// Fantomas bug, perhaps? "type" is not rendered as ``type``, although the ASTs are identical
     /// apart from the ranges?
     /// Awful hack: here is a function that does this sort of thing.
-    let createSanitisedParamName (s : string) =
+    let createSanitisedParamName (s : string) : Ident =
         match s with
         | "type" -> create "type'"
         | "private" -> create "private'"
+        | "base" -> create "base'"
         | _ ->
 
         let result = StringBuilder ()
