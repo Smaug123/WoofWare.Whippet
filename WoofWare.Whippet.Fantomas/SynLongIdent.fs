@@ -61,6 +61,14 @@ module SynLongIdent =
     let pipe =
         SynLongIdent.SynLongIdent ([ Ident.create "op_PipeRight" ], [], [ Some (IdentTrivia.OriginalNotation "|>") ])
 
+    /// The ">>" identifier.
+    let compose =
+        SynLongIdent.SynLongIdent ([ Ident.create "op_ComposeRight" ], [], [ Some (IdentTrivia.OriginalNotation ">>") ])
+
+    /// The "<<" identifier.
+    let composeLeft =
+        SynLongIdent.SynLongIdent ([ Ident.create "op_ComposeLeft" ], [], [ Some (IdentTrivia.OriginalNotation "<<") ])
+
     /// Convert this SynLongIdent into a human-readable string for display.
     /// This is not quite round-trippable, but it should be round-trippable if your identifiers are not pathological
     /// (e.g. you should not have a full stop in your identifiers; that's the job of LongIdent, not Ident).
