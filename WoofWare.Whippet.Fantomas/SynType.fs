@@ -508,6 +508,9 @@ module SynType =
         | DateOnly -> "DateOnly"
         | TimeSpan -> "TimeSpan"
         | SynType.LongIdent (SynLongIdent.SynLongIdent (ident, _, _)) -> ident |> List.map _.idText |> String.concat "."
+        | SynType.App (ty, _, args, _, _, _, _) ->
+            let args = args |> Seq.map toHumanReadableString |> String.concat ", "
+            $"%s{toHumanReadableString ty}<%s{args}>"
         | ty -> failwithf "could not compute human-readable string for type: %O" ty
 
     /// Guess whether the types are equal. We err on the side of saying "no, they're different".
