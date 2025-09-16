@@ -291,8 +291,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "admin/hooks/{id}"
-                                        .Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
+                                    "admin/hooks/{id}".Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -336,8 +335,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "admin/hooks/{id}"
-                                        .Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
+                                    "admin/hooks/{id}".Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -977,8 +975,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "amdin/hooks/{id}"
-                                        .Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
+                                    "amdin/hooks/{id}".Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -1401,8 +1398,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "org/{org}/repos"
-                                        .Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
+                                    "org/{org}/repos".Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -1738,8 +1734,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "orgs/{org}/hooks"
-                                        .Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
+                                    "orgs/{org}/hooks".Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -2537,8 +2532,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "orgs/{org}/repos"
-                                        .Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
+                                    "orgs/{org}/repos".Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -2645,8 +2639,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "orgs/{org}/teams"
-                                        .Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
+                                    "orgs/{org}/teams".Replace ("{org}", org.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -12976,8 +12969,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "repositories/{id}"
-                                        .Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
+                                    "repositories/{id}".Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
@@ -13519,8 +13511,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    ("teams/{id}/repos"
-                                        .Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString)
+                                    ("teams/{id}/repos".Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString)
                                      + (if "teams/{id}/repos".IndexOf (char 63) >= 0 then
                                             "&"
                                         else
@@ -14410,8 +14401,7 @@ module GiteaHttpClientExtension =
                                     System.Uri ("/api/v1/", System.UriKind.Relative)
                                 ),
                                 System.Uri (
-                                    "user/gpg_keys/{id}"
-                                        .Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
+                                    "user/gpg_keys/{id}".Replace ("{id}", id.ToString () |> System.Uri.EscapeDataString),
                                     System.UriKind.Relative
                                 )
                             )
