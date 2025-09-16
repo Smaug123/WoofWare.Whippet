@@ -6,6 +6,7 @@ open System.Reflection
 open Ionide.ProjInfo
 open Ionide.ProjInfo.Types
 
+open WoofWare.DotnetRuntimeLocator
 open WoofWare.Whippet.Core
 
 type Args =
@@ -156,7 +157,10 @@ module Program =
             )
 
         let runtime =
-            DotnetRuntime.locate (Assembly.GetExecutingAssembly().Location |> FileInfo)
+            Assembly.GetExecutingAssembly().Location
+            |> DotnetRuntime.SelectForDll
+            |> Seq.map DirectoryInfo
+            |> Seq.toList
 
         let plugins =
             args.Plugins

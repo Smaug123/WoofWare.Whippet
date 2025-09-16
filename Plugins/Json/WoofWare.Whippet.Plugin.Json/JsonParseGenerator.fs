@@ -352,10 +352,7 @@ module JsonParseGenerator =
     let getParseOptions (fieldAttrs : SynAttribute list) =
         (JsonParseOption.None, fieldAttrs)
         ||> List.fold (fun options attr ->
-            if
-                (SynLongIdent.toString attr.TypeName)
-                    .EndsWith ("JsonNumberHandling", StringComparison.Ordinal)
-            then
+            if (SynLongIdent.toString attr.TypeName).EndsWith ("JsonNumberHandling", StringComparison.Ordinal) then
                 let qualifiedEnumValue =
                     match SynExpr.stripOptionalParen attr.ArgExpr with
                     | SynExpr.LongIdent (_, SynLongIdent (ident, _, _), _, _) when isJsonNumberHandling ident ->
@@ -385,15 +382,13 @@ module JsonParseGenerator =
                 let propertyNameAttr =
                     fieldData.Attrs
                     |> List.tryFind (fun attr ->
-                        (SynLongIdent.toString attr.TypeName)
-                            .EndsWith ("JsonPropertyName", StringComparison.Ordinal)
+                        (SynLongIdent.toString attr.TypeName).EndsWith ("JsonPropertyName", StringComparison.Ordinal)
                     )
 
                 let extensionDataAttr =
                     fieldData.Attrs
                     |> List.tryFind (fun attr ->
-                        (SynLongIdent.toString attr.TypeName)
-                            .EndsWith ("JsonExtensionData", StringComparison.Ordinal)
+                        (SynLongIdent.toString attr.TypeName).EndsWith ("JsonExtensionData", StringComparison.Ordinal)
                     )
 
                 let propertyName =
