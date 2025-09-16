@@ -4,6 +4,7 @@
       <OutputType>Exe</OutputType>
       <TargetFramework>net8.0</TargetFramework>
       <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+      <RollForward>Major</RollForward>
     </PropertyGroup>
 
     <ItemGroup>
