@@ -338,6 +338,7 @@ WoofWare.Whippet.Fantomas.SynMemberDefn.staticMember [static method]: Fantomas.F
 WoofWare.Whippet.Fantomas.SynModuleDecl inherit obj
 WoofWare.Whippet.Fantomas.SynModuleDecl.createLet [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.createLets [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynModuleDecl
+WoofWare.Whippet.Fantomas.SynModuleDecl.createLetsRecursive [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.createTypes [static method]: Fantomas.FCS.Syntax.SynTypeDefn list -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.nestedModule [static method]: Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynModuleDecl list -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.openAny [static method]: Fantomas.FCS.Syntax.SynOpenDeclTarget -> Fantomas.FCS.Syntax.SynModuleDecl
