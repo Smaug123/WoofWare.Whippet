@@ -16,6 +16,13 @@ module SynModuleDecl =
     let inline createLets (bindings : SynBinding list) : SynModuleDecl =
         SynModuleDecl.Let (false, bindings, range0)
 
+    /// Add consecutive `let`-bindings, mutually recursive.
+    let inline createLetsRecursive (bindings : SynBinding list) : SynModuleDecl =
+        // Merely setting `true` here for the `isRecursive` is not enough:
+        // we have to also make sure each binding has the right trivia to be rendered with
+        // the `rec` or `and` keyword.
+        SynModuleDecl.Let (true, SynBinding.makeRecursive bindings, range0)
+
     /// Add a single `let`-binding. (Use `createLets` for *multiple* bindings.)
     let inline createLet (binding : SynBinding) : SynModuleDecl = createLets [ binding ]
 

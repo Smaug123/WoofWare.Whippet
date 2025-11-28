@@ -179,8 +179,11 @@ WoofWare.Whippet.Fantomas.SynBinding.basicTuple [static method]: Fantomas.FCS.Sy
 WoofWare.Whippet.Fantomas.SynBinding.makeInline [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
 WoofWare.Whippet.Fantomas.SynBinding.makeInstanceMember [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
 WoofWare.Whippet.Fantomas.SynBinding.makeNotInline [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.makeNotRecursive [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynBinding list
+WoofWare.Whippet.Fantomas.SynBinding.makeRecursive [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynBinding list
 WoofWare.Whippet.Fantomas.SynBinding.makeStaticMember [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
 WoofWare.Whippet.Fantomas.SynBinding.setInline [static method]: bool -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
+WoofWare.Whippet.Fantomas.SynBinding.setRecursive [static method]: bool -> Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynBinding list
 WoofWare.Whippet.Fantomas.SynBinding.triviaZero [static method]: bool -> Fantomas.FCS.SyntaxTrivia.SynBindingTrivia
 WoofWare.Whippet.Fantomas.SynBinding.withAccessibility [static method]: Fantomas.FCS.Syntax.SynAccess option -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
 WoofWare.Whippet.Fantomas.SynBinding.withMutability [static method]: bool -> Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynBinding
@@ -338,6 +341,7 @@ WoofWare.Whippet.Fantomas.SynMemberDefn.staticMember [static method]: Fantomas.F
 WoofWare.Whippet.Fantomas.SynModuleDecl inherit obj
 WoofWare.Whippet.Fantomas.SynModuleDecl.createLet [static method]: Fantomas.FCS.Syntax.SynBinding -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.createLets [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynModuleDecl
+WoofWare.Whippet.Fantomas.SynModuleDecl.createLetsRecursive [static method]: Fantomas.FCS.Syntax.SynBinding list -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.createTypes [static method]: Fantomas.FCS.Syntax.SynTypeDefn list -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.nestedModule [static method]: Fantomas.FCS.Syntax.SynComponentInfo -> Fantomas.FCS.Syntax.SynModuleDecl list -> Fantomas.FCS.Syntax.SynModuleDecl
 WoofWare.Whippet.Fantomas.SynModuleDecl.openAny [static method]: Fantomas.FCS.Syntax.SynOpenDeclTarget -> Fantomas.FCS.Syntax.SynModuleDecl

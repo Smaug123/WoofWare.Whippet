@@ -101,6 +101,7 @@ module SynBinding =
             SynBinding (pat, kind, inl, mut, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia)
 
     /// Set the `rec` keyword on this binding: `let rec foo = ...` (or remove the word `rec`, if `isRec` is false).
+    /// Use `makeRecursive` to make many bindings at once recursive, with `let rec ... and ...`.
     let withRecursion (isRec : bool) (binding : SynBinding) : SynBinding =
         match binding with
         | SynBinding (pat, kind, inl, mut, attrs, xml, valData, headPat, returnInfo, expr, range, debugPoint, trivia) ->
@@ -117,7 +118,7 @@ module SynBinding =
                             if isRec then
                                 trivia.LeadingKeyword
                             else
-                                trivia.LeadingKeyword
+                                SynLeadingKeyword.Let range0
                         | existing ->
                             failwith
                                 $"WoofWare.Whippet.Fantomas doesn't yet let you adjust the recursion modifier on a binding with modifier %O{existing}"
@@ -224,6 +225,90 @@ module SynBinding =
             makeInline binding
         else
             makeNotInline binding
+
+    let private addRec (trivia : SynBindingTrivia) : SynBindingTrivia =
+        { trivia with
+            LeadingKeyword =
+                match trivia.LeadingKeyword with
+                | SynLeadingKeyword.StaticLet _ -> SynLeadingKeyword.StaticLetRec (range0, range0, range0)
+                | _ ->
+                    // best effort, I'm sure this is incomplete
+                    SynLeadingKeyword.LetRec (range0, range0)
+        }
+
+    let private removeRec (trivia : SynBindingTrivia) : SynBindingTrivia =
+        { trivia with
+            LeadingKeyword =
+                match trivia.LeadingKeyword with
+                | SynLeadingKeyword.StaticLetRec _ -> SynLeadingKeyword.StaticLet (range0, range0)
+                | SynLeadingKeyword.And _ -> SynLeadingKeyword.Let range0
+                | _ ->
+                    // best effort, I'm sure this is incomplete
+                    SynLeadingKeyword.Let range0
+        }
+
+    let private addAnd (trivia : SynBindingTrivia) : SynBindingTrivia =
+        { trivia with
+            LeadingKeyword = SynLeadingKeyword.And range0
+        }
+
+    let private removeAnd (trivia : SynBindingTrivia) : SynBindingTrivia =
+        { trivia with
+            LeadingKeyword =
+                match trivia.LeadingKeyword with
+                | SynLeadingKeyword.And _ -> SynLeadingKeyword.Let range0
+                | _ ->
+                    // best effort, I'm sure this is incomplete
+                    SynLeadingKeyword.Let range0
+        }
+
+    let private withTrivia (adjustTrivia : SynBindingTrivia -> SynBindingTrivia) (binding : SynBinding) : SynBinding =
+        match binding with
+        | SynBinding (acc, kind, isInline, mut, attrs, doc, valData, headPat, ret, expr, range, debugPoint, trivia) ->
+            SynBinding (
+                acc,
+                kind,
+                isInline,
+                mut,
+                attrs,
+                doc,
+                valData,
+                headPat,
+                ret,
+                expr,
+                range,
+                debugPoint,
+                adjustTrivia trivia
+            )
+
+    /// Make the definition a recursive definition: `let rec foo = ... and bar = ...`
+    let makeRecursive (bindings : SynBinding list) : SynBinding list =
+        match bindings with
+        | [] -> failwith "can't make *no* bindings recursive"
+        | head :: rest ->
+            let head = head |> withTrivia addRec
+            let rest = rest |> List.map (withTrivia addAnd)
+
+            head :: rest
+
+    /// Make the definition not be a `rec` definition: that is, turn `let rec foo = ... and bar = ...` into
+    /// `let foo = ... let bar = ...`.
+    /// This is a no-op if the binding is already not recursive.
+    let makeNotRecursive (bindings : SynBinding list) : SynBinding list =
+        match bindings with
+        | [] -> failwith "can't make *no* bindings recursive"
+        | head :: rest ->
+            let head = head |> withTrivia removeRec
+            let rest = rest |> List.map (withTrivia removeAnd)
+
+            head :: rest
+
+    /// Set or remove the `rec` keyword on the given bindings.
+    let inline setRecursive (shouldBeRec : bool) (bindings : SynBinding list) : SynBinding list =
+        if shouldBeRec then
+            makeRecursive bindings
+        else
+            makeNotRecursive bindings
 
     /// Convert this member definition to a `static` member.
     let makeStaticMember (binding : SynBinding) : SynBinding =
