@@ -1,0 +1,27 @@
+<Solution>
+  <Project Path="Plugins/ArgParser/WoofWare.Whippet.Plugin.ArgParser.Attributes/WoofWare.Whippet.Plugin.ArgParser.Attributes.fsproj" />
+  <Project Path="Plugins/ArgParser/WoofWare.Whippet.Plugin.ArgParser.Consumer/WoofWare.Whippet.Plugin.ArgParser.Consumer.fsproj" />
+  <Project Path="Plugins/ArgParser/WoofWare.Whippet.Plugin.ArgParser/WoofWare.Whippet.Plugin.ArgParser.fsproj" />
+  <Project Path="Plugins/ArgParser/WoofWare.Whippet.Plugin.ArgParser/WoofWare.Whippet.Plugin.ArgParser.Test/WoofWare.Whippet.Plugin.ArgParser.Test.fsproj" />
+  <Project Path="Plugins/HttpClient/WoofWare.Whippet.Plugin.HttpClient.Attributes/WoofWare.Whippet.Plugin.HttpClient.Attributes.fsproj" />
+  <Project Path="Plugins/HttpClient/WoofWare.Whippet.Plugin.HttpClient.Consumer/WoofWare.Whippet.Plugin.HttpClient.Consumer.fsproj" />
+  <Project Path="Plugins/HttpClient/WoofWare.Whippet.Plugin.HttpClient/WoofWare.Whippet.Plugin.HttpClient.fsproj" />
+  <Project Path="Plugins/HttpClient/WoofWare.Whippet.Plugin.HttpClient/WoofWare.Whippet.Plugin.HttpClient.Test/WoofWare.Whippet.Plugin.HttpClient.Test.fsproj" />
+  <Project Path="Plugins/InterfaceMock/WoofWare.Whippet.Plugin.InterfaceMock.Attributes/WoofWare.Whippet.Plugin.InterfaceMock.Attributes.fsproj" />
+  <Project Path="Plugins/InterfaceMock/WoofWare.Whippet.Plugin.InterfaceMock.Consumer/WoofWare.Whippet.Plugin.InterfaceMock.Consumer.fsproj" />
+  <Project Path="Plugins/InterfaceMock/WoofWare.Whippet.Plugin.InterfaceMock/WoofWare.Whippet.Plugin.InterfaceMock.fsproj" />
+  <Project Path="Plugins/InterfaceMock/WoofWare.Whippet.Plugin.InterfaceMock/WoofWare.Whippet.Plugin.InterfaceMock.Test/WoofWare.Whippet.Plugin.InterfaceMock.Test.fsproj" />
+  <Project Path="Plugins/Json/WoofWare.Whippet.Plugin.Json.Attributes/WoofWare.Whippet.Plugin.Json.Attributes.fsproj" />
+  <Project Path="Plugins/Json/WoofWare.Whippet.Plugin.Json.Consumer/WoofWare.Whippet.Plugin.Json.Consumer.fsproj" />
+  <Project Path="Plugins/Json/WoofWare.Whippet.Plugin.Json/WoofWare.Whippet.Plugin.Json.fsproj" />
+  <Project Path="Plugins/Json/WoofWare.Whippet.Plugin.Json/WoofWare.Whippet.Plugin.Json.Test/WoofWare.Whippet.Plugin.Json.Test.fsproj" />
+  <Project Path="Plugins/Swagger/WoofWare.Whippet.Plugin.Swagger.Consumer/WoofWare.Whippet.Plugin.Swagger.Consumer.fsproj" />
+  <Project Path="Plugins/Swagger/WoofWare.Whippet.Plugin.Swagger/WoofWare.Whippet.Plugin.Swagger.fsproj" />
+  <Project Path="Plugins/Swagger/WoofWare.Whippet.Plugin.Swagger/WoofWare.Whippet.Plugin.Swagger.Test/WoofWare.Whippet.Plugin.Swagger.Test.fsproj" />
+  <Project Path="WoofWare.Whippet.App/WoofWare.Whippet.App.fsproj" />
+  <Project Path="WoofWare.Whippet.Core/WoofWare.Whippet.Core.fsproj" />
+  <Project Path="WoofWare.Whippet.Fantomas.Test/WoofWare.Whippet.Fantomas.Test.fsproj" />
+  <Project Path="WoofWare.Whippet.Fantomas/WoofWare.Whippet.Fantomas.fsproj" />
+  <Project Path="WoofWare.Whippet.Test/WoofWare.Whippet.Test.fsproj" />
+  <Project Path="WoofWare.Whippet/WoofWare.Whippet.csproj" />
+</Solution>
