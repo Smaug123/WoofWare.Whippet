@@ -13,8 +13,7 @@ module TestCompExpr =
     let private renderCompExpr (retBody : SynExpr) (bindings : CompExprBinding list) : string =
         let compExpr = SynExpr.createCompExpr "async" retBody bindings
 
-        let binding =
-            SynBinding.basic [ Ident.create "f" ] [ SynPat.unit ] compExpr
+        let binding = SynBinding.basic [ Ident.create "f" ] [ SynPat.unit ] compExpr
 
         [ SynModuleDecl.createLet binding ]
         |> SynModuleOrNamespace.createNamespace [ Ident.create "Foo" ]
@@ -37,17 +36,13 @@ module TestCompExpr =
     [<Test>]
     let ``Let still renders as let`` () =
         let rendered =
-            renderCompExpr
-                (SynExpr.createIdent "x")
-                [ Let ("x", SynExpr.CreateConst 3) ]
+            renderCompExpr (SynExpr.createIdent "x") [ Let ("x", SynExpr.CreateConst 3) ]
 
         rendered.Contains "let x =" |> shouldEqual true
 
     [<Test>]
     let ``LetBang renders as let-bang`` () =
         let rendered =
-            renderCompExpr
-                (SynExpr.createIdent "x")
-                [ LetBang ("x", SynExpr.createIdent "thing") ]
+            renderCompExpr (SynExpr.createIdent "x") [ LetBang ("x", SynExpr.createIdent "thing") ]
 
         rendered.Contains "let! x =" |> shouldEqual true
