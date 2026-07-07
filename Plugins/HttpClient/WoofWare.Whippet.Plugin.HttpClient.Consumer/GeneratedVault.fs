@@ -40,7 +40,7 @@ module VaultClient =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -76,7 +76,7 @@ module VaultClient =
                             System.Uri ("v1/auth/jwt/login", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -136,7 +136,7 @@ module VaultClientNonExtensionMethod =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -172,7 +172,7 @@ module VaultClientNonExtensionMethod =
                             System.Uri ("v1/auth/jwt/login", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -235,7 +235,7 @@ module VaultClientExtensionMethodHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -271,7 +271,7 @@ module VaultClientExtensionMethodHttpClientExtension =
                                 System.Uri ("v1/auth/jwt/login", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri

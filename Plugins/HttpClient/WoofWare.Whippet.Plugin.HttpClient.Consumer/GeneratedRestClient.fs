@@ -27,7 +27,7 @@ module PureGymApi =
                             System.Uri (("v1/gyms/"), System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -61,7 +61,7 @@ module PureGymApi =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -95,7 +95,7 @@ module PureGymApi =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -125,7 +125,7 @@ module PureGymApi =
                             System.Uri ("v1/member", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -158,7 +158,7 @@ module PureGymApi =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -188,7 +188,7 @@ module PureGymApi =
                             System.Uri ("v1/member/activity", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -218,7 +218,7 @@ module PureGymApi =
                             System.Uri ("some/url", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -248,7 +248,7 @@ module PureGymApi =
                             System.Uri ("some/url", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -325,7 +325,7 @@ module PureGymApi =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -366,7 +366,7 @@ module PureGymApi =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -396,7 +396,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -423,7 +423,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -450,7 +450,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -477,7 +477,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -504,7 +504,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -531,7 +531,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -564,7 +564,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -597,7 +597,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -630,7 +630,7 @@ module PureGymApi =
                             System.Uri ("users/new", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Post,
                             RequestUri = uri
@@ -660,7 +660,7 @@ module PureGymApi =
                             )
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -685,7 +685,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -710,7 +710,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -735,7 +735,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -760,7 +760,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -784,7 +784,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -808,7 +808,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -832,7 +832,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -856,7 +856,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -892,7 +892,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -928,7 +928,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -964,7 +964,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -1000,7 +1000,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -1023,7 +1023,7 @@ module PureGymApi =
                             System.Uri ("endpoint", System.UriKind.Relative)
                         )
 
-                    let httpMessage =
+                    use httpMessage =
                         new System.Net.Http.HttpRequestMessage (
                             Method = System.Net.Http.HttpMethod.Get,
                             RequestUri = uri
@@ -1077,7 +1077,7 @@ module internal ApiWithoutBaseAddressHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1135,7 +1135,7 @@ module ApiWithBasePathHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1187,7 +1187,7 @@ module ApiWithBasePathAndAddressHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1245,7 +1245,7 @@ module ApiWithAbsoluteBasePathHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1297,7 +1297,7 @@ module ApiWithAbsoluteBasePathAndAddressHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1355,7 +1355,7 @@ module ApiWithBasePathAndAbsoluteEndpointHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1407,7 +1407,7 @@ module ApiWithBasePathAndAddressAndAbsoluteEndpointHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1465,7 +1465,7 @@ module ApiWithAbsoluteBasePathAndAbsoluteEndpointHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1520,7 +1520,7 @@ module ApiWithAbsoluteBasePathAndAddressAndAbsoluteEndpointHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1583,7 +1583,7 @@ module ApiWithHeadersHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1650,7 +1650,7 @@ module ApiWithHeaders2HttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
