@@ -34,10 +34,12 @@ module TestBodyParam =
         let proc (message : HttpRequestMessage) : HttpResponseMessage Async =
             async {
                 message.Method |> shouldEqual HttpMethod.Post
-                let! content = message.Content.ReadAsStreamAsync () |> Async.AwaitTask
-                let content = new StreamContent (content)
+                // The client disposes the request (and hence its content stream) once the call returns, just as a
+                // real HttpClient disposes request content on send. Copy the body into an independent buffer here so
+                // the response we echo back doesn't alias the soon-to-be-disposed request stream.
+                let! content = message.Content.ReadAsByteArrayAsync () |> Async.AwaitTask
                 let resp = new HttpResponseMessage (HttpStatusCode.OK)
-                resp.Content <- content
+                resp.Content <- new ByteArrayContent (content)
                 return resp
             }
 
@@ -80,10 +82,11 @@ module TestBodyParam =
         let proc (message : HttpRequestMessage) : HttpResponseMessage Async =
             async {
                 message.Method |> shouldEqual HttpMethod.Post
-                let! content = message.Content.ReadAsStreamAsync () |> Async.AwaitTask
-                let content = new StreamContent (content)
+                // See the note in ``Body param of stream``: copy the body into an independent buffer, because the
+                // client disposes the request content once the call returns.
+                let! content = message.Content.ReadAsByteArrayAsync () |> Async.AwaitTask
                 let resp = new HttpResponseMessage (HttpStatusCode.OK)
-                resp.Content <- content
+                resp.Content <- new ByteArrayContent (content)
                 return resp
             }
 

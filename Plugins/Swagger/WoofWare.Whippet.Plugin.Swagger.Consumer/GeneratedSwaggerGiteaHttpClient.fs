@@ -37,7 +37,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -80,7 +80,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -121,7 +121,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -164,7 +164,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -205,7 +205,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -244,7 +244,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("admin/hooks", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -296,7 +296,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -340,7 +340,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -397,7 +397,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -454,7 +454,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -503,7 +503,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -543,7 +543,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -584,7 +584,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -623,7 +623,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("admin/users", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -684,7 +684,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -723,7 +723,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -778,7 +778,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -834,7 +834,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -873,7 +873,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -928,7 +928,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -980,7 +980,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -1013,7 +1013,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("markdown", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1057,7 +1057,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("markdown/raw", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1093,7 +1093,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("nodeinfo", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1161,7 +1161,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1223,7 +1223,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -1265,7 +1265,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("notifications/new", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1308,7 +1308,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1359,7 +1359,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1403,7 +1403,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1460,7 +1460,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1502,7 +1502,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("orgs", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1554,7 +1554,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1596,7 +1596,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -1632,7 +1632,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1695,7 +1695,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1739,7 +1739,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1793,7 +1793,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1837,7 +1837,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -1877,7 +1877,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -1940,7 +1940,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -1985,7 +1985,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -2039,7 +2039,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2083,7 +2083,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -2123,7 +2123,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -2186,7 +2186,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2230,7 +2230,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2270,7 +2270,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -2317,7 +2317,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2363,7 +2363,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2403,7 +2403,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -2443,7 +2443,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -2490,7 +2490,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2537,7 +2537,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -2600,7 +2600,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2644,7 +2644,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -2718,7 +2718,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2776,7 +2776,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2830,7 +2830,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -2884,7 +2884,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -2932,7 +2932,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3033,7 +3033,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3072,7 +3072,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("repos/migrate", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -3180,7 +3180,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3224,7 +3224,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3268,7 +3268,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -3313,7 +3313,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -3370,7 +3370,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3410,7 +3410,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3456,7 +3456,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3510,7 +3510,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -3567,7 +3567,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3614,7 +3614,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -3661,7 +3661,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -3731,7 +3731,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3782,7 +3782,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -3839,7 +3839,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3886,7 +3886,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -3940,7 +3940,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -3995,7 +3995,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4044,7 +4044,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -4094,7 +4094,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -4153,7 +4153,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4222,7 +4222,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4284,7 +4284,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4352,7 +4352,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4407,7 +4407,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4469,7 +4469,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4522,7 +4522,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -4585,7 +4585,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -4648,7 +4648,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -4709,7 +4709,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -4778,7 +4778,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4832,7 +4832,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4886,7 +4886,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -4943,7 +4943,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -4990,7 +4990,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5044,7 +5044,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5086,7 +5086,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5132,7 +5132,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5182,7 +5182,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5232,7 +5232,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5297,7 +5297,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5357,7 +5357,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5408,7 +5408,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -5464,7 +5464,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5511,7 +5511,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5558,7 +5558,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -5605,7 +5605,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -5662,7 +5662,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5709,7 +5709,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -5756,7 +5756,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -5825,7 +5825,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -5865,7 +5865,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -5958,7 +5958,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6009,7 +6009,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -6085,7 +6085,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6132,7 +6132,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -6173,7 +6173,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6233,7 +6233,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6290,7 +6290,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -6342,7 +6342,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -6399,7 +6399,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6452,7 +6452,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -6503,7 +6503,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6550,7 +6550,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -6597,7 +6597,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -6654,7 +6654,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6714,7 +6714,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6771,7 +6771,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -6823,7 +6823,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -6895,7 +6895,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -6948,7 +6948,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -7012,7 +7012,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -7059,7 +7059,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -7116,7 +7116,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -7169,7 +7169,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -7226,7 +7226,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -7273,7 +7273,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -7337,7 +7337,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -7393,7 +7393,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -7446,7 +7446,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -7497,7 +7497,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -7538,7 +7538,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -7579,7 +7579,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -7637,7 +7637,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -7684,7 +7684,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -7752,7 +7752,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -7826,7 +7826,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -7882,7 +7882,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -7939,7 +7939,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -7987,7 +7987,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -8047,7 +8047,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8101,7 +8101,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -8158,7 +8158,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8205,7 +8205,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -8259,7 +8259,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8310,7 +8310,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -8367,7 +8367,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8414,7 +8414,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -8461,7 +8461,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -8517,7 +8517,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8576,7 +8576,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8636,7 +8636,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8690,7 +8690,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -8747,7 +8747,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -8794,7 +8794,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -8841,7 +8841,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -8897,7 +8897,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -8966,7 +8966,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9035,7 +9035,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -9110,7 +9110,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9164,7 +9164,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -9221,7 +9221,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9274,7 +9274,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -9345,7 +9345,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9402,7 +9402,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9470,7 +9470,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9520,7 +9520,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9567,7 +9567,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -9618,7 +9618,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -9665,7 +9665,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -9731,7 +9731,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -9797,7 +9797,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9853,7 +9853,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -9917,7 +9917,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -9972,7 +9972,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -10036,7 +10036,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -10084,7 +10084,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10142,7 +10142,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -10206,7 +10206,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -10265,7 +10265,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -10319,7 +10319,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10373,7 +10373,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -10429,7 +10429,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -10470,7 +10470,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10517,7 +10517,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -10570,7 +10570,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10633,7 +10633,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10684,7 +10684,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -10740,7 +10740,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10787,7 +10787,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10834,7 +10834,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -10875,7 +10875,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -10922,7 +10922,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -10969,7 +10969,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -11026,7 +11026,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11086,7 +11086,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11143,7 +11143,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -11195,7 +11195,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -11251,7 +11251,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11297,7 +11297,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11351,7 +11351,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11419,7 +11419,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11475,7 +11475,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -11545,7 +11545,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11591,7 +11591,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11637,7 +11637,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -11677,7 +11677,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -11737,7 +11737,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11788,7 +11788,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -11845,7 +11845,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11892,7 +11892,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -11930,7 +11930,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -11977,7 +11977,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -12024,7 +12024,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -12065,7 +12065,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -12128,7 +12128,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -12178,7 +12178,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -12241,7 +12241,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -12292,7 +12292,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -12343,7 +12343,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -12384,7 +12384,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -12429,7 +12429,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -12485,7 +12485,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -12531,7 +12531,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -12582,7 +12582,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -12639,7 +12639,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -12686,7 +12686,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -12733,7 +12733,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -12803,7 +12803,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -12865,7 +12865,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -12922,7 +12922,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -12974,7 +12974,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13013,7 +13013,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("settings/api", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13052,7 +13052,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("settings/attachment", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13091,7 +13091,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("settings/repository", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13130,7 +13130,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("settings/ui", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13169,7 +13169,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("signing-key.gpg", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13205,7 +13205,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13247,7 +13247,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -13283,7 +13283,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -13346,7 +13346,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13392,7 +13392,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13438,7 +13438,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -13478,7 +13478,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -13524,7 +13524,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13574,7 +13574,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13621,7 +13621,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -13662,7 +13662,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -13707,7 +13707,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13749,7 +13749,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13801,7 +13801,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13845,7 +13845,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/applications/oauth2", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -13898,7 +13898,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -13941,7 +13941,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -13980,7 +13980,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -14029,7 +14029,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/emails", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14068,7 +14068,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/emails", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -14117,7 +14117,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/emails", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -14170,7 +14170,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14219,7 +14219,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14262,7 +14262,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14299,7 +14299,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -14336,7 +14336,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -14369,7 +14369,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/gpg_key_token", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14406,7 +14406,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -14451,7 +14451,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14493,7 +14493,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/keys", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -14545,7 +14545,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14587,7 +14587,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -14630,7 +14630,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14682,7 +14682,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14726,7 +14726,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/repos", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -14775,7 +14775,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/settings", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14819,7 +14819,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("user/settings", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -14881,7 +14881,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14930,7 +14930,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -14970,7 +14970,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -15010,7 +15010,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Put,
                                 RequestUri = uri
@@ -15054,7 +15054,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15109,7 +15109,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15159,7 +15159,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15218,7 +15218,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15274,7 +15274,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15311,7 +15311,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15364,7 +15364,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15417,7 +15417,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15463,7 +15463,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15500,7 +15500,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15564,7 +15564,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15620,7 +15620,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15669,7 +15669,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15722,7 +15722,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15778,7 +15778,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15834,7 +15834,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15890,7 +15890,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
@@ -15938,7 +15938,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Post,
                                 RequestUri = uri
@@ -15994,7 +15994,7 @@ module GiteaHttpClientExtension =
                                 )
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Delete,
                                 RequestUri = uri
@@ -16027,7 +16027,7 @@ module GiteaHttpClientExtension =
                                 System.Uri ("version", System.UriKind.Relative)
                             )
 
-                        let httpMessage =
+                        use httpMessage =
                             new System.Net.Http.HttpRequestMessage (
                                 Method = System.Net.Http.HttpMethod.Get,
                                 RequestUri = uri
