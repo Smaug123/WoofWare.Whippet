@@ -55,6 +55,12 @@
           src = ./.;
           projectFile = "./WoofWare.Whippet/WoofWare.Whippet.csproj";
           testProjectFile = "./WoofWare.Whippet.Test/WoofWare.Whippet.Test.fsproj";
+          # The `local` NuGet source in NuGet.config points at ./WoofWare.Whippet/bin/Debug/, which
+          # only exists once the main project has been packed. During `fetch-deps`, nothing is built,
+          # so that directory is absent; nixpkgs' nuget-to-json then treats the (enabled, non-directory)
+          # source as a remote HTTP source and curls it, giving `curl: (3) URL rejected: No host part
+          # in the URL`. Making the directory exist means nuget-to-json skips it as a local source.
+          postConfigure = "mkdir -p WoofWare.Whippet/bin/Debug";
           disabledTests = ["WoofWare.Whippet.Test.TestSurface.CheckVersionAgainstRemote"];
           nugetDeps = ./nix/deps.json; # `nix build .#default.fetch-deps && ./result nix/deps.json`
           doCheck = true;
