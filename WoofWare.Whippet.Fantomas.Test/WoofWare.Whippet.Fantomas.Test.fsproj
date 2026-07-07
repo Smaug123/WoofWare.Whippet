@@ -10,6 +10,7 @@
     <ItemGroup>
         <Compile Include="TestSurface.fs" />
         <Compile Include="TestSynType.fs" />
+        <Compile Include="TestCompExpr.fs" />
     </ItemGroup>
 
     <ItemGroup>

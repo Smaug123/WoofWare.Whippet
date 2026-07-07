@@ -345,10 +345,46 @@ module SynExpr =
                     )
                 | Let (lhs, rhs) -> createLet [ SynBinding.basic [ Ident.create lhs ] [] rhs ] state
                 | Use (lhs, rhs) ->
+                    // `SynBinding.basic` stamps the binding with a `let` leading keyword, and Fantomas renders from
+                    // that trivia rather than from the `isUse` flag below; so we must override it to `use`, else this
+                    // renders as `let` and the resource is never disposed.
+                    let binding =
+                        match SynBinding.basic [ Ident.create lhs ] [] rhs with
+                        | SynBinding (access,
+                                      kind,
+                                      isInline,
+                                      isMutable,
+                                      attrs,
+                                      xml,
+                                      valData,
+                                      headPat,
+                                      returnInfo,
+                                      expr,
+                                      range,
+                                      debugPoint,
+                                      trivia) ->
+                            SynBinding (
+                                access,
+                                kind,
+                                isInline,
+                                isMutable,
+                                attrs,
+                                xml,
+                                valData,
+                                headPat,
+                                returnInfo,
+                                expr,
+                                range,
+                                debugPoint,
+                                { trivia with
+                                    LeadingKeyword = SynLeadingKeyword.Use range0
+                                }
+                            )
+
                     SynExpr.LetOrUse (
                         false,
                         true,
-                        [ SynBinding.basic [ Ident.create lhs ] [] rhs ],
+                        [ binding ],
                         state,
                         range0,
                         {
