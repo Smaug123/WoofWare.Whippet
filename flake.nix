@@ -14,8 +14,8 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       pname = "WoofWare.Whippet";
-      dotnet-sdk = pkgs.dotnetCorePackages.sdk_9_0;
-      dotnet-runtime = pkgs.dotnetCorePackages.runtime_9_0;
+      dotnet-sdk = pkgs.dotnetCorePackages.sdk_10_0;
+      dotnet-runtime = pkgs.dotnetCorePackages.runtime_10_0;
       version = "0.1";
       dotnetTool = dllOverride: toolName: toolVersion: hash:
         pkgs.stdenvNoCC.mkDerivation rec {
@@ -64,7 +64,7 @@
         buildInputs = [dotnet-sdk];
         packages = [
           pkgs.alejandra
-          pkgs.nodePackages.markdown-link-check
+          pkgs.lychee
           pkgs.shellcheck
           pkgs.xmlstarlet
         ];
